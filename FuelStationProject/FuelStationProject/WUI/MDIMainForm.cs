@@ -13,5 +13,9 @@ namespace FuelStationProject.WUI {
         public MDIMainForm() {
             InitializeComponent();
         }
+
+        private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Application.Exit();
+        }
     }
 }
