@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
     public partial class EmployeeViewForm : Form {
-        public DataSet ViewData;// = new DataSet();
+        public DataSet ViewData { get; set; }
         public EmployeeViewForm() {
             InitializeComponent();
         }
