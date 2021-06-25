@@ -60,11 +60,23 @@
     <Compile Include="WUI\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WUI\CustomerViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WUI\CustomerViewForm.Designer.cs">
+      <DependentUpon>CustomerViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WUI\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WUI\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WUI\EmployeeViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WUI\EmployeeViewForm.Designer.cs">
+      <DependentUpon>EmployeeViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WUI\Form1.cs">
       <SubType>Form</SubType>
