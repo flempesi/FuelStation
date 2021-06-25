@@ -31,15 +31,16 @@ namespace FuelStationProject.WUI {
             this.lblCost = new DevExpress.XtraEditors.LabelControl();
             this.ctrlCode = new DevExpress.XtraEditors.TextEdit();
             this.ctrlDescription = new DevExpress.XtraEditors.TextEdit();
-            this.ctrlType = new DevExpress.XtraEditors.DropDownButton();
             this.ctrlPrice = new DevExpress.XtraEditors.SpinEdit();
             this.ctrlCost = new DevExpress.XtraEditors.SpinEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCode
@@ -103,15 +104,6 @@ namespace FuelStationProject.WUI {
             this.ctrlDescription.Size = new System.Drawing.Size(314, 22);
             this.ctrlDescription.TabIndex = 6;
             // 
-            // ctrlType
-            // 
-            this.ctrlType.Location = new System.Drawing.Point(252, 165);
-            this.ctrlType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ctrlType.Name = "ctrlType";
-            this.ctrlType.Size = new System.Drawing.Size(314, 29);
-            this.ctrlType.TabIndex = 7;
-            this.ctrlType.Text = "dropDownButton1";
-            // 
             // ctrlPrice
             // 
             this.ctrlPrice.EditValue = new decimal(new int[] {
@@ -119,7 +111,7 @@ namespace FuelStationProject.WUI {
             0,
             0,
             0});
-            this.ctrlPrice.Location = new System.Drawing.Point(248, 243);
+            this.ctrlPrice.Location = new System.Drawing.Point(248, 232);
             this.ctrlPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ctrlPrice.Name = "ctrlPrice";
             this.ctrlPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -160,16 +152,26 @@ namespace FuelStationProject.WUI {
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(248, 162);
+            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(318, 22);
+            this.comboBoxEdit1.TabIndex = 12;
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 463);
+            this.ClientSize = new System.Drawing.Size(649, 473);
+            this.Controls.Add(this.comboBoxEdit1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ctrlCost);
             this.Controls.Add(this.ctrlPrice);
-            this.Controls.Add(this.ctrlType);
             this.Controls.Add(this.ctrlDescription);
             this.Controls.Add(this.ctrlCode);
             this.Controls.Add(this.lblCost);
@@ -183,6 +185,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,10 +200,10 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraEditors.LabelControl lblCost;
         private DevExpress.XtraEditors.TextEdit ctrlCode;
         private DevExpress.XtraEditors.TextEdit ctrlDescription;
-        private DevExpress.XtraEditors.DropDownButton ctrlType;
         private DevExpress.XtraEditors.SpinEdit ctrlPrice;
         private DevExpress.XtraEditors.SpinEdit ctrlCost;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
     }
 }
