@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DatabaseConnectionController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="WUI\CustomerForm.cs">
@@ -179,6 +180,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Queries\InsertCustomer.sql" />
     <Content Include="Queries\InsertEmployee.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

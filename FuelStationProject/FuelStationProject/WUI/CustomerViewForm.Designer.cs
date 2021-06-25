@@ -27,13 +27,13 @@ namespace FuelStationProject.WUI {
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,38 +74,6 @@ namespace FuelStationProject.WUI {
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 25);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 425);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 25);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 425);
-            // 
             // btnEdit
             // 
             this.btnEdit.Caption = "Edit";
@@ -124,14 +92,52 @@ namespace FuelStationProject.WUI {
             this.btnRefresh.Id = 2;
             this.btnRefresh.Name = "btnRefresh";
             // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlTop.Size = new System.Drawing.Size(600, 20);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 366);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(600, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 346);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(600, 20);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 346);
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 25);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.gridControl1.Location = new System.Drawing.Point(0, 20);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(800, 425);
+            this.gridControl1.Size = new System.Drawing.Size(600, 346);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -142,48 +148,54 @@ namespace FuelStationProject.WUI {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3});
+            this.gridView1.DetailHeight = 284;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Name";
-            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.FieldName = "Name";
+            this.gridColumn1.MinWidth = 19;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 94;
+            this.gridColumn1.Width = 70;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Surname";
-            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.FieldName = "Surname";
+            this.gridColumn2.MinWidth = 19;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 94;
+            this.gridColumn2.Width = 70;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "CardNumber";
-            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.Caption = "Card Number";
+            this.gridColumn3.FieldName = "CardNumber";
+            this.gridColumn3.MinWidth = 19;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 94;
+            this.gridColumn3.Width = 70;
             // 
             // CustomerViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CustomerViewForm";
             this.Text = "CustomerViewForm";
+            this.Load += new System.EventHandler(this.CustomerViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

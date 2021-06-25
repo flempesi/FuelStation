@@ -56,7 +56,7 @@ namespace FuelStationProject.WUI {
             // 
             // ribbonControl1
             // 
-            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(43, 46, 43, 46);
+            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(37);
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
@@ -72,10 +72,10 @@ namespace FuelStationProject.WUI {
             this.btnViewTransaction,
             this.btnViewLedger});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.OptionsMenuMinWidth = 481;
+            this.ribbonControl1.OptionsMenuMinWidth = 412;
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1});
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -85,7 +85,7 @@ namespace FuelStationProject.WUI {
             this.ribbonPage5,
             this.ribbonPage6,
             this.ribbonPage7});
-            this.ribbonControl1.Size = new System.Drawing.Size(933, 193);
+            this.ribbonControl1.Size = new System.Drawing.Size(800, 158);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
@@ -113,6 +113,7 @@ namespace FuelStationProject.WUI {
             this.btnViewCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewCustomer.ImageOptions.Image")));
             this.btnViewCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnViewCustomer.ImageOptions.LargeImage")));
             this.btnViewCustomer.Name = "btnViewCustomer";
+            this.btnViewCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnViewCustomer_ItemClick);
             // 
             // btnAddEmployee
             // 
@@ -253,11 +254,10 @@ namespace FuelStationProject.WUI {
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 524);
-            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 426);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(933, 30);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(800, 24);
             // 
             // ribbonPage2
             // 
@@ -266,13 +266,12 @@ namespace FuelStationProject.WUI {
             // 
             // MDIMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MDIMainForm";
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

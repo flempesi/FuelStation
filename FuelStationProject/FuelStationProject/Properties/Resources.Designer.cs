@@ -61,22 +61,26 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [dbo].[Customer]
+        ///	(ID,[Name], [Surname], [CardNumber]) 
+        ///VALUES
+        ///	(NEWID(), &apos;KOSTAS&apos;, &apos;PAPAS&apos; , &apos;200501783212989&apos; )
+        ///.
+        /// </summary>
+        internal static string InsertCustomer {
+            get {
+                return ResourceManager.GetString("InsertCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///INSERT INTO [dbo].Employee
         ///	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
         ///VALUES
-        ///	(NEWGUID(), &apos;MARIA&apos;, &apos; PAPADOPOULOU&apos; , &apos;20210501&apos; ,&apos;20210601&apos; ,1000)
+        ///	(NEWID(), &apos;MARIA&apos;, &apos; PAPADOPOULOU&apos; , &apos;20210501&apos; ,&apos;20210601&apos; ,1000)
         ///
         ///
-        ///
-        ///--CREATE TABLE [dbo].[Employee](
-        ///--    [ID] [uniqueidentifier] NOT NULL,
-        ///--    [Name] [nvarchar](50) NOT NULL,
-        ///--    [Surname] [nvarchar](150) NOT NULL,
-        ///--    [DateStart] [Datetime]NOT NULL,
-        ///--	[DateEnd] [Datetime] NOT NULL,
-        ///--	[Salary][decimal](18,2) NOT NULL 
-        ///--) ON [PRIMARY]
         ///.
         /// </summary>
         internal static string InsertEmployee {
