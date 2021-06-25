@@ -18,7 +18,7 @@ namespace FuelStationProject.Impl {
 
         public decimal TotalValue { get; set; }
 
-        
+        public List<TransactionLine> TransactionLines { get; set; }
 
         public Transaction() {
 
