@@ -14,7 +14,8 @@ namespace FuelStationProject {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MDIMainForm());
+           Application.Run(new MDIMainForm());
+            //Application.Run(new EmployeeViewForm());
         }
     }
 }

@@ -72,7 +72,7 @@ namespace FuelStationProject.WUI {
             this.btnViewTransaction,
             this.btnViewLedger});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5);
             this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 481;
@@ -87,6 +87,7 @@ namespace FuelStationProject.WUI {
             this.ribbonPage7});
             this.ribbonControl1.Size = new System.Drawing.Size(933, 193);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // btnExit
             // 
@@ -128,6 +129,7 @@ namespace FuelStationProject.WUI {
             this.btnViewEmployee.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewEmployee.ImageOptions.Image")));
             this.btnViewEmployee.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnViewEmployee.ImageOptions.LargeImage")));
             this.btnViewEmployee.Name = "btnViewEmployee";
+            this.btnViewEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnViewEmployee_ItemClick);
             // 
             // btnAddItem
             // 
@@ -252,7 +254,7 @@ namespace FuelStationProject.WUI {
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 524);
-            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(933, 30);
@@ -276,6 +278,7 @@ namespace FuelStationProject.WUI {
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar1;
             this.Text = "Fuel Station";
+            this.Load += new System.EventHandler(this.MDIMainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
