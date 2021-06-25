@@ -18,6 +18,8 @@ namespace FuelStationProject.Impl {
 
         public decimal TotalValue { get; set; }
 
+        
+
         public Transaction() {
 
         }
