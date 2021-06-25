@@ -157,6 +157,7 @@ namespace FuelStationProject.WUI {
             // gridColumnName
             // 
             this.gridColumnName.Caption = "Name";
+            this.gridColumnName.FieldName = "Name";
             this.gridColumnName.MinWidth = 25;
             this.gridColumnName.Name = "gridColumnName";
             this.gridColumnName.Visible = true;
@@ -166,6 +167,7 @@ namespace FuelStationProject.WUI {
             // gridColumnSurname
             // 
             this.gridColumnSurname.Caption = "Surname";
+            this.gridColumnSurname.FieldName = "Surname";
             this.gridColumnSurname.MinWidth = 25;
             this.gridColumnSurname.Name = "gridColumnSurname";
             this.gridColumnSurname.Visible = true;
@@ -176,6 +178,7 @@ namespace FuelStationProject.WUI {
             // 
             this.gridColumnDateStart.Caption = "Date Start";
             this.gridColumnDateStart.ColumnEdit = this.repDate;
+            this.gridColumnDateStart.FieldName = "DateStart";
             this.gridColumnDateStart.MinWidth = 25;
             this.gridColumnDateStart.Name = "gridColumnDateStart";
             this.gridColumnDateStart.Visible = true;
@@ -193,6 +196,7 @@ namespace FuelStationProject.WUI {
             // 
             this.gridColumnDateEnd.Caption = "Date End";
             this.gridColumnDateEnd.ColumnEdit = this.repDate;
+            this.gridColumnDateEnd.FieldName = "DateEnd";
             this.gridColumnDateEnd.MinWidth = 25;
             this.gridColumnDateEnd.Name = "gridColumnDateEnd";
             this.gridColumnDateEnd.Visible = true;
@@ -202,6 +206,7 @@ namespace FuelStationProject.WUI {
             // gridColumnSalary
             // 
             this.gridColumnSalary.Caption = "Salary";
+            this.gridColumnSalary.FieldName = "Salary";
             this.gridColumnSalary.MinWidth = 25;
             this.gridColumnSalary.Name = "gridColumnSalary";
             this.gridColumnSalary.Visible = true;
