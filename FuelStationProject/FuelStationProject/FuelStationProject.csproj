@@ -67,7 +67,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Impl\Customer.cs" />
-    <Compile Include="Impl\Emplyee.cs" />
+    <Compile Include="Impl\Employee.cs" />
     <Compile Include="Impl\Entity.cs" />
     <Compile Include="Impl\Enums.cs" />
     <Compile Include="Impl\Item.cs" />

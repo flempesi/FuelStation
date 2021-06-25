@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelStationProject.Impl {
-    class Emplyee :Person{
+    class Employee :Person{
 
         public DateTime DateStart { get; set; }
 
@@ -13,7 +13,7 @@ namespace FuelStationProject.Impl {
 
         public decimal Salary { get; set; }
 
-        public Emplyee() {
+        public Employee() {
 
         }
 
