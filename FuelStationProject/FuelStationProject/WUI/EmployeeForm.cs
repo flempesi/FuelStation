@@ -9,21 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
-    public partial class CustomerForm : Form  {
-        public CustomerForm() {
+    public partial class EmployeeForm : Form {
+        public EmployeeForm() {
             InitializeComponent();
-        }
-
-        private void CustomerForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void textEdit1_EditValueChanged(object sender, EventArgs e) {
-
-        }
-
-        private void btnOK_Click(object sender, EventArgs e) {
-           
         }
 
         private void ctlrCancel_Click(object sender, EventArgs e) {

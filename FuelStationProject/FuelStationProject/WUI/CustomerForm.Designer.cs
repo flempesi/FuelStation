@@ -51,6 +51,7 @@ namespace FuelStationProject.WUI {
             this.ctlrCancel.Size = new System.Drawing.Size(123, 40);
             this.ctlrCancel.TabIndex = 42;
             this.ctlrCancel.Text = "Cancel";
+            this.ctlrCancel.Click += new System.EventHandler(this.ctlrCancel_Click);
             // 
             // btnOK
             // 
