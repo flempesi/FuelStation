@@ -20,6 +20,7 @@ namespace FuelStationProject.WUI {
 
 
              gridView1.OptionsView.ShowGroupPanel = false;
+            
              gridEmployee.DataSource = ViewData.Tables[0];
              //gridEmployee.DataMember = ViewData.Tables[0].TableName;
         }

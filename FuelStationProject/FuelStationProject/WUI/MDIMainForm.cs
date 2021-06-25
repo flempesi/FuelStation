@@ -103,7 +103,7 @@ namespace FuelStationProject.WUI {
 
             try {
 
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Employee", _SqlConnection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT [Name], [Surname], [DateStart],[DateEnd],[Salary] FROM  Employee", _SqlConnection);
                 adapter.Fill(_MasterData);
 
                 // log
