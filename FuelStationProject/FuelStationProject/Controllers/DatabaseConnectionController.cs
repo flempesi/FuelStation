@@ -10,7 +10,7 @@ namespace FuelStationProject.Controllers {
   public  class DatabaseConnectionController {
 
         public SqlConnection _SqlConnection { get; set; }
-        //SqlConnection _SqlConnection;
+       
 
         public DatabaseConnectionController() {
 

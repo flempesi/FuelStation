@@ -14,9 +14,12 @@ namespace FuelStationProject.WUI {
     public partial class CustomerViewForm : DevExpress.XtraEditors.XtraForm {
 
         public CustomerController newcc { get; set; }
-        public DatabaseConnectionController newdcc { get; set; }
+        public DatabaseConnectionController DBController { get; set; }
 
-        public SqlConnection NewSqlConnection;
+        //public SqlConnection NewSqlConnection;
+        private DataSet _Data;
+
+
 
         public CustomerViewForm() {
             InitializeComponent();
@@ -25,7 +28,19 @@ namespace FuelStationProject.WUI {
         private void CustomerViewForm_Load(object sender, EventArgs e) {
             //CustomerController cc = new CustomerController();
 
-            newcc.GetCustomers(gridControl1, NewSqlConnection);
+            //newcc.GetCustomers(gridControl1, NewSqlConnection);
+
+            _Data = new DataSet();
+
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM [Customer]", DBController._SqlConnection);
+          int response=  adapter.Fill(_Data);
+
+
+            gridControl1.DataSource = _Data.Tables[0];
+            //gridControl1.DataMember = _MasterData.Tables[0].TableName;
+            gridControl1.Refresh();
+
+
         }
     }
 }

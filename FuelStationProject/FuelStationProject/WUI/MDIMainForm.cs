@@ -14,11 +14,15 @@ using System.Windows.Forms;
 namespace FuelStationProject.WUI {
     public partial class MDIMainForm : DevExpress.XtraBars.Ribbon.RibbonForm {
 
-       // private SqlConnection _SqlConnection;
+        // private SqlConnection _SqlConnection;
         private DataSet _MasterData = new DataSet();
 
-        DatabaseConnectionController dcc;
-        CustomerController cc;
+       private DatabaseConnectionController _DBConnection;
+
+       private CustomerController cc;
+
+
+
         public MDIMainForm() {
             InitializeComponent();
         }
@@ -29,12 +33,12 @@ namespace FuelStationProject.WUI {
 
         private void MDIMainForm_Load(object sender, EventArgs e) {
 
-        dcc  = new DatabaseConnectionController();
+            _DBConnection = new DatabaseConnectionController();
 
-            dcc.Connection();
-      //     dcc.InsertEmployee();
+            _DBConnection.Connection();
+           //     dcc.InsertEmployee();
 
-          
+
         }
 
 
@@ -49,11 +53,11 @@ namespace FuelStationProject.WUI {
         //    AppendLog("Connenction State", _SqlConnection.State);
         //}
 
-        private void DeleteTrans() {
+        //private void DeleteTrans() {
 
             // DELETE, UPDATE, INSERT
-           // SqlCommand command = new SqlCommand(Resources.DeleteTrans, _SqlConnection);
-           // int rowsAffected = command.ExecuteNonQuery();
+            // SqlCommand command = new SqlCommand(Resources.DeleteTrans, _SqlConnection);
+            // int rowsAffected = command.ExecuteNonQuery();
 
 
             //
@@ -63,9 +67,9 @@ namespace FuelStationProject.WUI {
             //AppendLog("Rows Affected", _SqlConnection.State);
 
 
-        }
+        //}
 
-        private void ViewData() {
+        //private void ViewData() {
 
             // Standard Grid
             //ctrlGrid.AutoGenerateColumns = false;
@@ -81,7 +85,7 @@ namespace FuelStationProject.WUI {
 
 
             // Dev Express Grid
-           
+
             //gridControl1.Refresh();
 
 
@@ -91,7 +95,7 @@ namespace FuelStationProject.WUI {
 
 
 
-        }
+        //}
 
         //private void InsertEmployee() {
 
@@ -125,15 +129,15 @@ namespace FuelStationProject.WUI {
 
 
 
-        private void AppendLog(string name, object message) {
-           // txtLog.AppendText(string.Format("{0}={1}{2}", name, message, Environment.NewLine));
-        }
+        //private void AppendLog(string name, object message) {
+            // txtLog.AppendText(string.Format("{0}={1}{2}", name, message, Environment.NewLine));
+        //}
         private void ribbonControl1_Click(object sender, EventArgs e) {
 
         }
 
         private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-          //  GetData();
+            //  GetData();
             EmployeeViewForm form = new EmployeeViewForm();
             form.ViewData = _MasterData;
             form.Show();
@@ -141,16 +145,32 @@ namespace FuelStationProject.WUI {
 
         private void btnViewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             //CustomerController cc = new CustomerController();
-
-          //  cc = new CustomerController();
+            //  cc = new CustomerController();
             //cc.Connection();
-          //  cc.InsertCustomer(dcc._SqlConnection);
+            //  cc.InsertCustomer(dcc._SqlConnection);
+            //    cc.OpenViewForm();
+
+
+            CustomerViewForm customerViewForm = new CustomerViewForm();
+
+            customerViewForm.DBController = _DBConnection;
+            customerViewForm.Show();
 
 
 
-        //    cc.OpenViewForm();
 
 
+
+
+        }
+
+        private void btnAddCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+
+
+            CustomerForm customerForm = new CustomerForm();
+
+            customerForm.DBController = _DBConnection;
+            customerForm.Show();
 
 
 
