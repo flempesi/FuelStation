@@ -2,6 +2,7 @@
 INSERT INTO [dbo].Employee
 	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
 VALUES
-	(NEWID(), 'MARIA', ' PAPADOPOULOU' , '20210501' ,'20210601' ,1000)
+	(NEWID(), '{0}', ' {1}' , '{2}' ,'{3}' ,'{4}')
+
 
 

@@ -72,7 +72,7 @@ namespace FuelStationProject.WUI {
             this.btnViewTransaction,
             this.btnViewLedger});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5);
             this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 481;
@@ -123,6 +123,7 @@ namespace FuelStationProject.WUI {
             this.btnAddEmployee.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.ImageOptions.Image")));
             this.btnAddEmployee.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.ImageOptions.LargeImage")));
             this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddEmployee_ItemClick);
             // 
             // btnViewEmployee
             // 

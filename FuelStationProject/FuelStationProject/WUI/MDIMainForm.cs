@@ -14,13 +14,9 @@ using System.Windows.Forms;
 namespace FuelStationProject.WUI {
     public partial class MDIMainForm : DevExpress.XtraBars.Ribbon.RibbonForm {
 
-        // private SqlConnection _SqlConnection;
         private DataSet _MasterData = new DataSet();
 
-       private DatabaseConnectionController _DBConnection;
-
-       
-
+        private DatabaseConnectionController _DBConnection;
 
 
         public MDIMainForm() {
@@ -36,97 +32,8 @@ namespace FuelStationProject.WUI {
             _DBConnection = new DatabaseConnectionController();
 
             _DBConnection.Connection();
-          
-
-
+        
         }
-
-
-
-        //private void SqlConnect() {
-        //    string connectionString = @"Server=localhost\SQLEXPRESS;Database=FuelStation;Trusted_Connection=True;";
-
-        //    _SqlConnection = new SqlConnection(connectionString);
-        //    _SqlConnection.Open();
-
-        //    // log
-        //    AppendLog("Connenction State", _SqlConnection.State);
-        //}
-
-        //private void DeleteTrans() {
-
-            // DELETE, UPDATE, INSERT
-            // SqlCommand command = new SqlCommand(Resources.DeleteTrans, _SqlConnection);
-            // int rowsAffected = command.ExecuteNonQuery();
-
-
-            //
-
-
-            // log
-            //AppendLog("Rows Affected", _SqlConnection.State);
-
-
-        //}
-
-        //private void ViewData() {
-
-            // Standard Grid
-            //ctrlGrid.AutoGenerateColumns = false;
-            //ctrlGrid.DataSource = _MasterData;
-            //ctrlGrid.DataMember = _MasterData.Tables[0].TableName;
-            //ctrlGrid.Refresh();
-
-            //foreach (DataRow row in _MasterData.Tables[0].Rows) {
-            //    //AppendLog("Row", string.Format("{0} \t {1} \t {2} \t {3}", row[0], row[1], row[2], row[3]));
-
-            //    AppendLog("Row", string.Format("{0} \t {1} \t ", row["Name"], row["TransactionDate"]));
-            //}
-
-
-            // Dev Express Grid
-
-            //gridControl1.Refresh();
-
-
-            //gridView1.OptionsView.ShowGroupPanel = false;
-            //gridEmployee.DataSource = _MasterData.Tables[0];
-            //gridControl1.DataMember = _MasterData.Tables[0].TableName;
-
-
-
-        //}
-
-        //private void InsertEmployee() {
-
-        //    // INSERT todo insert parameters...
-        //    SqlCommand command = new SqlCommand(Resources.InsertEmployee, _SqlConnection);
-        //    int rowsAffected = command.ExecuteNonQuery();
-
-
-        //    AppendLog("Rows Affected", _SqlConnection.State);
-
-
-        //}
-
-
-
-        //private void GetData() {
-
-        //    try {
-
-        //        SqlDataAdapter adapter = new SqlDataAdapter("SELECT [Name], [Surname], [DateStart],[DateEnd],[Salary] FROM  Employee", _SqlConnection);
-        //        adapter.Fill(_MasterData);
-
-        //        // log
-        //        AppendLog("Data Set Filled", "OK");
-        //    }
-        //    catch (Exception ex) {
-        //        AppendLog("Exception", ex.Message);
-        //    }
-        //}
-
-
 
 
         //private void AppendLog(string name, object message) {
@@ -136,45 +43,38 @@ namespace FuelStationProject.WUI {
 
         }
 
+
         private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            //  GetData();
             EmployeeViewForm form = new EmployeeViewForm();
             form.ViewData = _MasterData;
+            form.MdiParent = this;
+            form.DBController = _DBConnection;
             form.Show();
         }
 
         private void btnViewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            //CustomerController cc = new CustomerController();
-            //  cc = new CustomerController();
-            //cc.Connection();
-            //  cc.InsertCustomer(dcc._SqlConnection);
-            //    cc.OpenViewForm();
-
 
             CustomerViewForm customerViewForm = new CustomerViewForm();
-
             customerViewForm.MdiParent = this;
             customerViewForm.DBController = _DBConnection;
             customerViewForm.Show();
 
-
-
-
-
-
-
         }
 
         private void btnAddCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-
 
             CustomerForm customerForm = new CustomerForm();
             customerForm.MdiParent = this;
             customerForm.DBController = _DBConnection;
             customerForm.Show();
 
+        }
 
-
+        private void btnAddEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            EmployeeForm employeeForm = new EmployeeForm();
+            employeeForm.MdiParent = this;
+            employeeForm.DBController = _DBConnection;
+            employeeForm.Show();
         }
     }
 }

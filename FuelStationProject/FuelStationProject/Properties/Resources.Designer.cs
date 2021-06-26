@@ -61,6 +61,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM [Employee] WHERE ID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string DeleteEmployee {
+            get {
+                return ResourceManager.GetString("DeleteEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO [dbo].[Customer]
         ///	(ID,[Name], [Surname], [CardNumber]) 
         ///VALUES
@@ -78,7 +87,8 @@ namespace FuelStationProject.Properties {
         ///INSERT INTO [dbo].Employee
         ///	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
         ///VALUES
-        ///	(NEWID(), &apos;MARIA&apos;, &apos; PAPADOPOULOU&apos; , &apos;20210501&apos; ,&apos;20210601&apos; ,1000)
+        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
+        ///
         ///
         ///
         ///.
@@ -86,6 +96,32 @@ namespace FuelStationProject.Properties {
         internal static string InsertEmployee {
             get {
                 return ResourceManager.GetString("InsertEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM Employee.
+        /// </summary>
+        internal static string SelectEmployeeTable {
+            get {
+                return ResourceManager.GetString("SelectEmployeeTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///INSERT INTO [dbo].Employee
+        ///	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
+        ///VALUES
+        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
+        ///
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string UpdateEmployee {
+            get {
+                return ResourceManager.GetString("UpdateEmployee", resourceCulture);
             }
         }
     }
