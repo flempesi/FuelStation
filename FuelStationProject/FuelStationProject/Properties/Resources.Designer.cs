@@ -103,7 +103,7 @@ namespace FuelStationProject.Properties {
         ///   Looks up a localized string similar to INSERT INTO [dbo].[Item]
         ///           ([ID],[Code],[Description],[ItemType],[Price],[Cost])
         ///     VALUES
-        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;,&apos;{5}&apos;)
+        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
         ///
         ///
         ///
@@ -125,6 +125,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM Employee.
+        /// </summary>
+        internal static string SelectItemTable {
+            get {
+                return ResourceManager.GetString("SelectItemTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPDATE [dbo].Employee
         ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [DateStart]= &apos;{2}&apos;, [DateEnd]= &apos;{3}&apos;,[Salary]= &apos;{4}&apos;
         ///WHERE ID = &apos;{5}&apos;;
@@ -137,6 +146,23 @@ namespace FuelStationProject.Properties {
         internal static string UpdateEmployee {
             get {
                 return ResourceManager.GetString("UpdateEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE [dbo].Item
+        ///SET [Code] = &apos;{0}&apos;, [Description]= &apos;{1}&apos;, [ItemType]= &apos;{2}&apos;, [Price]= &apos;{3}&apos;,[Cost]= &apos;{4}&apos;
+        ///WHERE ID = &apos;{5}&apos;;
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string UpdateItem {
+            get {
+                return ResourceManager.GetString("UpdateItem", resourceCulture);
             }
         }
     }

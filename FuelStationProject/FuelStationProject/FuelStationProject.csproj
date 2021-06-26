@@ -196,6 +196,8 @@
     <Content Include="Queries\DeleteEmployee.sql" />
     <Content Include="Queries\InsertCustomer.sql" />
     <Content Include="Queries\InsertItem.sql" />
+    <Content Include="Queries\SelectItemTable.sql" />
+    <Content Include="Queries\UpdateItem.sql" />
     <Content Include="Queries\UpdateEmployee.sql" />
     <Content Include="Queries\InsertEmployee.sql" />
     <Content Include="Queries\SelectEmployeeTable.sql" />
