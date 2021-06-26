@@ -46,7 +46,7 @@ namespace FuelStationProject.WUI {
             // lblCode
             // 
             this.lblCode.Location = new System.Drawing.Point(50, 52);
-            this.lblCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblCode.Margin = new System.Windows.Forms.Padding(4);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(29, 16);
             this.lblCode.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace FuelStationProject.WUI {
             // lblDescription
             // 
             this.lblDescription.Location = new System.Drawing.Point(50, 107);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 16);
             this.lblDescription.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace FuelStationProject.WUI {
             // lblPrice
             // 
             this.lblPrice.Location = new System.Drawing.Point(51, 236);
-            this.lblPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(5);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(28, 16);
             this.lblPrice.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace FuelStationProject.WUI {
             // lblType
             // 
             this.lblType.Location = new System.Drawing.Point(51, 165);
-            this.lblType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblType.Margin = new System.Windows.Forms.Padding(5);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(28, 16);
             this.lblType.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace FuelStationProject.WUI {
             // lblCost
             // 
             this.lblCost.Location = new System.Drawing.Point(50, 305);
-            this.lblCost.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lblCost.Margin = new System.Windows.Forms.Padding(6);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(25, 16);
             this.lblCost.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace FuelStationProject.WUI {
             // ctrlCode
             // 
             this.ctrlCode.Location = new System.Drawing.Point(252, 45);
-            this.ctrlCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctrlCode.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlCode.Name = "ctrlCode";
             this.ctrlCode.Size = new System.Drawing.Size(314, 22);
             this.ctrlCode.TabIndex = 5;
@@ -99,7 +99,7 @@ namespace FuelStationProject.WUI {
             // ctrlDescription
             // 
             this.ctrlDescription.Location = new System.Drawing.Point(252, 104);
-            this.ctrlDescription.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ctrlDescription.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlDescription.Name = "ctrlDescription";
             this.ctrlDescription.Size = new System.Drawing.Size(314, 22);
             this.ctrlDescription.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace FuelStationProject.WUI {
             0,
             0});
             this.ctrlPrice.Location = new System.Drawing.Point(248, 232);
-            this.ctrlPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctrlPrice.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlPrice.Name = "ctrlPrice";
             this.ctrlPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -127,7 +127,7 @@ namespace FuelStationProject.WUI {
             0,
             0});
             this.ctrlCost.Location = new System.Drawing.Point(248, 301);
-            this.ctrlCost.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ctrlCost.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlCost.Name = "ctrlCost";
             this.ctrlCost.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -137,28 +137,32 @@ namespace FuelStationProject.WUI {
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(321, 377);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(106, 41);
             this.btnOK.TabIndex = 10;
             this.btnOK.Text = "OK";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(448, 374);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(118, 44);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.ctlrCancel_Click);
             // 
             // comboBoxEdit1
             // 
+            this.comboBoxEdit1.AllowDrop = true;
             this.comboBoxEdit1.Location = new System.Drawing.Point(248, 162);
-            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Properties.DropDownRows = 3;
             this.comboBoxEdit1.Size = new System.Drawing.Size(318, 22);
             this.comboBoxEdit1.TabIndex = 12;
             // 
@@ -181,6 +185,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.lblCode);
             this.Name = "ItemForm";
             this.Text = "Add Item";
+            this.Load += new System.EventHandler(this.ItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlPrice.Properties)).EndInit();

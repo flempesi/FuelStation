@@ -37,7 +37,7 @@ namespace FuelStationProject.WUI {
             }
 
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && 
-                  decimal.TryParse(Convert.ToString(ctrlSalary.EditValue).Replace(',', '.'), out salary) && salary > 0 
+                  decimal.TryParse(Convert.ToString(ctrlSalary.EditValue), out salary) && salary > 0 
                   && DateTime.TryParse(Convert.ToString(ctrlDateStart.EditValue), out dateStart))
 
              {

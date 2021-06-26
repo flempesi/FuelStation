@@ -45,11 +45,11 @@ namespace FuelStationProject.WUI {
 
 
         private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            EmployeeViewForm form = new EmployeeViewForm();
-            form.ViewData = _MasterData;
-            form.MdiParent = this;
-            form.DBController = _DBConnection;
-            form.Show();
+            EmployeeViewForm employeeViewform = new EmployeeViewForm();
+            employeeViewform.ViewData = _MasterData;
+            employeeViewform.MdiParent = this;
+            employeeViewform.DBController = _DBConnection;
+            employeeViewform.Show();
         }
 
         private void btnViewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -75,6 +75,21 @@ namespace FuelStationProject.WUI {
             employeeForm.MdiParent = this;
             employeeForm.DBController = _DBConnection;
             employeeForm.Show();
+        }
+
+        private void btnAddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            ItemForm itemForm = new ItemForm();
+            itemForm.MdiParent = this;
+            itemForm.DBController = _DBConnection;
+            itemForm.Show();
+        }
+
+        private void btnViewItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            ItemViewForm itemViewForm = new ItemViewForm();
+            itemViewForm.ViewData = _MasterData;
+            itemViewForm.MdiParent = this;
+            itemViewForm.DBController = _DBConnection;
+            itemViewForm.Show();
         }
     }
 }

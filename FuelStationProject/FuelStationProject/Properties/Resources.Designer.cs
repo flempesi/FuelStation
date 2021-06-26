@@ -100,6 +100,22 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [dbo].[Item]
+        ///           ([ID],[Code],[Description],[ItemType],[Price],[Cost])
+        ///     VALUES
+        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;,&apos;{5}&apos;)
+        ///
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string InsertItem {
+            get {
+                return ResourceManager.GetString("InsertItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM Employee.
         /// </summary>
         internal static string SelectEmployeeTable {
@@ -109,11 +125,10 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///INSERT INTO [dbo].Employee
-        ///	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
-        ///VALUES
-        ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
+        ///   Looks up a localized string similar to UPDATE [dbo].Employee
+        ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [DateStart]= &apos;{2}&apos;, [DateEnd]= &apos;{3}&apos;,[Salary]= &apos;{4}&apos;
+        ///WHERE ID = &apos;{5}&apos;;
+        ///
         ///
         ///
         ///
