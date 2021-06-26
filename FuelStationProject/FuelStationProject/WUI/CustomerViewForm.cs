@@ -71,11 +71,11 @@ namespace FuelStationProject.WUI {
             if (result == DialogResult.OK) {
 
 
-                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [CUSTOMER] WHERE ID={0}", gridView1.GetFocusedRow()), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [CUSTOMER] WHERE ID='{0}'", Convert.ToString( gridView1.GetRowCellValue(gridView1.FocusedRowHandle,"ID"))), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
-
+                Refresh();
 
             }
             else {
