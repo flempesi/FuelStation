@@ -36,12 +36,18 @@ namespace FuelStationProject.WUI {
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnDeleteCustomerFromGrid = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCustomerFromGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -79,6 +85,7 @@ namespace FuelStationProject.WUI {
             this.btnEdit.Caption = "Edit";
             this.btnEdit.Id = 0;
             this.btnEdit.Name = "btnEdit";
+            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
             // 
             // btnDelete
             // 
@@ -91,6 +98,7 @@ namespace FuelStationProject.WUI {
             this.btnRefresh.Caption = "Refresh";
             this.btnRefresh.Id = 2;
             this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -99,45 +107,48 @@ namespace FuelStationProject.WUI {
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlTop.Size = new System.Drawing.Size(600, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(700, 25);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 366);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(600, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(700, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 346);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 425);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(600, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(700, 25);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 346);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 425);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gridControl1.Location = new System.Drawing.Point(0, 20);
+            this.gridControl1.Location = new System.Drawing.Point(0, 25);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(600, 346);
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit1,
+            this.btnDeleteCustomerFromGrid});
+            this.gridControl1.Size = new System.Drawing.Size(700, 425);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -145,48 +156,85 @@ namespace FuelStationProject.WUI {
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3});
-            this.gridView1.DetailHeight = 284;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Click to Edit";
+            this.gridColumn4.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            this.gridColumn4.Width = 87;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Click to Delete";
+            this.gridColumn5.ColumnEdit = this.btnDeleteCustomerFromGrid;
+            this.gridColumn5.MinWidth = 25;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 94;
+            // 
+            // btnDeleteCustomerFromGrid
+            // 
+            this.btnDeleteCustomerFromGrid.AutoHeight = false;
+            this.btnDeleteCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.btnDeleteCustomerFromGrid.Name = "btnDeleteCustomerFromGrid";
+            this.btnDeleteCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnDeleteCustomerFromGrid.Click += new System.EventHandler(this.btnDeleteCustomerFromGrid_Click);
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Name";
             this.gridColumn1.FieldName = "Name";
-            this.gridColumn1.MinWidth = 19;
+            this.gridColumn1.MinWidth = 22;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 70;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 82;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Surname";
             this.gridColumn2.FieldName = "Surname";
-            this.gridColumn2.MinWidth = 19;
+            this.gridColumn2.MinWidth = 22;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 70;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 82;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Card Number";
             this.gridColumn3.FieldName = "CardNumber";
-            this.gridColumn3.MinWidth = 19;
+            this.gridColumn3.MinWidth = 22;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 70;
+            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.Width = 82;
             // 
             // CustomerViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(700, 450);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -199,6 +247,8 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCustomerFromGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +269,9 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteCustomerFromGrid;
     }
 }

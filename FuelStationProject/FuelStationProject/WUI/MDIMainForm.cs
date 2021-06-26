@@ -19,7 +19,7 @@ namespace FuelStationProject.WUI {
 
        private DatabaseConnectionController _DBConnection;
 
-       private CustomerController cc;
+       
 
 
 
@@ -36,7 +36,7 @@ namespace FuelStationProject.WUI {
             _DBConnection = new DatabaseConnectionController();
 
             _DBConnection.Connection();
-           //     dcc.InsertEmployee();
+          
 
 
         }
@@ -153,6 +153,7 @@ namespace FuelStationProject.WUI {
 
             CustomerViewForm customerViewForm = new CustomerViewForm();
 
+            customerViewForm.MdiParent = this;
             customerViewForm.DBController = _DBConnection;
             customerViewForm.Show();
 
@@ -168,7 +169,7 @@ namespace FuelStationProject.WUI {
 
 
             CustomerForm customerForm = new CustomerForm();
-
+            customerForm.MdiParent = this;
             customerForm.DBController = _DBConnection;
             customerForm.Show();
 
