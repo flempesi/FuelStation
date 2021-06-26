@@ -29,20 +29,21 @@ namespace FuelStationProject.WUI {
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.btnrefresh = new DevExpress.XtraBars.Bar();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.gridEmployee = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repTextEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridColumnSurname = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDateStart = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repDateTime = new DevExpress.XtraEditors.Repository.RepositoryItemDateTimeOffsetEdit();
+            this.repDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridColumnDateEnd = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repDateTime = new DevExpress.XtraEditors.Repository.RepositoryItemDateTimeOffsetEdit();
             this.gridColumnSalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repSpinEdit = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumnSave = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,6 +55,8 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDateTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSaveButtonEdit)).BeginInit();
@@ -95,12 +98,6 @@ namespace FuelStationProject.WUI {
             this.btnEdit.Id = 0;
             this.btnEdit.Name = "btnEdit";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Caption = "Delete";
-            this.btnDelete.Id = 1;
-            this.btnDelete.Name = "btnDelete";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Refresh";
@@ -140,6 +137,12 @@ namespace FuelStationProject.WUI {
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 425);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Caption = "Delete";
+            this.btnDelete.Id = 1;
+            this.btnDelete.Name = "btnDelete";
+            // 
             // gridEmployee
             // 
             this.gridEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -152,7 +155,8 @@ namespace FuelStationProject.WUI {
             this.repTextEdit,
             this.repSpinEdit,
             this.repSaveButtonEdit,
-            this.repDeleteButtonEdit});
+            this.repDeleteButtonEdit,
+            this.repDate});
             this.gridEmployee.Size = new System.Drawing.Size(700, 425);
             this.gridEmployee.TabIndex = 4;
             this.gridEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -202,7 +206,9 @@ namespace FuelStationProject.WUI {
             // gridColumnDateStart
             // 
             this.gridColumnDateStart.Caption = "Date Start";
-            this.gridColumnDateStart.ColumnEdit = this.repDateTime;
+            this.gridColumnDateStart.ColumnEdit = this.repDate;
+            this.gridColumnDateStart.DisplayFormat.FormatString = "d";
+            this.gridColumnDateStart.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnDateStart.FieldName = "DateStart";
             this.gridColumnDateStart.MinWidth = 22;
             this.gridColumnDateStart.Name = "gridColumnDateStart";
@@ -210,26 +216,38 @@ namespace FuelStationProject.WUI {
             this.gridColumnDateStart.VisibleIndex = 2;
             this.gridColumnDateStart.Width = 82;
             // 
-            // repDateTime
+            // repDate
             // 
-            this.repDateTime.AutoHeight = false;
-            this.repDateTime.BeepOnError = false;
-            this.repDateTime.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repDate.AutoHeight = false;
+            this.repDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repDateTime.MaskSettings.Set("mask", "G");
-            this.repDateTime.Name = "repDateTime";
-            this.repDateTime.UseMaskAsDisplayFormat = true;
+            this.repDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repDate.Name = "repDate";
             // 
             // gridColumnDateEnd
             // 
             this.gridColumnDateEnd.Caption = "Date End";
-            this.gridColumnDateEnd.ColumnEdit = this.repDateTime;
+            this.gridColumnDateEnd.ColumnEdit = this.repDate;
+            this.gridColumnDateEnd.DisplayFormat.FormatString = "d";
+            this.gridColumnDateEnd.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnDateEnd.FieldName = "DateEnd";
             this.gridColumnDateEnd.MinWidth = 22;
             this.gridColumnDateEnd.Name = "gridColumnDateEnd";
             this.gridColumnDateEnd.Visible = true;
             this.gridColumnDateEnd.VisibleIndex = 3;
             this.gridColumnDateEnd.Width = 82;
+            // 
+            // repDateTime
+            // 
+            this.repDateTime.AutoHeight = false;
+            this.repDateTime.BeepOnError = false;
+            this.repDateTime.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repDateTime.EditFormat.FormatString = "d";
+            this.repDateTime.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repDateTime.MaskSettings.Set("mask", "G");
+            this.repDateTime.Name = "repDateTime";
             // 
             // gridColumnSalary
             // 
@@ -315,6 +333,8 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repDate.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDateTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSaveButtonEdit)).EndInit();
@@ -350,5 +370,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repSaveButtonEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repDeleteButtonEdit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnID;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repDate;
     }
 }

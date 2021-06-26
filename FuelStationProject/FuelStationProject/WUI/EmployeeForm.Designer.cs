@@ -30,18 +30,20 @@ namespace FuelStationProject.WUI {
             this.lblSalary = new DevExpress.XtraEditors.LabelControl();
             this.lblDateTo = new DevExpress.XtraEditors.LabelControl();
             this.lblDatefrom = new DevExpress.XtraEditors.LabelControl();
-            this.ctrlDateEnd = new DevExpress.XtraEditors.DateTimeOffsetEdit();
-            this.ctrlDateStart = new DevExpress.XtraEditors.DateTimeOffsetEdit();
             this.Title = new DevExpress.XtraEditors.LabelControl();
             this.lblSurname = new DevExpress.XtraEditors.LabelControl();
             this.lblName = new DevExpress.XtraEditors.LabelControl();
             this.ctrlSurname = new DevExpress.XtraEditors.TextEdit();
             this.ctrlName = new DevExpress.XtraEditors.TextEdit();
+            this.ctrlDateStart = new DevExpress.XtraEditors.DateEdit();
+            this.ctrlDateEnd = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSalary.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ctlrCancel
@@ -106,9 +108,9 @@ namespace FuelStationProject.WUI {
             this.lblDateTo.Appearance.Options.UseFont = true;
             this.lblDateTo.Location = new System.Drawing.Point(63, 333);
             this.lblDateTo.Name = "lblDateTo";
-            this.lblDateTo.Size = new System.Drawing.Size(76, 21);
+            this.lblDateTo.Size = new System.Drawing.Size(80, 21);
             this.lblDateTo.TabIndex = 42;
-            this.lblDateTo.Text = "Date To : ";
+            this.lblDateTo.Text = "Date End: ";
             // 
             // lblDatefrom
             // 
@@ -116,39 +118,9 @@ namespace FuelStationProject.WUI {
             this.lblDatefrom.Appearance.Options.UseFont = true;
             this.lblDatefrom.Location = new System.Drawing.Point(63, 273);
             this.lblDatefrom.Name = "lblDatefrom";
-            this.lblDatefrom.Size = new System.Drawing.Size(90, 21);
+            this.lblDatefrom.Size = new System.Drawing.Size(88, 21);
             this.lblDatefrom.TabIndex = 41;
-            this.lblDatefrom.Text = "Date From :";
-            // 
-            // ctrlDateEnd
-            // 
-            this.ctrlDateEnd.EditValue = null;
-            this.ctrlDateEnd.Location = new System.Drawing.Point(247, 330);
-            this.ctrlDateEnd.Name = "ctrlDateEnd";
-            this.ctrlDateEnd.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.ctrlDateEnd.Properties.Appearance.Options.UseFont = true;
-            this.ctrlDateEnd.Properties.BeepOnError = false;
-            this.ctrlDateEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ctrlDateEnd.Properties.MaskSettings.Set("mask", "G");
-            this.ctrlDateEnd.Properties.UseMaskAsDisplayFormat = true;
-            this.ctrlDateEnd.Size = new System.Drawing.Size(262, 28);
-            this.ctrlDateEnd.TabIndex = 40;
-            // 
-            // ctrlDateStart
-            // 
-            this.ctrlDateStart.EditValue = null;
-            this.ctrlDateStart.Location = new System.Drawing.Point(247, 266);
-            this.ctrlDateStart.Name = "ctrlDateStart";
-            this.ctrlDateStart.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.ctrlDateStart.Properties.Appearance.Options.UseFont = true;
-            this.ctrlDateStart.Properties.BeepOnError = false;
-            this.ctrlDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ctrlDateStart.Properties.MaskSettings.Set("mask", "G");
-            this.ctrlDateStart.Properties.UseMaskAsDisplayFormat = true;
-            this.ctrlDateStart.Size = new System.Drawing.Size(262, 28);
-            this.ctrlDateStart.TabIndex = 39;
+            this.lblDatefrom.Text = "Date Start :";
             // 
             // Title
             // 
@@ -198,32 +170,76 @@ namespace FuelStationProject.WUI {
             this.ctrlName.Size = new System.Drawing.Size(262, 28);
             this.ctrlName.TabIndex = 34;
             // 
+            // ctrlDateStart
+            // 
+            this.ctrlDateStart.EditValue = null;
+            this.ctrlDateStart.Location = new System.Drawing.Point(247, 266);
+            this.ctrlDateStart.Name = "ctrlDateStart";
+            this.ctrlDateStart.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlDateStart.Properties.Appearance.Options.UseFont = true;
+            this.ctrlDateStart.Properties.BeepOnError = false;
+            this.ctrlDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlDateStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlDateStart.Properties.DisplayFormat.FormatString = "";
+            this.ctrlDateStart.Properties.EditFormat.FormatString = "";
+            this.ctrlDateStart.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
+            this.ctrlDateStart.Properties.MaskSettings.Set("mask", "d");
+            this.ctrlDateStart.Properties.UseMaskAsDisplayFormat = true;
+            this.ctrlDateStart.Size = new System.Drawing.Size(262, 28);
+            this.ctrlDateStart.TabIndex = 39;
+            // 
+            // ctrlDateEnd
+            // 
+            this.ctrlDateEnd.EditValue = null;
+            this.ctrlDateEnd.Location = new System.Drawing.Point(247, 330);
+            this.ctrlDateEnd.Name = "ctrlDateEnd";
+            this.ctrlDateEnd.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlDateEnd.Properties.Appearance.Options.UseFont = true;
+            this.ctrlDateEnd.Properties.BeepOnError = false;
+            this.ctrlDateEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlDateEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlDateEnd.Properties.DisplayFormat.FormatString = "";
+            this.ctrlDateEnd.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ctrlDateEnd.Properties.EditFormat.FormatString = "";
+            this.ctrlDateEnd.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ctrlDateEnd.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
+            this.ctrlDateEnd.Properties.MaskSettings.Set("mask", "d");
+            this.ctrlDateEnd.Properties.UseMaskAsDisplayFormat = true;
+            this.ctrlDateEnd.Size = new System.Drawing.Size(262, 28);
+            this.ctrlDateEnd.TabIndex = 47;
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 663);
+            this.Controls.Add(this.ctrlDateEnd);
             this.Controls.Add(this.ctlrCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ctrlSalary);
             this.Controls.Add(this.lblSalary);
             this.Controls.Add(this.lblDateTo);
             this.Controls.Add(this.lblDatefrom);
-            this.Controls.Add(this.ctrlDateEnd);
-            this.Controls.Add(this.ctrlDateStart);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.ctrlSurname);
             this.Controls.Add(this.ctrlName);
+            this.Controls.Add(this.ctrlDateStart);
             this.Name = "EmployeeForm";
             this.Text = "EmployeeForm";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSalary.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateStart.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDateEnd.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,12 +253,12 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraEditors.LabelControl lblSalary;
         private DevExpress.XtraEditors.LabelControl lblDateTo;
         private DevExpress.XtraEditors.LabelControl lblDatefrom;
-        private DevExpress.XtraEditors.DateTimeOffsetEdit ctrlDateEnd;
-        private DevExpress.XtraEditors.DateTimeOffsetEdit ctrlDateStart;
         private DevExpress.XtraEditors.LabelControl Title;
         private DevExpress.XtraEditors.LabelControl lblSurname;
         private DevExpress.XtraEditors.LabelControl lblName;
         private DevExpress.XtraEditors.TextEdit ctrlSurname;
         private DevExpress.XtraEditors.TextEdit ctrlName;
+        private DevExpress.XtraEditors.DateEdit ctrlDateStart;
+        private DevExpress.XtraEditors.DateEdit ctrlDateEnd;
     }
 }
