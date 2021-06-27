@@ -70,6 +70,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM [Item] WHERE ID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string DeleteItem {
+            get {
+                return ResourceManager.GetString("DeleteItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO [dbo].[Customer]
         ///	(ID,[Name], [Surname], [CardNumber]) 
         ///VALUES
@@ -125,7 +134,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM Employee.
+        ///   Looks up a localized string similar to SELECT * FROM Item.
         /// </summary>
         internal static string SelectItemTable {
             get {

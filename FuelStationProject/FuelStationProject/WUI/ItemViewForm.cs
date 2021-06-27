@@ -130,7 +130,7 @@ namespace FuelStationProject.WUI {
             if (result == DialogResult.OK) {
 
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteEmployee, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteItem, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
                 RefreshItemGrid();

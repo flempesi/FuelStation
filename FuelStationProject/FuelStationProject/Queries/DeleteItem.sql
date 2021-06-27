@@ -1,0 +1,1 @@
+﻿DELETE FROM [Item] WHERE ID='{0}'

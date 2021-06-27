@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Queries\DeleteItem.sql" />
     <Content Include="Queries\DeleteEmployee.sql" />
     <Content Include="Queries\InsertCustomer.sql" />
     <Content Include="Queries\InsertItem.sql" />
