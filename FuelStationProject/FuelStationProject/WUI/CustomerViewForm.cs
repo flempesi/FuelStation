@@ -71,15 +71,50 @@ namespace FuelStationProject.WUI {
             if (result == DialogResult.OK) {
 
 
-                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [CUSTOMER] WHERE ID='{0}'", Convert.ToString( gridView1.GetRowCellValue(gridView1.FocusedRowHandle,"ID"))), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [CUSTOMER] WHERE ID='{0}'", Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
-                Refresh();
+                RefreshGrid();
 
             }
             else {
-             
+
+            }
+        }
+
+        private void btnSaveAfterEditingCustomerFromGrid_Click(object sender, EventArgs e) {
+
+            string name = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name"));
+            string surname = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Surname"));
+            string cardNumber = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "CardNumber"));
+            string id = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
+
+
+
+            DialogResult result = MessageBox.Show("Are you sure you want to save this entry ?", "Warning", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK) {
+
+                if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber)) {
+
+                    SqlCommand command = new SqlCommand(string.Format("UPDATE [dbo].[CUSTOMER] SET [Name] = '{0}', [Surname] = '{1}', [CardNumber] = '{2}' WHERE ID = '{3}' ", name, surname, cardNumber, id), DBController._SqlConnection);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+
+                    RefreshGrid();
+                }
+                else {
+
+                    MessageBox.Show("All fields must be filled.");
+                    RefreshGrid();
+                }
+
+
+            }
+            else {
+
             }
         }
     }
