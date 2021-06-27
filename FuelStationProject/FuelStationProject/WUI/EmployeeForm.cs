@@ -54,9 +54,5 @@ namespace FuelStationProject.WUI {
                 MessageBox.Show("Please fill all fields with valid values!");
             }
         }
-
-        private void EmployeeForm_Load(object sender, EventArgs e) {
-
-        }
     }
 }

@@ -232,7 +232,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.ctrlDateStart);
             this.Name = "EmployeeForm";
             this.Text = "EmployeeForm";
-            this.Load += new System.EventHandler(this.EmployeeForm_Load);
+            //this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSalary.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlName.Properties)).EndInit();

@@ -23,20 +23,9 @@ namespace FuelStationProject.WUI {
         }
         private void ItemForm_Load(object sender, EventArgs e) {
 
-
-            ComboBoxItemCollection coll = comboBoxEdit1.Properties.Items;
-            coll.BeginUpdate();
-            try {
-                
-                coll.Add("Fuel");
-                coll.Add("Product");
-                coll.Add("Service");
+            foreach (ItemTypeCategory type in Enum.GetValues(typeof(ItemTypeCategory))) {
+                comboBoxEdit1.Properties.Items.Add(type);
             }
-            finally {
-                coll.EndUpdate();
-            }
-            comboBoxEdit1.SelectedIndex = -1;
-
 
         }
         private void ctlrCancel_Click(object sender, EventArgs e) {

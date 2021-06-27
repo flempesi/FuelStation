@@ -41,7 +41,7 @@ namespace FuelStationProject.WUI {
             this.repTextEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnComboBox = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.cmbItemType = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repSpinEdit = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,7 +54,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repComboBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonDelete)).BeginInit();
@@ -146,7 +146,7 @@ namespace FuelStationProject.WUI {
             this.gridItem.MenuManager = this.barManager1;
             this.gridItem.Name = "gridItem";
             this.gridItem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repComboBox,
+            this.cmbItemType,
             this.repSpinEdit,
             this.repTextEdit,
             this.repButtonSave,
@@ -201,7 +201,7 @@ namespace FuelStationProject.WUI {
             // gridColumnComboBox
             // 
             this.gridColumnComboBox.Caption = "Type";
-            this.gridColumnComboBox.ColumnEdit = this.repComboBox;
+            this.gridColumnComboBox.ColumnEdit = this.cmbItemType;
             this.gridColumnComboBox.FieldName = "ItemType";
             this.gridColumnComboBox.MinWidth = 31;
             this.gridColumnComboBox.Name = "gridColumnComboBox";
@@ -209,12 +209,12 @@ namespace FuelStationProject.WUI {
             this.gridColumnComboBox.VisibleIndex = 2;
             this.gridColumnComboBox.Width = 117;
             // 
-            // repComboBox
+            // cmbItemType
             // 
-            this.repComboBox.AutoHeight = false;
-            this.repComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbItemType.AutoHeight = false;
+            this.cmbItemType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repComboBox.Name = "repComboBox";
+            this.cmbItemType.Name = "cmbItemType";
             // 
             // gridColumn4
             // 
@@ -310,7 +310,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repComboBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonDelete)).EndInit();
@@ -338,7 +338,7 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repTextEdit;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repComboBox;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox cmbItemType;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repSpinEdit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnSave;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDelete;
