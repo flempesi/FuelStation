@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
 using FuelStationProject.Controllers;
 using FuelStationProject.Properties;
 using System;
@@ -25,7 +27,77 @@ namespace FuelStationProject.WUI {
         private void ItemViewForm_Load(object sender, EventArgs e) {
             RefreshItemGrid();
 
+        }
+        public void repComboBox_Popup() {
+            //ComboBoxEdit coll =  Properties.Items;
 
+            //EditorProperties().ComboBox(c =>
+            //{
+            //    foreach (var status in Model.VacationHourTypes) {
+            //        c.Items.Add(status.Description, status.StatusId);
+            //    }
+            //    c.TextField = "Description";
+            //    c.ValueField = "StatusId";
+            //    c.ValueType = typeof(int);
+            //});
+
+            //if (gridView1.ActiveEditor is ComboBoxEdit edit) {
+            //gridColumnComboBox.EditorProperties().ComboBox(c => { });
+            //ComboBoxEdit edit = gridColumnComboBox.Edi;
+            //    edit.Properties.Items.Clear();
+
+            //    edit.Properties.Items.BeginUpdate();
+            //    try {
+
+            //        edit.Properties.Items.Add("Fuel");
+            //        edit.Properties.Items.Add("Product");
+            //        edit.Properties.Items.Add("Service");
+            //    }
+            //    finally {
+            //        edit.Properties.Items.EndUpdate();
+            //    }
+                //comboBoxEdit1.SelectedIndex = -1;
+
+          //  }
+            //settings.Columns.Add(column => {
+            //    column.FieldName = "CountryID";
+            //    column.EditorProperties().ComboBox(cs => {
+            //        cs.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            //        cs.Columns.Add("CountryName");
+            //        cs.Columns.Add("CountryAbbr");
+            //        cs.TextFormatString = "{0}";
+
+            //        cs.TextField = "CountryName";
+            //        cs.ValueField = "CountryID";
+            //        cs.ValueType = typeof(int);
+            //        cs.ClientSideEvents.SelectedIndexChanged = "CountriesSelectedIndexChanged";
+            //        cs.BindList(DevExpressMvcApplication1.Models.PersonsList.GetCountries());
+            //    });
+            //});
+            //gridColumnComboBox.
+
+            //GridView view = sender as GridView;
+
+            //if (gridView1.ActiveEditor is ComboBoxEdit edit) {
+            //    edit.Properties.Items.Clear();
+
+            // edit.Properties.Items.Add("Fuel");
+            //edit.Properties.Items.AddRange(new object[] { gridView1.FocusedRowHandle, gridView1.FocusedColumn.FieldName });//your items  
+            // }
+            //ComboBoxItemCollection coll =
+            //gridColumnComboBox.comboBoxEdit.Properties.Items.Add("fuel");
+            //comboBoxEdit1.Properties.Items.Add("fuel");
+            //coll.BeginUpdate();
+            //try {
+
+            //    coll.Add("Fuel");
+            //    coll.Add("Product");
+            //    coll.Add("Service");
+            //}
+            //finally {
+            //    coll.EndUpdate();
+            //}
+            //comboBoxEdit1.SelectedIndex = -1;
         }
 
         private void repSaveButtonEdit_Click(object sender, EventArgs e) {
@@ -70,20 +142,8 @@ namespace FuelStationProject.WUI {
             ViewData = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
             int response = adapter.Fill(ViewData);
-            //gridColumnComboBox.
 
-            //ComboBoxItemCollection coll = comboBoxEdit1.Properties.Items;
-            //coll.BeginUpdate();
-            //try {
-
-            //    coll.Add("Fuel");
-            //    coll.Add("Product");
-            //    coll.Add("Service");
-            //}
-            //finally {
-            //    coll.EndUpdate();
-            //}
-            //comboBoxEdit1.SelectedIndex = -1;
+          
 
             gridView1.OptionsView.ShowGroupPanel = false;
             gridItem.DataSource = ViewData.Tables[0];
@@ -107,7 +167,7 @@ namespace FuelStationProject.WUI {
                     SqlCommand command = new SqlCommand(string.Format(Resources.UpdateItem, code, description, itemType, price, cost,id), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
 
-                    Close();
+                   
 
                 }
             else {
