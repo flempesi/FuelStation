@@ -159,6 +159,7 @@ namespace FuelStationProject.WUI {
             this.btnAddTransaction.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTransaction.ImageOptions.Image")));
             this.btnAddTransaction.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAddTransaction.ImageOptions.LargeImage")));
             this.btnAddTransaction.Name = "btnAddTransaction";
+            this.btnAddTransaction.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddTransaction_ItemClick);
             // 
             // btnViewTransaction
             // 
@@ -167,6 +168,7 @@ namespace FuelStationProject.WUI {
             this.btnViewTransaction.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewTransaction.ImageOptions.Image")));
             this.btnViewTransaction.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnViewTransaction.ImageOptions.LargeImage")));
             this.btnViewTransaction.Name = "btnViewTransaction";
+            this.btnViewTransaction.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnViewTransaction_ItemClick);
             // 
             // btnViewLedger
             // 

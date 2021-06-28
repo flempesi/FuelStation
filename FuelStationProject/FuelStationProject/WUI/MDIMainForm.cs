@@ -29,6 +29,7 @@ namespace FuelStationProject.WUI
 
         private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _DBConnection._SqlConnection.Close();
             Application.Exit();
         }
 
@@ -106,6 +107,24 @@ namespace FuelStationProject.WUI
             itemViewForm.MdiParent = this;
             itemViewForm.DBController = _DBConnection;
             itemViewForm.Show();
+        }
+
+        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TransactionForm transactionForm = new TransactionForm();
+            //transactionForm.ViewData = _MasterData;
+            transactionForm.MdiParent = this;
+            transactionForm.DBController = _DBConnection;
+            transactionForm.Show();
+        }
+
+        private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TransactionViewForm transactionViewForm = new TransactionViewForm();
+            //transactionForm.ViewData = _MasterData;
+            transactionViewForm.MdiParent = this;
+            transactionViewForm.DBController = _DBConnection;
+            transactionViewForm.Show();
         }
     }
 }
