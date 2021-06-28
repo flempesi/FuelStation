@@ -125,5 +125,9 @@ namespace FuelStationProject.WUI
         {
             RefreshEmployeeGrid();
         }
+
+        private void gridEmployee_Click(object sender, EventArgs e) {
+
+        }
     }
 }

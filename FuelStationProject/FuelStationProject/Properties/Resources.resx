@@ -136,6 +136,12 @@
   <data name="InsertItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\insertitem.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="InsertTransaction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\inserttransaction.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="InsertTransactionLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\inserttransactionline.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="SelectCustomerTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\selectcustomertable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -144,6 +150,9 @@
   </data>
   <data name="SelectItemTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\selectitemtable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SelectTransactionLineByID" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\selecttransactionlinebyid.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="UpdateCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\updatecustomer.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

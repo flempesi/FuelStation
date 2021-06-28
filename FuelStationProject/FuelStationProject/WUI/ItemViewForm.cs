@@ -133,9 +133,9 @@ namespace FuelStationProject.WUI
             }
         }
 
+        private void gridItem_Click(object sender, EventArgs e) {
 
-
-
+        }
     }
 }
 

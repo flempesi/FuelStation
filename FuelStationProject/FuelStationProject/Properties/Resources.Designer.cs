@@ -135,6 +135,32 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [dbo].[Transaction]
+        ///           ([ID],[Date],[CustomerID],[DiscountValue],[TotalValue],[TotalCost])
+        ///     VALUES
+        ///	( &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos;, &apos;{3}&apos; ,&apos;{4}&apos; ,&apos;{5}&apos;)
+        ///.
+        /// </summary>
+        internal static string InsertTransaction {
+            get {
+                return ResourceManager.GetString("InsertTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [dbo].[TransactionLine]
+        ///           ([ID],[TransactionID],[ItemID],[Quantity],[ItemPrice],[Value])
+        ///     VALUES
+        ///	(NEWID(), &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos;, &apos;{3}&apos; ,&apos;{4}&apos; )
+        ///.
+        /// </summary>
+        internal static string InsertTransactionLine {
+            get {
+                return ResourceManager.GetString("InsertTransactionLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///Select * from [Customer]
         ///.
@@ -160,6 +186,15 @@ namespace FuelStationProject.Properties {
         internal static string SelectItemTable {
             get {
                 return ResourceManager.GetString("SelectItemTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM[TransactionLine] WHERE TransactionID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string SelectTransactionLineByID {
+            get {
+                return ResourceManager.GetString("SelectTransactionLineByID", resourceCulture);
             }
         }
         

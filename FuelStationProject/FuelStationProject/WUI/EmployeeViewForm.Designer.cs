@@ -28,12 +28,12 @@ namespace FuelStationProject.WUI {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeViewForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.btnrefresh = new DevExpress.XtraBars.Bar();
-            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.gridEmployee = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -91,12 +91,6 @@ namespace FuelStationProject.WUI {
             this.btnrefresh.OptionsBar.UseWholeRow = true;
             this.btnrefresh.Text = "Main menu";
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Caption = "Edit";
-            this.btnEdit.Id = 0;
-            this.btnEdit.Name = "btnEdit";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Refresh";
@@ -136,6 +130,12 @@ namespace FuelStationProject.WUI {
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 425);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Caption = "Edit";
+            this.btnEdit.Id = 0;
+            this.btnEdit.Name = "btnEdit";
+            // 
             // btnDelete
             // 
             this.btnDelete.Caption = "Delete";
@@ -160,6 +160,7 @@ namespace FuelStationProject.WUI {
             this.gridEmployee.TabIndex = 4;
             this.gridEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridEmployee.Click += new System.EventHandler(this.gridEmployee_Click);
             // 
             // gridView1
             // 
