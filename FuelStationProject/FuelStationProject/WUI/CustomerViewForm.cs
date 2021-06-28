@@ -6,14 +6,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace FuelStationProject.WUI {
-    public partial class CustomerViewForm : DevExpress.XtraEditors.XtraForm {
+namespace FuelStationProject.WUI
+{
+    public partial class CustomerViewForm : DevExpress.XtraEditors.XtraForm
+    {
 
         public CustomerController newcc { get; set; }
         public DatabaseConnectionController DBController { get; set; }
@@ -23,21 +26,27 @@ namespace FuelStationProject.WUI {
 
 
 
-        public CustomerViewForm() {
+        public CustomerViewForm()
+        {
             InitializeComponent();
         }
 
         #region Form Events
 
-        private void CustomerViewForm_Load(object sender, EventArgs e) {
+        private void CustomerViewForm_Load(object sender, EventArgs e)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
             RefreshGrid();
         }
 
-        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             RefreshGrid();
         }
 
-        private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+        private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
 
             CustomerForm customerForm = new CustomerForm();
 
@@ -48,7 +57,8 @@ namespace FuelStationProject.WUI {
 
 
 
-        private void RefreshGrid() {
+        private void RefreshGrid()
+        {
             //CustomerController cc = new CustomerController();
 
             //newcc.GetCustomers(gridControl1, NewSqlConnection);
@@ -66,10 +76,12 @@ namespace FuelStationProject.WUI {
             //gridView1.OptionsView.ShowGroupPanel = false;
         }
 
-        private void btnDeleteCustomerFromGrid_Click(object sender, EventArgs e) {
+        private void btnDeleteCustomerFromGrid_Click(object sender, EventArgs e)
+        {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
-            if (result == DialogResult.OK) {
+            if (result == DialogResult.OK)
+            {
 
 
                 SqlCommand command = new SqlCommand(string.Format(Resources.DeleteCustomer, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
@@ -79,12 +91,14 @@ namespace FuelStationProject.WUI {
                 RefreshGrid();
 
             }
-            else {
+            else
+            {
 
             }
         }
 
-        private void btnSaveAfterEditingCustomerFromGrid_Click(object sender, EventArgs e) {
+        private void btnSaveAfterEditingCustomerFromGrid_Click(object sender, EventArgs e)
+        {
 
             string name = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name"));
             string surname = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Surname"));
@@ -95,9 +109,11 @@ namespace FuelStationProject.WUI {
 
             DialogResult result = MessageBox.Show("Are you sure you want to save this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
-            if (result == DialogResult.OK) {
+            if (result == DialogResult.OK)
+            {
 
-                if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber)) {
+                if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber))
+                {
 
                     SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
 
@@ -106,7 +122,8 @@ namespace FuelStationProject.WUI {
 
                     RefreshGrid();
                 }
-                else {
+                else
+                {
 
                     MessageBox.Show("All fields must be filled.");
                     RefreshGrid();
@@ -114,7 +131,8 @@ namespace FuelStationProject.WUI {
 
 
             }
-            else {
+            else
+            {
 
             }
         }

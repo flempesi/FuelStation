@@ -6,38 +6,47 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FuelStationProject.WUI {
-    public partial class CustomerForm : DevExpress.XtraEditors.XtraForm {
+namespace FuelStationProject.WUI
+{
+    public partial class CustomerForm : DevExpress.XtraEditors.XtraForm
+    {
 
         public DatabaseConnectionController DBController { get; set; }
 
 
-        public CustomerForm() {
+        public CustomerForm()
+        {
             InitializeComponent();
         }
 
 
         #region Form Events
 
-        private void CustomerForm_Load(object sender, EventArgs e) {
+        private void CustomerForm_Load(object sender, EventArgs e)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+        }
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void textEdit1_EditValueChanged(object sender, EventArgs e) {
-
-        }
-
-        private void btnOK_Click(object sender, EventArgs e) {
+        private void btnOK_Click(object sender, EventArgs e)
+        {
             InsertCustomer();
 
         }
 
-        private void ctlrCancel_Click(object sender, EventArgs e) {
+        private void ctlrCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
 
@@ -45,13 +54,15 @@ namespace FuelStationProject.WUI {
 
 
 
-        private void InsertCustomer() {
+        private void InsertCustomer()
+        {
             string name = Convert.ToString(ctrlName.EditValue);
             string surname = Convert.ToString(ctrlSurname.EditValue);
             string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
 
 
-            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber)) {
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber))
+            {
 
 
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
@@ -62,7 +73,8 @@ namespace FuelStationProject.WUI {
                 Close();
 
             }
-            else {
+            else
+            {
 
                 MessageBox.Show("All fields are required.");
             }
