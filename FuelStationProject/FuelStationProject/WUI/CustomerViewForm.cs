@@ -1,4 +1,5 @@
 ﻿using FuelStationProject.Controllers;
+using FuelStationProject.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace FuelStationProject.WUI {
 
             _MasterData = new DataSet();
 
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM [Customer]", DBController._SqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectCustomerTable, DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
 
@@ -71,7 +72,7 @@ namespace FuelStationProject.WUI {
             if (result == DialogResult.OK) {
 
 
-                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [CUSTOMER] WHERE ID='{0}'", Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteCustomer, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
@@ -98,7 +99,7 @@ namespace FuelStationProject.WUI {
 
                 if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber)) {
 
-                    SqlCommand command = new SqlCommand(string.Format("UPDATE [dbo].[CUSTOMER] SET [Name] = '{0}', [Surname] = '{1}', [CardNumber] = '{2}' WHERE ID = '{3}' ", name, surname, cardNumber, id), DBController._SqlConnection);
+                    SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
 
                     int rowsAffected = command.ExecuteNonQuery();
 

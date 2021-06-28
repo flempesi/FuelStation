@@ -54,7 +54,7 @@ namespace FuelStationProject.WUI {
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber)) {
 
 
-                SqlCommand command = new SqlCommand(string.Format("INSERT INTO [dbo].[Customer] (ID, [Name], [Surname], [CardNumber]) VALUES (NEWID(), '{0}', '{1}', '{2}')", name, surname, cardNumber), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
 

@@ -1,4 +1,5 @@
-﻿INSERT INTO [dbo].[Customer]
+﻿
+INSERT INTO [dbo].[Customer]
 	(ID,[Name], [Surname], [CardNumber]) 
 VALUES
-	(NEWID(), 'KOSTAS', 'PAPAS' , '200501783212989' )
+	(NEWID(), '{0}', '{1}' , '{2}' )

@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DeleteCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\deletecustomer.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="DeleteEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\deleteemployee.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -133,11 +136,17 @@
   <data name="InsertItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\insertitem.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="SelectCustomerTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\selectcustomertable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="SelectEmployeeTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\selectemployeetable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SelectItemTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\selectitemtable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="UpdateCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\updatecustomer.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="UpdateEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\updateemployee.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

@@ -61,6 +61,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM [Customer] WHERE ID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string DeleteCustomer {
+            get {
+                return ResourceManager.GetString("DeleteCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DELETE FROM [Employee] WHERE ID=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteEmployee {
@@ -79,10 +88,11 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO [dbo].[Customer]
+        ///   Looks up a localized string similar to 
+        ///INSERT INTO [dbo].[Customer]
         ///	(ID,[Name], [Surname], [CardNumber]) 
         ///VALUES
-        ///	(NEWID(), &apos;KOSTAS&apos;, &apos;PAPAS&apos; , &apos;200501783212989&apos; )
+        ///	(NEWID(), &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos; )
         ///.
         /// </summary>
         internal static string InsertCustomer {
@@ -125,6 +135,17 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Select * from [Customer]
+        ///.
+        /// </summary>
+        internal static string SelectCustomerTable {
+            get {
+                return ResourceManager.GetString("SelectCustomerTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM Employee.
         /// </summary>
         internal static string SelectEmployeeTable {
@@ -139,6 +160,19 @@ namespace FuelStationProject.Properties {
         internal static string SelectItemTable {
             get {
                 return ResourceManager.GetString("SelectItemTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///UPDATE [dbo].[Customer]
+        ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [CardNumber]= &apos;{2}&apos; 
+        ///WHERE ID = &apos;{3}&apos;
+        ///.
+        /// </summary>
+        internal static string UpdateCustomer {
+            get {
+                return ResourceManager.GetString("UpdateCustomer", resourceCulture);
             }
         }
         
