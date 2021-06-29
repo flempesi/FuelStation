@@ -199,11 +199,23 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM[TransactionLine] WHERE TransactionID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to SELECT I.[Description], I.[ItemType],T.[Quantity], T.[ItemPrice],T.[Value] ,T.[ID] ,I.[Cost] FROM [Item] I 
+        ///left join  [TransactionLine] T on  I.[ID] = T.[ItemID] 
+        ///WHERE T.TransactionID=&apos;{0}&apos;
+        ///.
         /// </summary>
         internal static string SelectTransactionLineViewByID {
             get {
                 return ResourceManager.GetString("SelectTransactionLineViewByID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM [dbo].[Transaction].
+        /// </summary>
+        internal static string SelectTransactionTable {
+            get {
+                return ResourceManager.GetString("SelectTransactionTable", resourceCulture);
             }
         }
         

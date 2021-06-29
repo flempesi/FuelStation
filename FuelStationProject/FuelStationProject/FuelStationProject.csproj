@@ -221,6 +221,7 @@
     <Content Include="Queries\InsertCustomer.sql" />
     <Content Include="Queries\InsertItem.sql" />
     <Content Include="Queries\SelectCustomerTable.sql" />
+    <Content Include="Queries\SelectTransactionTable.sql" />
     <Content Include="Queries\SelectTransactonLinetoView.sql" />
     <Content Include="Queries\SelectItemTable.sql" />
     <Content Include="Queries\UpdateCustomer.sql" />

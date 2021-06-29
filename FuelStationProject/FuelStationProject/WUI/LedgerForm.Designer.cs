@@ -48,8 +48,8 @@ namespace FuelStationProject.WUI
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(32, 57);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.labelControl1.Location = new System.Drawing.Point(28, 57);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 16);
             this.labelControl1.TabIndex = 0;
@@ -57,8 +57,8 @@ namespace FuelStationProject.WUI
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(318, 60);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.labelControl2.Location = new System.Drawing.Point(326, 57);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 16);
             this.labelControl2.TabIndex = 1;
@@ -66,8 +66,8 @@ namespace FuelStationProject.WUI
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(76, 239);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.labelControl3.Location = new System.Drawing.Point(76, 221);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(75, 16);
             this.labelControl3.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace FuelStationProject.WUI
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(76, 312);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(75, 16);
             this.labelControl4.TabIndex = 3;
@@ -84,8 +84,8 @@ namespace FuelStationProject.WUI
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(65, 381);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl5.Location = new System.Drawing.Point(76, 402);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(75, 16);
             this.labelControl5.TabIndex = 4;
@@ -93,8 +93,8 @@ namespace FuelStationProject.WUI
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(258, 399);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labelControl6.Location = new System.Drawing.Point(271, 402);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(8);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(75, 16);
             this.labelControl6.TabIndex = 7;
@@ -103,7 +103,7 @@ namespace FuelStationProject.WUI
             // labelControl7
             // 
             this.labelControl7.Location = new System.Drawing.Point(271, 312);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(8);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(75, 16);
             this.labelControl7.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace FuelStationProject.WUI
             // labelControl8
             // 
             this.labelControl8.Location = new System.Drawing.Point(271, 221);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(75, 16);
             this.labelControl8.TabIndex = 5;
@@ -121,33 +121,33 @@ namespace FuelStationProject.WUI
             // dateEdit1
             // 
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(134, 54);
-            this.dateEdit1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateEdit1.Location = new System.Drawing.Point(124, 54);
+            this.dateEdit1.Margin = new System.Windows.Forms.Padding(5);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(156, 22);
+            this.dateEdit1.Size = new System.Drawing.Size(166, 22);
             this.dateEdit1.TabIndex = 8;
             // 
             // dateEdit2
             // 
             this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(416, 57);
-            this.dateEdit2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateEdit2.Location = new System.Drawing.Point(423, 54);
+            this.dateEdit2.Margin = new System.Windows.Forms.Padding(6);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Size = new System.Drawing.Size(195, 22);
+            this.dateEdit2.Size = new System.Drawing.Size(189, 22);
             this.dateEdit2.TabIndex = 9;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(651, 53);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.simpleButton1.Location = new System.Drawing.Point(653, 50);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(94, 29);
             this.simpleButton1.TabIndex = 10;
