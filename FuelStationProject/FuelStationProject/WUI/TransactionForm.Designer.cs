@@ -55,6 +55,7 @@ namespace FuelStationProject.WUI {
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ctrlTotalPrice = new DevExpress.XtraEditors.TextEdit();
+            this.ctrlCustomer = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItems)).BeginInit();
@@ -63,39 +64,53 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(15, 30);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(12, 28);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(135, 16);
+            this.labelControl2.Size = new System.Drawing.Size(184, 21);
             this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Customer Card Number";
+            this.labelControl2.Text = "Customer Card Number :";
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(15, 135);
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(12, 190);
             this.labelControl6.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(165, 16);
+            this.labelControl6.Size = new System.Drawing.Size(108, 42);
             this.labelControl6.TabIndex = 4;
-            this.labelControl6.Text = "Select an Item from the list :";
+            this.labelControl6.Text = "Select an Item \r\nfrom the list :";
+            this.labelControl6.Click += new System.EventHandler(this.labelControl6_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(630, 666);
+            this.btnOK.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnOK.Appearance.Options.UseBackColor = true;
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Location = new System.Drawing.Point(686, 650);
             this.btnOK.Margin = new System.Windows.Forms.Padding(5);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(118, 41);
+            this.btnOK.Size = new System.Drawing.Size(128, 46);
             this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(787, 662);
+            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton2.Appearance.Options.UseBackColor = true;
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Location = new System.Drawing.Point(825, 650);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(6);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(148, 46);
@@ -107,36 +122,44 @@ namespace FuelStationProject.WUI {
             this.ctrlCardNumber.Location = new System.Drawing.Point(203, 25);
             this.ctrlCardNumber.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlCardNumber.Name = "ctrlCardNumber";
-            this.ctrlCardNumber.Size = new System.Drawing.Size(545, 22);
+            this.ctrlCardNumber.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlCardNumber.Properties.Appearance.Options.UseFont = true;
+            this.ctrlCardNumber.Size = new System.Drawing.Size(544, 28);
             this.ctrlCardNumber.TabIndex = 9;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(787, 18);
+            this.btnSearch.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSearch.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnSearch.Appearance.Options.UseBackColor = true;
+            this.btnSearch.Appearance.Options.UseFont = true;
+            this.btnSearch.Location = new System.Drawing.Point(768, 25);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(124, 34);
+            this.btnSearch.Size = new System.Drawing.Size(124, 28);
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Search";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblCustomerInfo
             // 
-            this.lblCustomerInfo.Location = new System.Drawing.Point(12, 71);
+            this.lblCustomerInfo.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblCustomerInfo.Appearance.Options.UseFont = true;
+            this.lblCustomerInfo.Location = new System.Drawing.Point(12, 75);
             this.lblCustomerInfo.Margin = new System.Windows.Forms.Padding(5);
             this.lblCustomerInfo.Name = "lblCustomerInfo";
-            this.lblCustomerInfo.Size = new System.Drawing.Size(125, 16);
+            this.lblCustomerInfo.Size = new System.Drawing.Size(173, 21);
             this.lblCustomerInfo.TabIndex = 13;
-            this.lblCustomerInfo.Text = "Customer Information";
+            this.lblCustomerInfo.Text = "Customer Information :";
             // 
             // gridItems
             // 
             this.gridItems.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridItems.Location = new System.Drawing.Point(189, 135);
+            this.gridItems.Location = new System.Drawing.Point(152, 115);
             this.gridItems.MainView = this.gridViewItems;
             this.gridItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridItems.Name = "gridItems";
-            this.gridItems.Size = new System.Drawing.Size(775, 199);
+            this.gridItems.Size = new System.Drawing.Size(812, 199);
             this.gridItems.TabIndex = 14;
             this.gridItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewItems});
@@ -208,7 +231,7 @@ namespace FuelStationProject.WUI {
             0,
             0,
             0});
-            this.ctrlQuantity.Location = new System.Drawing.Point(12, 220);
+            this.ctrlQuantity.Location = new System.Drawing.Point(271, 349);
             this.ctrlQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlQuantity.Name = "ctrlQuantity";
             this.ctrlQuantity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -223,17 +246,29 @@ namespace FuelStationProject.WUI {
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 194);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(152, 349);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(56, 16);
+            this.labelControl1.Size = new System.Drawing.Size(74, 21);
             this.labelControl1.TabIndex = 16;
             this.labelControl1.Text = "Quantity :";
             // 
             // btnAdd
             // 
+            this.btnAdd.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAdd.Appearance.BackColor2 = System.Drawing.Color.White;
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnAdd.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Appearance.Options.UseBackColor = true;
+            this.btnAdd.Appearance.Options.UseFont = true;
+            this.btnAdd.Appearance.Options.UseForeColor = true;
+            this.btnAdd.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
-            this.btnAdd.Location = new System.Drawing.Point(12, 287);
+            this.btnAdd.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
+            this.btnAdd.Location = new System.Drawing.Point(469, 336);
+            this.btnAdd.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 49);
@@ -244,13 +279,13 @@ namespace FuelStationProject.WUI {
             // gridTransactionLines
             // 
             this.gridTransactionLines.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridTransactionLines.Location = new System.Drawing.Point(212, 402);
+            this.gridTransactionLines.Location = new System.Drawing.Point(152, 402);
             this.gridTransactionLines.MainView = this.gridViewTransactionLines;
             this.gridTransactionLines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridTransactionLines.Name = "gridTransactionLines";
             this.gridTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repDeleteLine});
-            this.gridTransactionLines.Size = new System.Drawing.Size(761, 199);
+            this.gridTransactionLines.Size = new System.Drawing.Size(821, 199);
             this.gridTransactionLines.TabIndex = 18;
             this.gridTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTransactionLines});
@@ -271,8 +306,8 @@ namespace FuelStationProject.WUI {
             // 
             // gridColumnName
             // 
-            this.gridColumnName.Caption = "Item";
-            this.gridColumnName.FieldName = "Item";
+            this.gridColumnName.Caption = "ItemDescription";
+            this.gridColumnName.FieldName = "Description";
             this.gridColumnName.MinWidth = 24;
             this.gridColumnName.Name = "gridColumnName";
             this.gridColumnName.Visible = true;
@@ -321,7 +356,7 @@ namespace FuelStationProject.WUI {
             // 
             // gridColumn5
             // 
-            this.gridColumn5.Caption = "gridColumn5";
+            this.gridColumn5.Caption = "ID";
             this.gridColumn5.FieldName = "ID";
             this.gridColumn5.MinWidth = 24;
             this.gridColumn5.Name = "gridColumn5";
@@ -348,35 +383,52 @@ namespace FuelStationProject.WUI {
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 402);
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(15, 479);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(6);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(101, 16);
+            this.labelControl4.Size = new System.Drawing.Size(87, 42);
             this.labelControl4.TabIndex = 19;
-            this.labelControl4.Text = "transaction Lines:";
+            this.labelControl4.Text = "Transaction \r\nLines:";
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(26, 677);
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(15, 663);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 16);
+            this.labelControl5.Size = new System.Drawing.Size(95, 21);
             this.labelControl5.TabIndex = 20;
-            this.labelControl5.Text = "TotalPrice";
+            this.labelControl5.Text = "Total Price : ";
             // 
             // ctrlTotalPrice
             // 
-            this.ctrlTotalPrice.Location = new System.Drawing.Point(152, 674);
+            this.ctrlTotalPrice.Location = new System.Drawing.Point(152, 662);
             this.ctrlTotalPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlTotalPrice.Name = "ctrlTotalPrice";
-            this.ctrlTotalPrice.Size = new System.Drawing.Size(125, 22);
+            this.ctrlTotalPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlTotalPrice.Properties.Appearance.Options.UseFont = true;
+            this.ctrlTotalPrice.Size = new System.Drawing.Size(159, 28);
             this.ctrlTotalPrice.TabIndex = 21;
+            // 
+            // ctrlCustomer
+            // 
+            this.ctrlCustomer.Location = new System.Drawing.Point(203, 72);
+            this.ctrlCustomer.Name = "ctrlCustomer";
+            this.ctrlCustomer.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlCustomer.Properties.Appearance.Options.UseFont = true;
+            this.ctrlCustomer.Properties.ReadOnly = true;
+            this.ctrlCustomer.Size = new System.Drawing.Size(544, 28);
+            this.ctrlCustomer.TabIndex = 22;
             // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 752);
+            this.ClientSize = new System.Drawing.Size(1004, 717);
+            this.Controls.Add(this.ctrlCustomer);
             this.Controls.Add(this.ctrlTotalPrice);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
@@ -394,7 +446,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.labelControl2);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TransactionForm";
-            this.Text = "TransactionForm";
+            this.Text = "Make Transaction";
             this.Load += new System.EventHandler(this.TransactionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).EndInit();
@@ -404,6 +456,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +493,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDeleteLine;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repDeleteLine;
+        private DevExpress.XtraEditors.TextEdit ctrlCustomer;
     }
 }

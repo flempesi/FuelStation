@@ -74,7 +74,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Content Include="Queries\DeleteTransactionLine.sql" />
     <Content Include="Queries\InsertTransaction.sql" />
-    <Content Include="Queries\SelectTransactionLineByID.sql" />
+    <Content Include="Queries\SelectTransactionLineViewByID.sql" />
     <Compile Include="WUI\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>

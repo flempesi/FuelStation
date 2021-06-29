@@ -201,9 +201,9 @@ namespace FuelStationProject.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SELECT * FROM[TransactionLine] WHERE TransactionID=&apos;{0}&apos;.
         /// </summary>
-        internal static string SelectTransactionLineByID {
+        internal static string SelectTransactionLineViewByID {
             get {
-                return ResourceManager.GetString("SelectTransactionLineByID", resourceCulture);
+                return ResourceManager.GetString("SelectTransactionLineViewByID", resourceCulture);
             }
         }
         

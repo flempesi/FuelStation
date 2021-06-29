@@ -20,7 +20,7 @@ namespace FuelStationProject.WUI {
 
 
         public DatabaseConnectionController DBController { get; set; }
-        public DataSet ViewData { get; set; }
+        private DataSet _ViewData;
         public Guid TransactionID { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal TotalCost { get; set; }
@@ -98,12 +98,12 @@ namespace FuelStationProject.WUI {
                     SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
 
-                    ViewData = new DataSet();
-                    SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineByID, TransactionID), DBController._SqlConnection);
-                    int response = adapter.Fill(ViewData);
+                    _ViewData = new DataSet();
+                    SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
+                    int response = adapter.Fill(_ViewData);
 
                     gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
-                    gridTransactionLines.DataSource = ViewData.Tables[0];
+                    gridTransactionLines.DataSource = _ViewData.Tables[0];
 
                     gridTransactionLines.Refresh();
 
@@ -171,7 +171,7 @@ namespace FuelStationProject.WUI {
         public void RefreshGridTransactionLines() {
             _MasterData = new DataSet();
             //try
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionLineByID, DBController._SqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
@@ -185,7 +185,7 @@ namespace FuelStationProject.WUI {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this TrsansactionLiene ?", "Warning", MessageBoxButtons.OKCancel);
 
             if (result == DialogResult.OK) {
-
+                //SqlCommand command = new SqlCommand(string.Format(Resources.DeleteEmployee, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                 SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
@@ -193,6 +193,10 @@ namespace FuelStationProject.WUI {
                 RefreshGridTransactionLines();
 
             }
+        }
+
+        private void labelControl6_Click(object sender, EventArgs e) {
+
         }
     }
 }
