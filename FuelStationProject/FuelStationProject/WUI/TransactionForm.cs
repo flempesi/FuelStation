@@ -27,7 +27,9 @@ namespace FuelStationProject.WUI {
         public ItemTypeCategory Type { get; set; }
         public decimal DiscountValue { get; set; }
 
-        public bool TransactionHasFuel { get; set; }
+        //bool TransactionHasFuel;
+        bool _TransactionHasFuel;
+        bool _CustomerFound;
 
         //public SqlConnection NewSqlConnection;
         private DataSet _MasterData;
@@ -90,7 +92,7 @@ namespace FuelStationProject.WUI {
                 decimal value = price * quantity;
                 string itemType = Convert.ToString(row["ItemType"]);
 
-                if (TransactionHasFuel && itemType == "Fuel") {
+                if (_TransactionHasFuel && itemType == "Fuel") {
                     MessageBox.Show("You have already add Fuel.Only one FUEL type per Transaction");
                 }
                 else { 
@@ -108,7 +110,7 @@ namespace FuelStationProject.WUI {
                     gridTransactionLines.Refresh();
 
                     if (itemType == "Fuel") {
-                        TransactionHasFuel = true;
+                        _TransactionHasFuel = true;
                     }
 
                     if (itemType == "Fuel" && value > 50) {
@@ -153,7 +155,11 @@ namespace FuelStationProject.WUI {
             SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
             int response = adapter.Fill(customerInfo);
             if (response == 1) {
+                _CustomerFound = true;
                 ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", customerInfo.Tables[0].Rows[0]["Name"].ToString(), customerInfo.Tables[0].Rows[0]["Surname"].ToString());
+            }
+            else {
+                MessageBox.Show("Customer Not Found!Please try again!");
             }
         }
 
