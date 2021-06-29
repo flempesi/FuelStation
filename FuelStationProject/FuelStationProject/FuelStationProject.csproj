@@ -127,6 +127,12 @@
     <Compile Include="WUI\ItemViewForm.Designer.cs">
       <DependentUpon>ItemViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WUI\LedgerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WUI\LedgerForm.Designer.cs">
+      <DependentUpon>LedgerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WUI\MDIMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WUI\EmployeeViewForm.resx">
       <DependentUpon>EmployeeViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WUI\LedgerForm.resx">
+      <DependentUpon>LedgerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WUI\MDIMainForm.resx">
       <DependentUpon>MDIMainForm.cs</DependentUpon>

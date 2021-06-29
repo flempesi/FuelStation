@@ -126,5 +126,14 @@ namespace FuelStationProject.WUI
             transactionViewForm.DBController = _DBConnection;
             transactionViewForm.Show();
         }
+
+        private void btnViewLedger_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LedgerForm ledgerForm = new LedgerForm();
+            //transactionForm.ViewData = _MasterData;
+            ledgerForm.MdiParent = this;
+            ledgerForm.DBController = _DBConnection;
+            ledgerForm.Show();
+        }
     }
 }
