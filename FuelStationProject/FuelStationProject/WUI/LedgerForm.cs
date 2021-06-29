@@ -30,10 +30,10 @@ namespace FuelStationProject.WUI
         {
 
 
-            DateTime dt1 = Convert.ToDateTime(dateEdit1.EditValue);
-            DateTime dt2 = Convert.ToDateTime(dateEdit2.EditValue);
+            DateTime dateFrom = Convert.ToDateTime(dateEdit1.EditValue);
+            DateTime dateTo = Convert.ToDateTime(dateEdit2.EditValue);
 
-            if ((dt2 - dt1).TotalDays < 0)
+            if ((dateTo - dateFrom).TotalDays < 0)
             {
                 MessageBox.Show("Date from must be earlier than Date to.");
                 return;
@@ -46,14 +46,14 @@ namespace FuelStationProject.WUI
 
             decimal totalSalaries = 0m;
 
-            decimal totalRent = Convert.ToDecimal((dt2 - dt1).TotalDays) * rentPerDay;
+            decimal totalRent = Convert.ToDecimal((dateTo - dateFrom).TotalDays) * rentPerDay;
 
 
 
             for (int i = 0; i < _MasterData.Tables[0].Rows.Count; i++)
             {
-                DateTime d1 = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateStart"]);
-                DateTime d2 = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateEnd"]);
+                DateTime dateStart = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateStart"]);
+                DateTime dateEnd = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateEnd"]);
 
                 decimal wage = (decimal)_MasterData.Tables[0].Rows[i]["Salary"] / 30;
 
@@ -61,30 +61,30 @@ namespace FuelStationProject.WUI
 
 
 
-                if (dt1 <= d1 && d2 <= dt2)
+                if (dateFrom <= dateStart && dateEnd <= dateTo)
                 {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((d2 - d1).TotalDays);
+                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
                 }
 
-                else if (d1 < dt1 && d2 > dt2)
+                else if (dateStart < dateFrom && dateEnd > dateTo)
                 {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dt2 - dt1).TotalDays);
+                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateTo - dateFrom).TotalDays);
                 }
 
-                else if (d1 < dt1 && dt1 < d2)
+                else if (dateStart < dateFrom && dateFrom < dateEnd)
                 {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((d2 - dt1).TotalDays);
+                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateEnd - dateFrom).TotalDays);
                 }
 
-                else if (d1 < dt2 && dt2 < d2)
+                else if (dateStart < dateTo && dateTo < dateEnd)
                 {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dt2 - d1).TotalDays);
+                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateTo - dateStart).TotalDays);
                 }
 
             }
 
             _MasterData.Clear();
-            adapter = new SqlDataAdapter(string.Format("select sum([TotalValue]) as 'TotalValue', sum([TotalCost]) as 'TotalCost' from [Transaction] WHERE [Date] BETWEEN '{0}'  AND  '{1}' ", dt1.ToString(), dt2.ToString()), DBController._SqlConnection);
+            adapter = new SqlDataAdapter(string.Format("select sum([TotalValue]) as 'TotalValue', sum([TotalCost]) as 'TotalCost' from [Transaction] WHERE [Date] BETWEEN '{0}'  AND  '{1}' ", dateFrom.ToString(), dateTo.ToString()), DBController._SqlConnection);
             response = adapter.Fill(_MasterData);
 
             decimal totalValue ;
