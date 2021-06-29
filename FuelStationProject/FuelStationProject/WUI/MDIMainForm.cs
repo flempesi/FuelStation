@@ -22,7 +22,6 @@ namespace FuelStationProject.WUI
 
         private DatabaseConnectionController _DBConnection;
 
-         bool _CustomerFound;
         public MDIMainForm()
         {
             InitializeComponent();

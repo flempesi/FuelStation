@@ -27,7 +27,7 @@ namespace FuelStationProject.WUI {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionForm));
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lblCustomerInfo = new DevExpress.XtraEditors.LabelControl();
             this.gridItems = new DevExpress.XtraGrid.GridControl();
             this.gridViewItems = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -89,18 +89,19 @@ namespace FuelStationProject.WUI {
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // simpleButton2
+            // btnCancel
             // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.SteelBlue;
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(825, 623);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(6);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(148, 46);
-            this.simpleButton2.TabIndex = 7;
-            this.simpleButton2.Text = "Cancel";
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(825, 623);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(148, 46);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblCustomerInfo
             // 
@@ -112,7 +113,6 @@ namespace FuelStationProject.WUI {
             this.lblCustomerInfo.Size = new System.Drawing.Size(173, 21);
             this.lblCustomerInfo.TabIndex = 13;
             this.lblCustomerInfo.Text = "Customer Information :";
-            this.lblCustomerInfo.Click += new System.EventHandler(this.lblCustomerInfo_Click);
             // 
             // gridItems
             // 
@@ -251,7 +251,6 @@ namespace FuelStationProject.WUI {
             this.gridTransactionLines.TabIndex = 18;
             this.gridTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTransactionLines});
-            this.gridTransactionLines.Click += new System.EventHandler(this.gridTransactionLines_Click);
             // 
             // gridViewTransactionLines
             // 
@@ -409,7 +408,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.ctrlQuantity);
             this.Controls.Add(this.gridItems);
             this.Controls.Add(this.lblCustomerInfo);
-            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.labelControl6);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -432,7 +431,7 @@ namespace FuelStationProject.WUI {
         #endregion
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton btnOK;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.LabelControl lblCustomerInfo;
         private DevExpress.XtraGrid.GridControl gridItems;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewItems;
