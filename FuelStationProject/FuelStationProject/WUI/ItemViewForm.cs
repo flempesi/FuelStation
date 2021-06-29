@@ -106,7 +106,8 @@ namespace FuelStationProject.WUI
 
         public void UpdateItem()
         {
-            Guid id = Guid.Parse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID")));
+            string id = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
+            //Guid id = Guid.Parse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID")));
             string code = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Code"));
             string description = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Description"));
             string itemType = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ItemType"));
@@ -118,12 +119,16 @@ namespace FuelStationProject.WUI
                   decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Price")), out price) && price > 0
                   && decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Cost")), out cost) && cost > 0)
             {
+                if (!string.IsNullOrWhiteSpace(id)) {
 
+                    SqlCommand command = new SqlCommand(string.Format(Resources.UpdateItem, code, description, itemType, price, cost, id), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.UpdateItem, code, description, itemType, price, cost, id), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
-
-
+                }
+                else {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
 
             }
             else
