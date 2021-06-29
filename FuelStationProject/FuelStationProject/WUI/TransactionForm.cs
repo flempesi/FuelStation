@@ -43,7 +43,7 @@ namespace FuelStationProject.WUI {
             TransactionID = Guid.NewGuid();
             RefreshGridItems();
 
-            gridView1.OptionsView.ShowGroupPanel = false;
+            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
 
         }
 
@@ -57,7 +57,7 @@ namespace FuelStationProject.WUI {
             SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
-            gridView2.OptionsView.ShowGroupPanel = false;
+            gridViewItems.OptionsView.ShowGroupPanel = false;
             gridItems.DataSource = _MasterData.Tables[0];
             //gridControl1.DataMember = _MasterData.Tables[0].TableName;
             gridItems.Refresh();
@@ -69,20 +69,20 @@ namespace FuelStationProject.WUI {
 
         private void repQuantity_ValueChanged(object sender, EventArgs e)
         {
-            int quantity = Convert.ToInt32(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Quantity"));
+            int quantity = Convert.ToInt32(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Quantity"));
 
-            decimal value = quantity * Convert.ToDecimal(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Price"));
+            decimal value = quantity * Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Price"));
 
 
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Value", value);
+            gridViewTransactionLines.SetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Value", value);
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
             
-            if (gridView2.GetSelectedRows().Length == 1) {
+            if (gridViewItems.GetSelectedRows().Length == 1) {
 
-                DataRow row =gridView2.GetDataRow(gridView2.GetSelectedRows()[0]);
+                DataRow row =gridViewItems.GetDataRow(gridViewItems.GetSelectedRows()[0]);
                 Guid itemId = Guid.Parse(Convert.ToString(row["ID"]));
                 decimal quantity = Convert.ToDecimal(ctrlQuantity.EditValue);
                 decimal price = Convert.ToDecimal(row["Price"]);
@@ -102,7 +102,7 @@ namespace FuelStationProject.WUI {
                     SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineByID, TransactionID), DBController._SqlConnection);
                     int response = adapter.Fill(ViewData);
 
-                    gridView1.OptionsView.ShowGroupPanel = false;
+                    gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
                     gridTransactionLines.DataSource = ViewData.Tables[0];
 
                     gridTransactionLines.Refresh();
@@ -158,6 +158,41 @@ namespace FuelStationProject.WUI {
             int response = adapter.Fill(customerInfo);
 
             lblCustomerInfo.Text = customerInfo.Tables[0].Rows[0]["Name"].ToString();
+        }
+
+        private void gridTransactionLines_Click(object sender, EventArgs e) {
+
+        }
+
+        private void repDeleteLine_Click(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) {
+           
+        }
+
+        public void RefreshGridTransactionLines() {
+            _MasterData = new DataSet();
+            //try
+            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionLineByID, DBController._SqlConnection);
+            int response = adapter.Fill(_MasterData);
+
+            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+            gridTransactionLines.DataSource = _MasterData.Tables[0];
+            //gridControl1.DataMember = _MasterData.Tables[0].TableName;
+            gridTransactionLines.Refresh();
+
+        }
+
+        private void repDeleteLine_Click(object sender, EventArgs e) {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this TrsansactionLiene ?", "Warning", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK) {
+
+
+                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                RefreshGridTransactionLines();
+
+            }
         }
     }
 }

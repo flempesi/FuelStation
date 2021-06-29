@@ -72,6 +72,7 @@
     <Compile Include="Controllers\DatabaseConnectionController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
+    <Content Include="Queries\DeleteTransactionLine.sql" />
     <Content Include="Queries\InsertTransaction.sql" />
     <Content Include="Queries\SelectTransactionLineByID.sql" />
     <Compile Include="WUI\CustomerForm.cs">

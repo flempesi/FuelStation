@@ -88,6 +88,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM TransactionLine WHERE ID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string DeleteTransactionLine {
+            get {
+                return ResourceManager.GetString("DeleteTransactionLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///INSERT INTO [dbo].[Customer]
         ///	(ID,[Name], [Surname], [CardNumber]) 
