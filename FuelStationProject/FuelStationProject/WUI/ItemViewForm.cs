@@ -32,7 +32,7 @@ namespace FuelStationProject.WUI
 
         private void ItemViewForm_Load(object sender, EventArgs e)
         {
-
+            gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
 

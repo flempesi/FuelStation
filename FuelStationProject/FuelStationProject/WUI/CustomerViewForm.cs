@@ -1,4 +1,5 @@
-﻿using FuelStationProject.Controllers;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using FuelStationProject.Controllers;
 using FuelStationProject.Properties;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,14 @@ namespace FuelStationProject.WUI
 
         private void CustomerViewForm_Load(object sender, EventArgs e)
         {
+
+            gridView1.OptionsView.ShowGroupPanel = false;
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
             RefreshGrid();
+
+            gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
+
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -97,7 +103,7 @@ namespace FuelStationProject.WUI
             }
         }
 
-        private void btnSaveAfterEditingCustomerFromGrid_Click(object sender, EventArgs e)
+        private void btnSaveCustomerFromGrid_Click(object sender, EventArgs e)
         {
 
             string name = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name"));
@@ -114,11 +120,16 @@ namespace FuelStationProject.WUI
 
                 if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && !string.IsNullOrWhiteSpace(cardNumber))
                 {
+                    if (!string.IsNullOrWhiteSpace(id)) {
+                        SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
 
-                    SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                    else {
+                        SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
 
-                    int rowsAffected = command.ExecuteNonQuery();
-
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
 
                     RefreshGrid();
                 }
@@ -131,10 +142,11 @@ namespace FuelStationProject.WUI
 
 
             }
-            else
-            {
+          
+        }
 
-            }
+        private void gridControl1_Click(object sender, EventArgs e) {
+
         }
     }
 }

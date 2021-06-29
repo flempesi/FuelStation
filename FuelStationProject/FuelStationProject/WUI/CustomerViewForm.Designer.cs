@@ -154,6 +154,7 @@ namespace FuelStationProject.WUI {
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -182,10 +183,10 @@ namespace FuelStationProject.WUI {
             this.btnSaveAfterEditingCustomerFromGrid.AutoHeight = false;
             this.btnSaveAfterEditingCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK)});
-            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditCustomerFromGrid.ContextImageOptions.Image")));
+            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image")));
             this.btnSaveAfterEditingCustomerFromGrid.Name = "btnSaveAfterEditingCustomerFromGrid";
             this.btnSaveAfterEditingCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveAfterEditingCustomerFromGrid_Click);
+            this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveCustomerFromGrid_Click);
             // 
             // gridColumn5
             // 
