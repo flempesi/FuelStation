@@ -116,5 +116,17 @@ namespace FuelStationProject.WUI {
             SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), discountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
             int rowsAffected = command.ExecuteNonQuery();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            DataSet customerInfo = new DataSet();
+
+            string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
+            int response = adapter.Fill(customerInfo);
+
+            lblCustomerInfo.Text = customerInfo.Tables[0].Rows[0]["Name"].ToString();
+        }
     }
 }
