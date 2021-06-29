@@ -1,4 +1,5 @@
-﻿using FuelStationProject.Controllers;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using FuelStationProject.Controllers;
 using FuelStationProject.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace FuelStationProject.WUI
 
         private void EmployeeViewForm_Load(object sender, EventArgs e)
         {
+            gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
 
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
@@ -54,7 +56,7 @@ namespace FuelStationProject.WUI
             if (result == DialogResult.OK)
             {
 
-                UpdateEmployee();
+                SaveEmployee();
                 RefreshEmployeeGrid();
 
             }
@@ -88,9 +90,10 @@ namespace FuelStationProject.WUI
 
         }
 
-        public void UpdateEmployee()
+        public void SaveEmployee()
         {
-            Guid id = Guid.Parse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID")));
+            string id = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
+            // Guid id = Guid.Parse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID")));
             string name = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name"));
             string surname = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Surname"));
             DateTime dateStart;
@@ -107,10 +110,14 @@ namespace FuelStationProject.WUI
                   && DateTime.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateStart")), out dateStart))
             {
 
-
-                SqlCommand command = new SqlCommand(string.Format(Resources.UpdateEmployee, name, surname, dateStart, dateEnd, salary, id), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
-
+                if (!string.IsNullOrWhiteSpace(id)) {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.UpdateEmployee, name, surname, dateStart, dateEnd, salary, id), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+                else {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
 
 
             }

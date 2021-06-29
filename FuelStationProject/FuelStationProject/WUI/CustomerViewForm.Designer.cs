@@ -75,8 +75,6 @@ namespace FuelStationProject.WUI {
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDelete),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -154,6 +152,7 @@ namespace FuelStationProject.WUI {
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -182,10 +181,10 @@ namespace FuelStationProject.WUI {
             this.btnSaveAfterEditingCustomerFromGrid.AutoHeight = false;
             this.btnSaveAfterEditingCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK)});
-            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditCustomerFromGrid.ContextImageOptions.Image")));
+            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image")));
             this.btnSaveAfterEditingCustomerFromGrid.Name = "btnSaveAfterEditingCustomerFromGrid";
             this.btnSaveAfterEditingCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveAfterEditingCustomerFromGrid_Click);
+            this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveCustomerFromGrid_Click);
             // 
             // gridColumn5
             // 
