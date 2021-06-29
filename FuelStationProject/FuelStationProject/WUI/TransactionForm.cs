@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using FuelStationProject.Controllers;
+using FuelStationProject.Impl;
 using FuelStationProject.Properties;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace FuelStationProject.WUI {
         public Guid TransactionID { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal TotalCost { get; set; }
+        public ItemTypeCategory Type { get; set; }
+        public decimal DiscountValue { get; set; }
+
+        public bool TransactionHasFuel { get; set; }
 
         //public SqlConnection NewSqlConnection;
         private DataSet _MasterData;
@@ -79,29 +84,54 @@ namespace FuelStationProject.WUI {
 
                 DataRow row =gridView2.GetDataRow(gridView2.GetSelectedRows()[0]);
                 Guid itemId = Guid.Parse(Convert.ToString(row["ID"]));
-                // string description
                 decimal quantity = Convert.ToDecimal(ctrlQuantity.EditValue);
                 decimal price = Convert.ToDecimal(row["Price"]);
                 decimal cost = Convert.ToDecimal(row["Cost"]);
                 decimal value = price * quantity;
+                string itemType = Convert.ToString(row["ItemType"]);
+
+                if (TransactionHasFuel && itemType == "Fuel") {
+                    MessageBox.Show("You have already add Fuel.Only one FUEL type per Transaction");
+                }
+                else { 
+
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    ViewData = new DataSet();
+                    SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineByID, TransactionID), DBController._SqlConnection);
+                    int response = adapter.Fill(ViewData);
+
+                    gridView1.OptionsView.ShowGroupPanel = false;
+                    gridTransactionLines.DataSource = ViewData.Tables[0];
+
+                    gridTransactionLines.Refresh();
+
+                    if (itemType == "Fuel") {
+                        TransactionHasFuel = true;
+                    }
+
+                    if (itemType == "Fuel" && value > 50) {
+                        Type = ItemTypeCategory.Fuel;
+                        
+                        TotalPrice = TotalPrice + value;
+                        DiscountValue = TotalPrice * (decimal)0.1;
+                        TotalPrice = TotalPrice - DiscountValue;
+
+                       
+
+                    }
+                    else {
+                        TotalPrice += value;
+                    }
+
+                    TotalCost += quantity * cost;
+                    ctrlTotalPrice.EditValue = TotalPrice;
 
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID,itemId, quantity, price,value), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
 
-                ViewData = new DataSet();
-                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineByID,TransactionID), DBController._SqlConnection);
-                int response = adapter.Fill(ViewData);
-
-                gridView1.OptionsView.ShowGroupPanel = false;
-                gridTransactionLines.DataSource = ViewData.Tables[0];
-               
-                gridTransactionLines.Refresh();
-
-                TotalPrice += value;
-                TotalCost += quantity * cost;
-                ctrlTotalPrice.EditValue = TotalPrice;
-
+                }
+   
 
             }
 
@@ -115,6 +145,7 @@ namespace FuelStationProject.WUI {
             decimal discountValue = 0m;
             SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), discountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
             int rowsAffected = command.ExecuteNonQuery();
+            Close();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
