@@ -148,16 +148,16 @@ namespace FuelStationProject.WUI {
             Close();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
+        private void btnSearch_Click(object sender, EventArgs e) {
             DataSet customerInfo = new DataSet();
 
             string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
 
             SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
             int response = adapter.Fill(customerInfo);
-
-            lblCustomerInfo.Text = customerInfo.Tables[0].Rows[0]["Name"].ToString();
+            if (response == 1) {
+                ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", customerInfo.Tables[0].Rows[0]["Name"].ToString(), customerInfo.Tables[0].Rows[0]["Surname"].ToString());
+            }
         }
 
         private void gridTransactionLines_Click(object sender, EventArgs e) {
