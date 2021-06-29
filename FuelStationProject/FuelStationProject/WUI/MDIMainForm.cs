@@ -18,10 +18,11 @@ namespace FuelStationProject.WUI
     {
 
         private DataSet _MasterData = new DataSet();
+        private DataSet _CustomerData = new DataSet();
 
         private DatabaseConnectionController _DBConnection;
 
-
+         bool _CustomerFound;
         public MDIMainForm()
         {
             InitializeComponent();
@@ -109,15 +110,24 @@ namespace FuelStationProject.WUI
             itemViewForm.Show();
         }
 
-        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            TransactionForm transactionForm = new TransactionForm();
-            //transactionForm.ViewData = _MasterData;
-            transactionForm.MdiParent = this;
-            transactionForm.DBController = _DBConnection;
-            transactionForm.Show();
-        }
+        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
 
+            CustomerCheckForm customerCheckForm = new CustomerCheckForm();
+            customerCheckForm.DBController = _DBConnection;
+
+            DialogResult result = customerCheckForm.ShowDialog();
+            if (result == DialogResult.OK) {
+
+                _CustomerData = customerCheckForm.CustomerData;
+                TransactionForm transactionForm = new TransactionForm();
+                transactionForm.CustomerData = _CustomerData;
+                transactionForm.MdiParent = this;
+                transactionForm.DBController = _DBConnection;
+                transactionForm.Show();
+            }
+         
+        }
+       
         private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TransactionViewForm transactionViewForm = new TransactionViewForm();

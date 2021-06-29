@@ -26,6 +26,7 @@ namespace FuelStationProject.WUI {
         public decimal TotalCost { get; set; }
         public ItemTypeCategory Type { get; set; }
         public decimal DiscountValue { get; set; }
+        public DataSet CustomerData { get; set; }
 
         //bool TransactionHasFuel;
         bool _TransactionHasFuel;
@@ -46,6 +47,8 @@ namespace FuelStationProject.WUI {
             RefreshGridItems();
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+
+            ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", CustomerData.Tables[0].Rows[0]["Name"].ToString(), CustomerData.Tables[0].Rows[0]["Surname"].ToString());
 
         }
 
@@ -148,19 +151,19 @@ namespace FuelStationProject.WUI {
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
-            DataSet customerInfo = new DataSet();
+            //DataSet customerInfo = new DataSet();
 
-            string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
+            //string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
-            int response = adapter.Fill(customerInfo);
-            if (response == 1) {
-                _CustomerFound = true;
-                ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", customerInfo.Tables[0].Rows[0]["Name"].ToString(), customerInfo.Tables[0].Rows[0]["Surname"].ToString());
-            }
-            else {
-                MessageBox.Show("Customer Not Found!Please try again!");
-            }
+            //SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
+            //int response = adapter.Fill(customerInfo);
+            //if (response == 1) {
+            //    _CustomerFound = true;
+            //    ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", customerInfo.Tables[0].Rows[0]["Name"].ToString(), customerInfo.Tables[0].Rows[0]["Surname"].ToString());
+            //}
+            //else {
+            //    MessageBox.Show("Customer Not Found!Please try again!");
+            //}
         }
 
         private void gridTransactionLines_Click(object sender, EventArgs e) {
@@ -198,5 +201,8 @@ namespace FuelStationProject.WUI {
                 TotalCost -= costTransactionLine;            }
         }
 
+        private void lblCustomerInfo_Click(object sender, EventArgs e) {
+
+        }
     }
 }
