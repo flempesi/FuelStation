@@ -56,6 +56,7 @@ namespace FuelStationProject.WUI {
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ctrlTotalPrice = new DevExpress.XtraEditors.TextEdit();
             this.ctrlCustomer = new DevExpress.XtraEditors.TextEdit();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItems)).BeginInit();
@@ -88,7 +89,7 @@ namespace FuelStationProject.WUI {
             this.labelControl6.Size = new System.Drawing.Size(108, 42);
             this.labelControl6.TabIndex = 4;
             this.labelControl6.Text = "Select an Item \r\nfrom the list :";
-            this.labelControl6.Click += new System.EventHandler(this.labelControl6_Click);
+            //this.labelControl6.Click += new System.EventHandler(this.labelControl6_Click);
             // 
             // btnOK
             // 
@@ -300,7 +301,8 @@ namespace FuelStationProject.WUI {
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumnDeleteLine});
+            this.gridColumnDeleteLine,
+            this.gridColumn7});
             this.gridViewTransactionLines.GridControl = this.gridTransactionLines;
             this.gridViewTransactionLines.Name = "gridViewTransactionLines";
             // 
@@ -423,6 +425,14 @@ namespace FuelStationProject.WUI {
             this.ctrlCustomer.Size = new System.Drawing.Size(544, 28);
             this.ctrlCustomer.TabIndex = 22;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Cost";
+            this.gridColumn7.FieldName = "Cost";
+            this.gridColumn7.MinWidth = 25;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Width = 94;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -494,5 +504,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDeleteLine;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repDeleteLine;
         private DevExpress.XtraEditors.TextEdit ctrlCustomer;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

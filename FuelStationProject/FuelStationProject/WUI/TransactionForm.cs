@@ -140,10 +140,7 @@ namespace FuelStationProject.WUI {
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
-
-            //([ID],[Date],[CustomerID],[DiscountValue],[TotalValue],[TotalCost])
-            decimal discountValue = 0m;
-            SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), discountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
+            SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
             int rowsAffected = command.ExecuteNonQuery();
             Close();
         }
@@ -164,9 +161,6 @@ namespace FuelStationProject.WUI {
 
         }
 
-        private void repDeleteLine_Click(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) {
-           
-        }
 
         public void RefreshGridTransactionLines() {
             _MasterData = new DataSet();
@@ -186,17 +180,17 @@ namespace FuelStationProject.WUI {
 
             if (result == DialogResult.OK) {
                 //SqlCommand command = new SqlCommand(string.Format(Resources.DeleteEmployee, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
-
+                decimal valueTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Value"));
+                decimal quantity = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Quantity"));
+                decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
                 SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
-
+                
                 int rowsAffected = command.ExecuteNonQuery();
                 RefreshGridTransactionLines();
-
-            }
+                TotalPrice -= valueTransactionLine;
+                ctrlTotalPrice.EditValue = TotalPrice;
+                TotalCost -= costTransactionLine;            }
         }
 
-        private void labelControl6_Click(object sender, EventArgs e) {
-
-        }
     }
 }
