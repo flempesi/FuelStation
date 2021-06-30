@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
     public partial class ItemViewForm : DevExpress.XtraEditors.XtraForm {
-         DataSet _MasterData { get; set; }
+        DataSet _MasterData { get; set; }
         DataSet _MasterDataOld { get; set; }
 
         public DatabaseConnectionController DBController { get; set; }
@@ -76,24 +76,32 @@ namespace FuelStationProject.WUI {
 
             if (result == DialogResult.OK) {
 
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.DeleteItem, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteItem, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
-
-                int rowsAffected = command.ExecuteNonQuery();
-                RefreshItemGrid();
-
+                    int rowsAffected = command.ExecuteNonQuery();
+                    RefreshItemGrid();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
         private void RefreshItemGrid() {
             _MasterData = new DataSet();
             _MasterDataOld = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-            response = adapter.Fill(_MasterDataOld);
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+                response = adapter.Fill(_MasterDataOld);
 
-            gridView1.OptionsView.ShowGroupPanel = false;
-            gridItem.DataSource = _MasterData.Tables[0];
+                gridView1.OptionsView.ShowGroupPanel = false;
+                gridItem.DataSource = _MasterData.Tables[0];
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
 
         }
 
@@ -124,22 +132,29 @@ namespace FuelStationProject.WUI {
 
                 UpdateController updateController = new UpdateController();
                 string sql = updateController.UpdateEntry(id, "Item", _MasterData, _MasterDataOld);
-                
+
                 if (sql != String.Empty) {
-                    SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
-                    int rowsAffected = command.ExecuteNonQuery();
+                    try {
+                        SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception e) {
+                        MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
                 }
 
             }
             else {
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
-        private void gridItem_Click(object sender, EventArgs e) {
-
-        }
     }
 }
 

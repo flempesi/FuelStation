@@ -11,21 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FuelStationProject.WUI
-{
-    public partial class TransactionViewForm : DevExpress.XtraEditors.XtraForm
-    {
+namespace FuelStationProject.WUI {
+    public partial class TransactionViewForm : DevExpress.XtraEditors.XtraForm {
 
 
         public DatabaseConnectionController DBController { get; set; }
 
-        public TransactionViewForm()
-        {
+        public TransactionViewForm() {
             InitializeComponent();
         }
 
-        private void TransactionViewForm_Load(object sender, EventArgs e)
-        {
+        private void TransactionViewForm_Load(object sender, EventArgs e) {
             RefreshTransactionsGrid();
         }
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -41,37 +37,41 @@ namespace FuelStationProject.WUI
 
         }
 
-        private void RefreshTransactionsGrid()
-        {
+        private void RefreshTransactionsGrid() {
             gridTransactionLines.Refresh();
             ctrlTransactionsView.ClearSelection();
 
             DataSet _MasterData = new DataSet();
             _MasterData.Clear();
-
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionView, DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionView, DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
 
             ctrlTransactions.DataSource = _MasterData.Tables[0];
             ctrlTransactions.Refresh();
 
         }
 
-        private void RefreshTransactionLinesGrid(string TransactionID)
-        {
+        private void RefreshTransactionLinesGrid(string TransactionID) {
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             DataSet _MasterData = new DataSet();
             _MasterData.Clear();
-
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
             gridTransactionLines.DataSource = _MasterData.Tables[0];
             gridTransactionLines.Refresh();
         }
-       
+
         private void ShowTransactionLines() {
             if (ctrlTransactionsView.RowCount > 0) {
 
@@ -94,14 +94,22 @@ namespace FuelStationProject.WUI
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
             if (result == DialogResult.OK) {
-
                 string transactionId = Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"));
-                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, transactionId), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
-
-                command = new SqlCommand(string.Format(Resources.DeleteTransaction, transactionId), DBController._SqlConnection);
-                rowsAffected = command.ExecuteNonQuery();
-
+                try {
+                   
+                    SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, transactionId), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransaction, transactionId), DBController._SqlConnection);
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
                 RefreshTransactionLinesGrid(transactionId);
                 RefreshTransactionsGrid();
 
