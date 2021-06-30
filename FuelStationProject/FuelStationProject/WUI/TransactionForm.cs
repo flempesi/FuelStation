@@ -67,8 +67,13 @@ namespace FuelStationProject.WUI {
         private void SaveToDB() {
             string customerID = CustomerData.Tables[0].Rows[0]["ID"].ToString();
             if (TotalPrice > 0) {
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, customerID, DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
-                int rowsAffected = command.ExecuteNonQuery();
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, customerID, DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
                 Close();
             }
             else {
@@ -99,12 +104,21 @@ namespace FuelStationProject.WUI {
         }
 
         private void AddTransactionLine(Guid itemId, decimal quantity, decimal price, decimal cost, decimal value, string itemType) {
-            SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
-            int rowsAffected = command.ExecuteNonQuery();
-
+            try {
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
+                int rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
             _ViewData = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
-            int response = adapter.Fill(_ViewData);
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
+                int response = adapter.Fill(_ViewData);
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
             ctrlQuantity.EditValue = 0m;
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             gridTransactionLines.DataSource = _ViewData.Tables[0];
@@ -137,14 +151,17 @@ namespace FuelStationProject.WUI {
 
         public void RefreshGridTransactionLines() {
             _MasterData = new DataSet();
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-
-            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
-            gridTransactionLines.DataSource = _MasterData.Tables[0];
-            gridTransactionLines.Refresh();
-
+                gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+                gridTransactionLines.DataSource = _MasterData.Tables[0];
+                gridTransactionLines.Refresh();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
 
@@ -157,17 +174,22 @@ namespace FuelStationProject.WUI {
                 decimal quantity = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Quantity"));
                 decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
                 string itemType = Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType"));
-                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
-                int rowsAffected = command.ExecuteNonQuery();
-                RefreshGridTransactionLines();
-                TotalPrice -= valueTransactionLine;
-                ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
-                TotalCost -= costTransactionLine;
-                if (itemType == "Fuel") {
-                    _TransactionHasFuel = false;
+                    int rowsAffected = command.ExecuteNonQuery();
+                    RefreshGridTransactionLines();
+                    TotalPrice -= valueTransactionLine;
+                    ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
+                    TotalCost -= costTransactionLine;
+                    if (itemType == "Fuel") {
+                        _TransactionHasFuel = false;
+                    }
                 }
-                    
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+
             }
         }
 
@@ -175,12 +197,16 @@ namespace FuelStationProject.WUI {
 
         private void RefreshGridItems() {
             _MasterData = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-            gridViewItems.OptionsView.ShowGroupPanel = false;
-            gridItems.DataSource = _MasterData.Tables[0];
-            //gridControl1.DataMember = _MasterData.Tables[0].TableName;
-            gridItems.Refresh();
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+                gridViewItems.OptionsView.ShowGroupPanel = false;
+                gridItems.DataSource = _MasterData.Tables[0];
+                gridItems.Refresh();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
 
         }
     }
