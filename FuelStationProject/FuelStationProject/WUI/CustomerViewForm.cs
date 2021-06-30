@@ -18,6 +18,7 @@ namespace FuelStationProject.WUI {
     public partial class CustomerViewForm : DevExpress.XtraEditors.XtraForm {
         public DatabaseConnectionController DBController { get; set; }
 
+        private DataSet _MasterDataOld;
         private DataSet _MasterData;
 
         public CustomerViewForm() {
@@ -50,8 +51,10 @@ namespace FuelStationProject.WUI {
 
         private void RefreshGridCustomers() {
             _MasterData = new DataSet();
+            _MasterDataOld = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectCustomerTable, DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
+            response = adapter.Fill(_MasterDataOld);
             gridControl1.DataSource = _MasterData.Tables[0];
             gridControl1.Refresh();
 
@@ -70,7 +73,6 @@ namespace FuelStationProject.WUI {
 
             }
         }
-
 
 
         private void SaveCustomer() {
@@ -96,22 +98,24 @@ namespace FuelStationProject.WUI {
                     RefreshGridCustomers();
                 }
 
-
             }
         }
 
         private void SaveToDB(string name, string surname, string cardNumber, string id) {
             if (!string.IsNullOrWhiteSpace(id)) {
-                SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
-
-                int rowsAffected = command.ExecuteNonQuery();
+                UpdateController updateController = new UpdateController();
+                string sql = updateController.UpdateEntry(id, "Customer", _MasterData, _MasterDataOld);
+                //SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
+                if (sql != String.Empty) {
+                    SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
             }
             else {
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
             }
-
 
         }
 
