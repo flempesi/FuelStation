@@ -36,22 +36,35 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionForm_Load(object sender, EventArgs e) {
+            TransactionFormLoad();
 
+        }
+
+        private void TransactionFormLoad() {
             TransactionID = Guid.NewGuid();
             RefreshGridItems();
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
 
             ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", CustomerData.Tables[0].Rows[0]["Name"].ToString(), CustomerData.Tables[0].Rows[0]["Surname"].ToString());
-
         }
-
 
         private void btnAdd_Click(object sender, EventArgs e) {
             AddTransactionLineButtonCode();
 
         }
         private void btnOK_Click(object sender, EventArgs e) {
+            SaveToDB();
+        }
+
+
+        private void repDeleteLine_Click(object sender, EventArgs e) {
+            DeleteTransactionLine();
+        }
+        private void btnCancel_Click(object sender, EventArgs e) {
+            Close();
+        }
+        private void SaveToDB() {
             if (TotalPrice > 0) {
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
                 int rowsAffected = command.ExecuteNonQuery();
@@ -60,12 +73,6 @@ namespace FuelStationProject.WUI {
             else {
                 MessageBox.Show("Please, select an item to add in the transaction!");
             }
-        }
-        private void repDeleteLine_Click(object sender, EventArgs e) {
-            DeleteTransactionLine();
-        }
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
         }
 
         private void AddTransactionLineButtonCode() {
@@ -86,7 +93,6 @@ namespace FuelStationProject.WUI {
                     AddTransactionLine(itemId, quantity, price, cost, value, itemType);
 
                 }
-
 
             }
         }
@@ -130,13 +136,12 @@ namespace FuelStationProject.WUI {
 
         public void RefreshGridTransactionLines() {
             _MasterData = new DataSet();
-            //try
+
             SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             gridTransactionLines.DataSource = _MasterData.Tables[0];
-            //gridControl1.DataMember = _MasterData.Tables[0].TableName;
             gridTransactionLines.Refresh();
 
         }
