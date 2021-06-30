@@ -46,9 +46,9 @@ namespace FuelStationProject.WUI {
             this.ctlrCancel.Appearance.Options.UseBackColor = true;
             this.ctlrCancel.Appearance.Options.UseFont = true;
             this.ctlrCancel.Appearance.Options.UseForeColor = true;
-            this.ctlrCancel.Location = new System.Drawing.Point(717, 469);
+            this.ctlrCancel.Location = new System.Drawing.Point(627, 469);
             this.ctlrCancel.Name = "ctlrCancel";
-            this.ctlrCancel.Size = new System.Drawing.Size(123, 40);
+            this.ctlrCancel.Size = new System.Drawing.Size(108, 40);
             this.ctlrCancel.TabIndex = 42;
             this.ctlrCancel.Text = "Cancel";
             this.ctlrCancel.Click += new System.EventHandler(this.ctlrCancel_Click);
@@ -61,9 +61,9 @@ namespace FuelStationProject.WUI {
             this.btnOK.Appearance.Options.UseBackColor = true;
             this.btnOK.Appearance.Options.UseFont = true;
             this.btnOK.Appearance.Options.UseForeColor = true;
-            this.btnOK.Location = new System.Drawing.Point(569, 469);
+            this.btnOK.Location = new System.Drawing.Point(498, 469);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(123, 40);
+            this.btnOK.Size = new System.Drawing.Size(108, 40);
             this.btnOK.TabIndex = 41;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -72,7 +72,7 @@ namespace FuelStationProject.WUI {
             // 
             this.Title.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.Title.Appearance.Options.UseFont = true;
-            this.Title.Location = new System.Drawing.Point(47, 33);
+            this.Title.Location = new System.Drawing.Point(41, 33);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(144, 24);
             this.Title.TabIndex = 40;
@@ -82,7 +82,7 @@ namespace FuelStationProject.WUI {
             // 
             this.lblCardNumber.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblCardNumber.Appearance.Options.UseFont = true;
-            this.lblCardNumber.Location = new System.Drawing.Point(47, 233);
+            this.lblCardNumber.Location = new System.Drawing.Point(41, 233);
             this.lblCardNumber.Name = "lblCardNumber";
             this.lblCardNumber.Size = new System.Drawing.Size(108, 21);
             this.lblCardNumber.TabIndex = 39;
@@ -92,7 +92,7 @@ namespace FuelStationProject.WUI {
             // 
             this.lblSurname.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblSurname.Appearance.Options.UseFont = true;
-            this.lblSurname.Location = new System.Drawing.Point(47, 179);
+            this.lblSurname.Location = new System.Drawing.Point(41, 179);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(81, 21);
             this.lblSurname.TabIndex = 38;
@@ -102,7 +102,7 @@ namespace FuelStationProject.WUI {
             // 
             this.lblName.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblName.Appearance.Options.UseFont = true;
-            this.lblName.Location = new System.Drawing.Point(47, 120);
+            this.lblName.Location = new System.Drawing.Point(41, 120);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 21);
             this.lblName.TabIndex = 37;
@@ -110,36 +110,36 @@ namespace FuelStationProject.WUI {
             // 
             // ctrlCardNumber
             // 
-            this.ctrlCardNumber.Location = new System.Drawing.Point(257, 230);
+            this.ctrlCardNumber.Location = new System.Drawing.Point(225, 230);
             this.ctrlCardNumber.Name = "ctrlCardNumber";
             this.ctrlCardNumber.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlCardNumber.Properties.Appearance.Options.UseFont = true;
-            this.ctrlCardNumber.Size = new System.Drawing.Size(299, 28);
+            this.ctrlCardNumber.Size = new System.Drawing.Size(262, 28);
             this.ctrlCardNumber.TabIndex = 36;
             // 
             // ctrlSurname
             // 
-            this.ctrlSurname.Location = new System.Drawing.Point(257, 176);
+            this.ctrlSurname.Location = new System.Drawing.Point(225, 176);
             this.ctrlSurname.Name = "ctrlSurname";
             this.ctrlSurname.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlSurname.Properties.Appearance.Options.UseFont = true;
-            this.ctrlSurname.Size = new System.Drawing.Size(299, 28);
+            this.ctrlSurname.Size = new System.Drawing.Size(262, 28);
             this.ctrlSurname.TabIndex = 35;
             // 
             // ctrlName
             // 
-            this.ctrlName.Location = new System.Drawing.Point(257, 117);
+            this.ctrlName.Location = new System.Drawing.Point(225, 117);
             this.ctrlName.Name = "ctrlName";
             this.ctrlName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlName.Properties.Appearance.Options.UseFont = true;
-            this.ctrlName.Size = new System.Drawing.Size(299, 28);
+            this.ctrlName.Size = new System.Drawing.Size(262, 28);
             this.ctrlName.TabIndex = 34;
             // 
             // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 528);
+            this.ClientSize = new System.Drawing.Size(774, 528);
             this.Controls.Add(this.ctlrCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.Title);

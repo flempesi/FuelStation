@@ -45,55 +45,67 @@ namespace FuelStationProject.WUI {
             // 
             // lblCode
             // 
+            this.lblCode.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblCode.Appearance.Options.UseFont = true;
             this.lblCode.Location = new System.Drawing.Point(50, 52);
             this.lblCode.Margin = new System.Windows.Forms.Padding(4);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(29, 16);
+            this.lblCode.Size = new System.Drawing.Size(53, 21);
             this.lblCode.TabIndex = 0;
-            this.lblCode.Text = "Code";
+            this.lblCode.Text = "Code : ";
             // 
             // lblDescription
             // 
+            this.lblDescription.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblDescription.Appearance.Options.UseFont = true;
             this.lblDescription.Location = new System.Drawing.Point(50, 107);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(63, 16);
+            this.lblDescription.Size = new System.Drawing.Size(100, 21);
             this.lblDescription.TabIndex = 1;
-            this.lblDescription.Text = "Description";
+            this.lblDescription.Text = "Description : ";
             // 
             // lblPrice
             // 
+            this.lblPrice.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblPrice.Appearance.Options.UseFont = true;
             this.lblPrice.Location = new System.Drawing.Point(51, 236);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(5);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(28, 16);
+            this.lblPrice.Size = new System.Drawing.Size(52, 21);
             this.lblPrice.TabIndex = 3;
-            this.lblPrice.Text = "Price";
+            this.lblPrice.Text = "Price : ";
             // 
             // lblType
             // 
+            this.lblType.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblType.Appearance.Options.UseFont = true;
             this.lblType.Location = new System.Drawing.Point(51, 165);
             this.lblType.Margin = new System.Windows.Forms.Padding(5);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(28, 16);
+            this.lblType.Size = new System.Drawing.Size(52, 21);
             this.lblType.TabIndex = 2;
-            this.lblType.Text = "Type";
+            this.lblType.Text = "Type : ";
             // 
             // lblCost
             // 
+            this.lblCost.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblCost.Appearance.Options.UseFont = true;
             this.lblCost.Location = new System.Drawing.Point(50, 305);
             this.lblCost.Margin = new System.Windows.Forms.Padding(6);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(25, 16);
+            this.lblCost.Size = new System.Drawing.Size(49, 21);
             this.lblCost.TabIndex = 4;
-            this.lblCost.Text = "Cost";
+            this.lblCost.Text = "Cost : ";
             // 
             // ctrlCode
             // 
             this.ctrlCode.Location = new System.Drawing.Point(252, 45);
             this.ctrlCode.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlCode.Name = "ctrlCode";
-            this.ctrlCode.Size = new System.Drawing.Size(314, 22);
+            this.ctrlCode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlCode.Properties.Appearance.Options.UseFont = true;
+            this.ctrlCode.Size = new System.Drawing.Size(314, 28);
             this.ctrlCode.TabIndex = 5;
             // 
             // ctrlDescription
@@ -101,7 +113,9 @@ namespace FuelStationProject.WUI {
             this.ctrlDescription.Location = new System.Drawing.Point(252, 104);
             this.ctrlDescription.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlDescription.Name = "ctrlDescription";
-            this.ctrlDescription.Size = new System.Drawing.Size(314, 22);
+            this.ctrlDescription.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlDescription.Properties.Appearance.Options.UseFont = true;
+            this.ctrlDescription.Size = new System.Drawing.Size(314, 28);
             this.ctrlDescription.TabIndex = 6;
             // 
             // ctrlPrice
@@ -114,9 +128,11 @@ namespace FuelStationProject.WUI {
             this.ctrlPrice.Location = new System.Drawing.Point(248, 232);
             this.ctrlPrice.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlPrice.Name = "ctrlPrice";
+            this.ctrlPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlPrice.Properties.Appearance.Options.UseFont = true;
             this.ctrlPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ctrlPrice.Size = new System.Drawing.Size(318, 24);
+            this.ctrlPrice.Size = new System.Drawing.Size(318, 28);
             this.ctrlPrice.TabIndex = 8;
             // 
             // ctrlCost
@@ -129,24 +145,34 @@ namespace FuelStationProject.WUI {
             this.ctrlCost.Location = new System.Drawing.Point(248, 301);
             this.ctrlCost.Margin = new System.Windows.Forms.Padding(5);
             this.ctrlCost.Name = "ctrlCost";
+            this.ctrlCost.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlCost.Properties.Appearance.Options.UseFont = true;
             this.ctrlCost.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ctrlCost.Size = new System.Drawing.Size(318, 24);
+            this.ctrlCost.Size = new System.Drawing.Size(318, 28);
             this.ctrlCost.TabIndex = 9;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(321, 377);
+            this.btnOK.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnOK.Appearance.Options.UseBackColor = true;
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Location = new System.Drawing.Point(394, 391);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(106, 41);
+            this.btnOK.Size = new System.Drawing.Size(114, 44);
             this.btnOK.TabIndex = 10;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(448, 374);
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(517, 391);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(118, 44);
@@ -160,17 +186,19 @@ namespace FuelStationProject.WUI {
             this.comboBoxEdit1.Location = new System.Drawing.Point(248, 162);
             this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit1.Properties.DropDownRows = 3;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(318, 22);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(318, 28);
             this.comboBoxEdit1.TabIndex = 12;
             // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 473);
+            this.ClientSize = new System.Drawing.Size(649, 466);
             this.Controls.Add(this.comboBoxEdit1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

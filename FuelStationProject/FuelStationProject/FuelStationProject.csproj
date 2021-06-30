@@ -172,6 +172,9 @@
     <EmbeddedResource Include="WUI\CustomerCheckForm.resx">
       <DependentUpon>CustomerCheckForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WUI\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WUI\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>

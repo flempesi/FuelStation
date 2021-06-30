@@ -254,7 +254,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CustomerViewForm";
-            this.Text = "CustomerViewForm";
+            this.Text = "Customers View";
             this.Load += new System.EventHandler(this.CustomerViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
