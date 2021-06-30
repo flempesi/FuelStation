@@ -163,6 +163,9 @@
   <data name="SelectTransactionTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\selecttransactiontable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="SelectTransactionView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\selecttransactionview.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="UpdateCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\updatecustomer.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

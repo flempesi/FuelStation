@@ -65,8 +65,9 @@ namespace FuelStationProject.WUI {
             Close();
         }
         private void SaveToDB() {
+            string customerID = CustomerData.Tables[0].Rows[0]["ID"].ToString();
             if (TotalPrice > 0) {
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, Guid.NewGuid(), DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, customerID, DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
                 int rowsAffected = command.ExecuteNonQuery();
                 Close();
             }

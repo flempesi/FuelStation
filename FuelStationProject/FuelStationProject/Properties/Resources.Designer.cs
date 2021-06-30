@@ -229,6 +229,18 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT T.[Date], T.[DscountValue],T.[TotalValue], C.[CardNumber],C.[Surname] ,T.[ID]  FROM [Transaction] T
+        ///left join  [Customer] C on  T.[CustomerID] = C.[ID] 
+        ///WHERE T.TransactionID=&apos;{0}&apos;
+        ///.
+        /// </summary>
+        internal static string SelectTransactionView {
+            get {
+                return ResourceManager.GetString("SelectTransactionView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///UPDATE [dbo].[Customer]
         ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [CardNumber]= &apos;{2}&apos; 

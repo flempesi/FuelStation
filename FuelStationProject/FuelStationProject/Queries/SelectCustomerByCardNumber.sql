@@ -1,1 +1,1 @@
-﻿Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'
+﻿Select [ID], [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'
