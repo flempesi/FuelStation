@@ -77,6 +77,7 @@
     <Content Include="Queries\DeleteTransactionLine.sql" />
     <Content Include="Queries\InsertTransaction.sql" />
     <Content Include="Queries\SelectCustomerByCardNumber.sql" />
+    <Content Include="Queries\SelectTransactionByID.sql" />
     <Content Include="Queries\SelectTransactionView.sql" />
     <Content Include="Queries\SelectTransactionLineViewByID.sql" />
     <Compile Include="Controllers\UpdateController.cs" />

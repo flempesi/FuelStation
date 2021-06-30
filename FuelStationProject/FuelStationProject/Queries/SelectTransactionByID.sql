@@ -1,0 +1,1 @@
+﻿SELECT * FROM [Transaction] WHERE [ID]='{0}'

@@ -61,7 +61,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM [Customer] WHERE ID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to DELETE FROM [Customer] WHERE [ID]=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteCustomer {
             get {
@@ -70,7 +70,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM [Employee] WHERE ID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to DELETE FROM [Employee] WHERE [ID]=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteEmployee {
             get {
@@ -79,7 +79,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM [Item] WHERE ID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to DELETE FROM [Item] WHERE [ID]=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteItem {
             get {
@@ -88,7 +88,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM Transaction WHERE ID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to DELETE FROM [Transaction] WHERE [ID]=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteTransaction {
             get {
@@ -97,7 +97,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM TransactionLine WHERE ID=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to DELETE FROM [TransactionLine] WHERE [ID]=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteTransactionLine {
             get {
@@ -106,7 +106,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM TransactionLine WHERE TransactionID=&apos;{0}&apos;
+        ///   Looks up a localized string similar to DELETE FROM [TransactionLine] WHERE [TransactionID]=&apos;{0}&apos;
         ///.
         /// </summary>
         internal static string DeleteTransactionLineByTransactionID {
@@ -117,8 +117,8 @@ namespace FuelStationProject.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///INSERT INTO [dbo].[Customer]
-        ///	(ID,[Name], [Surname], [CardNumber]) 
+        ///INSERT INTO [Customer]
+        ///	([ID],[Name], [Surname], [CardNumber]) 
         ///VALUES
         ///	(NEWID(), &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos; )
         ///.
@@ -131,8 +131,8 @@ namespace FuelStationProject.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///INSERT INTO [dbo].Employee
-        ///	(ID,[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
+        ///INSERT INTO [Employee]
+        ///	([ID],[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
         ///VALUES
         ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
         ///
@@ -147,7 +147,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO [dbo].[Item]
+        ///   Looks up a localized string similar to INSERT INTO [Item]
         ///           ([ID],[Code],[Description],[ItemType],[Price],[Cost])
         ///     VALUES
         ///	(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,&apos;{3}&apos; ,&apos;{4}&apos;)
@@ -163,7 +163,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO [dbo].[Transaction]
+        ///   Looks up a localized string similar to INSERT INTO [Transaction]
         ///           ([ID],[Date],[CustomerID],[DiscountValue],[TotalValue],[TotalCost])
         ///     VALUES
         ///	( &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos;, &apos;{3}&apos; ,&apos;{4}&apos; ,&apos;{5}&apos;)
@@ -176,7 +176,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO [dbo].[TransactionLine]
+        ///   Looks up a localized string similar to INSERT INTO [TransactionLine]
         ///           ([ID],[TransactionID],[ItemID],[Quantity],[ItemPrice],[Value])
         ///     VALUES
         ///	(NEWID(), &apos;{0}&apos;, &apos;{1}&apos; , &apos;{2}&apos;, &apos;{3}&apos; ,&apos;{4}&apos; )
@@ -204,7 +204,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select [ID], [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to SELECT * FROM [Customer] WHERE [CardNumber]=&apos;{0}&apos;.
         /// </summary>
         internal static string SelectCustomerByCardNumber {
             get {
@@ -214,7 +214,7 @@ namespace FuelStationProject.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///Select * from [Customer]
+        ///SELECT * FROM [Customer]
         ///.
         /// </summary>
         internal static string SelectCustomerTable {
@@ -224,7 +224,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM Employee.
+        ///   Looks up a localized string similar to SELECT * FROM [Employee].
         /// </summary>
         internal static string SelectEmployeeTable {
             get {
@@ -233,7 +233,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM Item.
+        ///   Looks up a localized string similar to SELECT * FROM [Item].
         /// </summary>
         internal static string SelectItemTable {
             get {
@@ -242,9 +242,18 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM [Transaction] WHERE [ID]=&apos;{0}&apos;.
+        /// </summary>
+        internal static string SelectTransactionByID {
+            get {
+                return ResourceManager.GetString("SelectTransactionByID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT I.[Description], I.[ItemType],T.[Quantity], T.[ItemPrice],T.[Value] ,T.[ID] ,I.[Cost] FROM [Item] I 
-        ///left join  [TransactionLine] T on  I.[ID] = T.[ItemID] 
-        ///WHERE T.TransactionID=&apos;{0}&apos;
+        ///left join  [TransactionLine] T ON  I.[ID] = T.[ItemID] 
+        ///WHERE T.[TransactionID]=&apos;{0}&apos;
         ///.
         /// </summary>
         internal static string SelectTransactionLineViewByID {
@@ -254,7 +263,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM [dbo].[Transaction].
+        ///   Looks up a localized string similar to SELECT * FROM [Transaction].
         /// </summary>
         internal static string SelectTransactionTable {
             get {
@@ -264,7 +273,7 @@ namespace FuelStationProject.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT T.[Date], T.[DiscountValue],T.[TotalValue], C.[CardNumber],C.[Surname] ,T.[ID]  FROM [Transaction] T
-        ///left join  [Customer] C on  T.[CustomerID] = C.[ID] 
+        ///left join  [Customer] C ON  T.[CustomerID] = C.[ID] 
         ///.
         /// </summary>
         internal static string SelectTransactionView {
@@ -275,9 +284,9 @@ namespace FuelStationProject.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///UPDATE [dbo].[Customer]
+        ///UPDATE [Customer]
         ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [CardNumber]= &apos;{2}&apos; 
-        ///WHERE ID = &apos;{3}&apos;
+        ///WHERE [ID] = &apos;{3}&apos;
         ///.
         /// </summary>
         internal static string UpdateCustomer {
@@ -287,9 +296,9 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE [dbo].Employee
+        ///   Looks up a localized string similar to UPDATE [Employee]
         ///SET [Name] = &apos;{0}&apos;, [Surname]= &apos;{1}&apos;, [DateStart]= &apos;{2}&apos;, [DateEnd]= &apos;{3}&apos;,[Salary]= &apos;{4}&apos;
-        ///WHERE ID = &apos;{5}&apos;;
+        ///WHERE [ID] = &apos;{5}&apos;;
         ///
         ///
         ///
@@ -303,9 +312,9 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UPDATE [dbo].Item
+        ///   Looks up a localized string similar to UPDATE [Item]
         ///SET [Code] = &apos;{0}&apos;, [Description]= &apos;{1}&apos;, [ItemType]= &apos;{2}&apos;, [Price]= &apos;{3}&apos;,[Cost]= &apos;{4}&apos;
-        ///WHERE ID = &apos;{5}&apos;;
+        ///WHERE [ID] = &apos;{5}&apos;;
         ///
         ///
         ///

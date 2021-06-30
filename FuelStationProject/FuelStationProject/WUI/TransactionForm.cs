@@ -28,6 +28,7 @@ namespace FuelStationProject.WUI {
         public DataSet CustomerData { get; set; }
 
         bool _TransactionHasFuel;
+        bool _TransactionOld;
         private DataSet _MasterData;
 
 
@@ -48,14 +49,15 @@ namespace FuelStationProject.WUI {
                 //only for edit an existing transaction
                 RefreshGridTransactionLines();
                 _MasterData = new DataSet();
-                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionTable, DBController._SqlConnection);
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionByID, TransactionID), DBController._SqlConnection);
                 int response = adapter.Fill(_MasterData);
                 TotalPrice = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
                 TotalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
                 DiscountValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["DiscountValue"]);
                 ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
+                _TransactionOld = true;
             }
-            
+
             RefreshGridItems();
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
@@ -81,13 +83,29 @@ namespace FuelStationProject.WUI {
         private void SaveToDB() {
             string customerID = CustomerData.Tables[0].Rows[0]["ID"].ToString();
             if (TotalPrice > 0) {
+                if (_TransactionOld) {
+
+                    
+                    try {
+                        SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransaction, TransactionID), DBController._SqlConnection);
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception e) {
+                        MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
+                }
+
                 try {
+
                     SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, customerID, DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
                     int rowsAffected = command.ExecuteNonQuery();
+
+
                 }
                 catch (Exception e) {
                     MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
+
                 Close();
             }
             else {
