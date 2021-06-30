@@ -18,7 +18,8 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
     public partial class ItemViewForm : DevExpress.XtraEditors.XtraForm {
-        public DataSet ViewData { get; set; }
+         DataSet _MasterData { get; set; }
+        DataSet _MasterDataOld { get; set; }
 
         public DatabaseConnectionController DBController { get; set; }
 
@@ -85,12 +86,14 @@ namespace FuelStationProject.WUI {
         }
 
         private void RefreshItemGrid() {
-            ViewData = new DataSet();
+            _MasterData = new DataSet();
+            _MasterDataOld = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectItemTable, DBController._SqlConnection);
-            int response = adapter.Fill(ViewData);
+            int response = adapter.Fill(_MasterData);
+            response = adapter.Fill(_MasterDataOld);
 
             gridView1.OptionsView.ShowGroupPanel = false;
-            gridItem.DataSource = ViewData.Tables[0];
+            gridItem.DataSource = _MasterData.Tables[0];
 
         }
 
@@ -119,8 +122,13 @@ namespace FuelStationProject.WUI {
         private void SaveToDB(string id, string code, string description, string itemType, decimal price, decimal cost) {
             if (!string.IsNullOrWhiteSpace(id)) {
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.UpdateItem, code, description, itemType, price, cost, id), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
+                UpdateController updateController = new UpdateController();
+                string sql = updateController.UpdateEntry(id, "Item", _MasterData, _MasterDataOld);
+                
+                if (sql != String.Empty) {
+                    SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
 
             }
             else {

@@ -15,7 +15,8 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
     public partial class EmployeeViewForm : DevExpress.XtraEditors.XtraForm {
-        public DataSet ViewData { get; set; }
+         DataSet _MasterData { get; set; }
+        DataSet _MasterDataOld { get; set; }
         public DatabaseConnectionController DBController { get; set; }
         public EmployeeViewForm() {
             InitializeComponent();
@@ -64,11 +65,13 @@ namespace FuelStationProject.WUI {
         }
 
         private void RefreshEmployeeGrid() {
-            ViewData = new DataSet();
+            _MasterData = new DataSet();
+            _MasterDataOld = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectEmployeeTable, DBController._SqlConnection);
-            int response = adapter.Fill(ViewData);
+            int response = adapter.Fill(_MasterData);
+            response = adapter.Fill(_MasterDataOld);
             gridView1.OptionsView.ShowGroupPanel = false;
-            gridEmployee.DataSource = ViewData.Tables[0];
+            gridEmployee.DataSource = _MasterData.Tables[0];
         }
 
         public void SaveEmployee() {
@@ -97,8 +100,14 @@ namespace FuelStationProject.WUI {
 
         private void SaveToDB(string id, string name, string surname, DateTime dateStart, DateTime? dateEnd, decimal salary) {
             if (!string.IsNullOrWhiteSpace(id)) {
-                SqlCommand command = new SqlCommand(string.Format(Resources.UpdateEmployee, name, surname, dateStart, dateEnd, salary, id), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
+                
+                UpdateController updateController = new UpdateController();
+                string sql = updateController.UpdateEntry(id, "Employee", _MasterData, _MasterDataOld);
+                 
+                if (sql != String.Empty) {
+                    SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
+                    int rowsAffected = command.ExecuteNonQuery();
+                }
             }
             else {
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
@@ -110,6 +119,8 @@ namespace FuelStationProject.WUI {
             RefreshEmployeeGrid();
         }
 
+        private void gridEmployee_Click(object sender, EventArgs e) {
 
+        }
     }
 }

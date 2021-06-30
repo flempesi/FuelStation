@@ -160,7 +160,7 @@ namespace FuelStationProject.WUI {
             this.gridEmployee.TabIndex = 4;
             this.gridEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            //this.gridEmployee.Click += new System.EventHandler(this.gridEmployee_Click);
+            this.gridEmployee.Click += new System.EventHandler(this.gridEmployee_Click);
             // 
             // gridView1
             // 
