@@ -40,9 +40,15 @@ namespace FuelStationProject.WUI {
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) &&
                   decimal.TryParse(Convert.ToString(ctrlSalary.EditValue), out salary) && salary > 0
                   && DateTime.TryParse(Convert.ToString(ctrlDateStart.EditValue), out dateStart)) {
-                SaveToDB(name, surname, dateStart, dateEnd, salary);
+                if (dateStart <= dateEnd || dateEnd== (DateTime?)null) {
+                    SaveToDB(name, surname, dateStart, dateEnd, salary);
 
-                Close();
+                    Close();
+                }
+                else {
+
+                    MessageBox.Show("DateStart must be earlier than DateEnd");
+                }
 
             }
             else {
