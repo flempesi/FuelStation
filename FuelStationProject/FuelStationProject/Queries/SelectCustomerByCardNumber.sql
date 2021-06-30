@@ -1,1 +1,1 @@
-﻿Select [ID], [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'
+﻿SELECT * FROM [Customer] WHERE [CardNumber]='{0}'

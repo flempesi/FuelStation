@@ -1,1 +1,1 @@
-﻿DELETE FROM [Employee] WHERE ID='{0}'
+﻿DELETE FROM [Employee] WHERE [ID]='{0}'

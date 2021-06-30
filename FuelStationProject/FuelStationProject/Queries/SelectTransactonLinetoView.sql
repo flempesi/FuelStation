@@ -1,1 +1,1 @@
-﻿SELECT * FROM TransactionLine
+﻿SELECT * FROM [TransactionLine]
