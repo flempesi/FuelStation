@@ -114,42 +114,42 @@ namespace FuelStationProject.WUI
 
 
 
-            lblRevenue.Text = Convert.ToString(totalValue);
-            lblProductsCosts.Text = Convert.ToString(totalCost);
+            ctrlIncome.EditValue = Convert.ToString(totalValue);
+            ctrlProductCosts.EditValue = Convert.ToString(totalCost);
 
 
 
 
-            lblEmployeesSalary.Text = Math.Round(totalSalaries, 2).ToString();
-            lblRent.Text = totalRent.ToString();
+            ctrlSalaries.EditValue = Math.Round(totalSalaries, 2).ToString();
+            ctrlRent.EditValue = totalRent.ToString();
 
-            lblExpenses.Text = (totalCost + Math.Round(totalSalaries, 2) + totalRent).ToString();
+            ctrlExpences.EditValue = (totalCost + Math.Round(totalSalaries, 2) + totalRent).ToString();
 
 
 
             decimal expenses = totalCost + Math.Round(totalSalaries, 2) + totalRent;
             decimal profitOrLoss = totalValue - expenses;
-
+            string result;
 
             if (profitOrLoss > 0m)
             {
-                lblProfitOrLossTitle.Text = "Profit";
+                result = "Profit";
 
             }
             else if (profitOrLoss == 0m)
             {
 
-                lblProfitOrLossTitle.Text = "Balance";
+                result = "Balance";
 
             }
             else
             {
-                lblProfitOrLossTitle.Text = "Loss";
+                result = "Loss";
 
             }
 
 
-            lblProfitOrLoss.Text = profitOrLoss.ToString();
+            ctrltotal.EditValue = String.Format("{0} : {1} € .", result, profitOrLoss);
 
 
         }
@@ -159,6 +159,10 @@ namespace FuelStationProject.WUI
 
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+        }
+
+        private void dateEdit1_EditValueChanged(object sender, EventArgs e) {
+
         }
     }
 }
