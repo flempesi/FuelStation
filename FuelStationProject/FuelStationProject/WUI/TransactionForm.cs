@@ -132,7 +132,7 @@ namespace FuelStationProject.WUI {
             }
 
             TotalCost += quantity * cost;
-            ctrlTotalPrice.EditValue = TotalPrice;
+            ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
         }
 
         public void RefreshGridTransactionLines() {
@@ -162,7 +162,7 @@ namespace FuelStationProject.WUI {
                 int rowsAffected = command.ExecuteNonQuery();
                 RefreshGridTransactionLines();
                 TotalPrice -= valueTransactionLine;
-                ctrlTotalPrice.EditValue = TotalPrice;
+                ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
                 TotalCost -= costTransactionLine;
                 if (itemType == "Fuel") {
                     _TransactionHasFuel = false;

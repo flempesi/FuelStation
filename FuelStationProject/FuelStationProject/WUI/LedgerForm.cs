@@ -124,16 +124,16 @@ namespace FuelStationProject.WUI
 
 
 
-            ctrlIncome.EditValue = Convert.ToString(totalValue);
-            ctrlProductCosts.EditValue = Convert.ToString(totalCost);
+            ctrlIncome.EditValue = String.Format("{0} €", Convert.ToString(totalValue));
+            ctrlProductCosts.EditValue = String.Format("{0} €", Convert.ToString(totalCost));
 
 
 
 
-            ctrlSalaries.EditValue = Math.Round(totalSalaries, 2).ToString();
-            ctrlRent.EditValue = totalRent.ToString();
+            ctrlSalaries.EditValue = String.Format("{0} €", Math.Round(totalSalaries, 2).ToString());
+            ctrlRent.EditValue = String.Format("{0} €", Math.Round(totalRent, 2).ToString());
 
-            ctrlExpences.EditValue = (totalCost + Math.Round(totalSalaries, 2) + totalRent).ToString();
+            ctrlExpences.EditValue = String.Format("{0} €", Math.Round((totalCost + Math.Round(totalSalaries, 2) + totalRent), 2).ToString());
 
 
 
@@ -155,11 +155,12 @@ namespace FuelStationProject.WUI
             else
             {
                 result = "Loss";
+                profitOrLoss =  expenses - totalValue;
 
             }
 
 
-            ctrltotal.EditValue = String.Format("{0} : {1} € .", result, profitOrLoss);
+            ctrltotal.EditValue = String.Format("{0} : {1} € ", result, Math.Round(profitOrLoss,2));
         }
 
         private void LedgerForm_Load(object sender, EventArgs e)

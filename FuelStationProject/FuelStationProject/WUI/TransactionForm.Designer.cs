@@ -380,6 +380,7 @@ namespace FuelStationProject.WUI {
             this.ctrlTotalPrice.Name = "ctrlTotalPrice";
             this.ctrlTotalPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlTotalPrice.Properties.Appearance.Options.UseFont = true;
+            this.ctrlTotalPrice.Properties.ReadOnly = true;
             this.ctrlTotalPrice.Size = new System.Drawing.Size(159, 28);
             this.ctrlTotalPrice.TabIndex = 21;
             // 
