@@ -41,7 +41,21 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionFormLoad() {
-            TransactionID = Guid.NewGuid();
+            if (TransactionID == Guid.Empty) {//for new transaction
+                TransactionID = Guid.NewGuid();
+            }
+            else {
+                //only for edit an existing transaction
+                RefreshGridTransactionLines();
+                _MasterData = new DataSet();
+                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionTable, DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+                TotalPrice = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
+                TotalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
+                DiscountValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["DiscountValue"]);
+                ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
+            }
+            
             RefreshGridItems();
 
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
