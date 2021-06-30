@@ -1,4 +1,5 @@
 ﻿using FuelStationProject.Controllers;
+using FuelStationProject.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace FuelStationProject.WUI {
 
             string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format("Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'", cardNumber), DBController._SqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
             int response = adapter.Fill(CustomerData);
             if (response == 1) {
 

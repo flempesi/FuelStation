@@ -170,6 +170,15 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]=&apos;{0}&apos;.
+        /// </summary>
+        internal static string SelectCustomerByCardNumber {
+            get {
+                return ResourceManager.GetString("SelectCustomerByCardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///Select * from [Customer]
         ///.

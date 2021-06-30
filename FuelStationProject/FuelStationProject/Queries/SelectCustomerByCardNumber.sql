@@ -1,0 +1,1 @@
+﻿Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]='{0}'
