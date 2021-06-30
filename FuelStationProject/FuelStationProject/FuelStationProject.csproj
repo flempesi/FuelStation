@@ -106,12 +106,6 @@
     <Compile Include="WUI\EmployeeViewForm.Designer.cs">
       <DependentUpon>EmployeeViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WUI\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Impl\Customer.cs" />
     <Compile Include="Impl\Employee.cs" />
     <Compile Include="Impl\Entity.cs" />
