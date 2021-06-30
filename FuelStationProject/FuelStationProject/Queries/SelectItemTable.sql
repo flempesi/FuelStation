@@ -1,1 +1,1 @@
-﻿SELECT * FROM Item
+﻿SELECT * FROM [Item]

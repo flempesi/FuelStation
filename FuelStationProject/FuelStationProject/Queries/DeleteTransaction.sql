@@ -1,1 +1,1 @@
-﻿DELETE FROM Transaction WHERE ID='{0}'
+﻿DELETE FROM [Transaction] WHERE [ID]='{0}'

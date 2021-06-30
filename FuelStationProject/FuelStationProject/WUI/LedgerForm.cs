@@ -28,8 +28,12 @@ namespace FuelStationProject.WUI
 
         private void btnSearchLedger_Click(object sender, EventArgs e)
         {
+            SearchLedger();
 
+        }
 
+        private void SearchLedger()
+        {
             DateTime dateFrom = Convert.ToDateTime(dateEdit1.EditValue);
             DateTime dateTo = Convert.ToDateTime(dateEdit2.EditValue);
 
@@ -57,8 +61,12 @@ namespace FuelStationProject.WUI
 
                 decimal wage = (decimal)_MasterData.Tables[0].Rows[i]["Salary"] / 30;
 
+                //DateTime DBnullDate = new DateTime(1900,1,1,0,0,0,0);
 
-
+                if (dateEnd < dateStart)
+                {
+                    dateEnd = dateTo;
+                }
 
 
                 if (dateFrom <= dateStart && dateEnd <= dateTo)
@@ -84,11 +92,11 @@ namespace FuelStationProject.WUI
             }
 
             _MasterData.Clear();
-            adapter = new SqlDataAdapter(string.Format("select sum([TotalValue]) as 'TotalValue', sum([TotalCost]) as 'TotalCost' from [Transaction] WHERE [Date] BETWEEN '{0}'  AND  '{1}' ", dateFrom.ToString(), dateTo.ToString()), DBController._SqlConnection);
+            adapter = new SqlDataAdapter(string.Format(Resources.QueryTransactionTable, dateFrom.ToString(), dateTo.ToString()), DBController._SqlConnection);
             response = adapter.Fill(_MasterData);
 
-            decimal totalValue ;
-            decimal totalCost ;
+            decimal totalValue;
+            decimal totalCost;
 
             if (!DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalValue"]) || !DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalCost"]))
             {
@@ -150,8 +158,6 @@ namespace FuelStationProject.WUI
 
 
             ctrltotal.EditValue = String.Format("{0} : {1} € .", result, profitOrLoss);
-
-
         }
 
         private void LedgerForm_Load(object sender, EventArgs e)
@@ -161,7 +167,8 @@ namespace FuelStationProject.WUI
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
         }
 
-        private void dateEdit1_EditValueChanged(object sender, EventArgs e) {
+        private void dateEdit1_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

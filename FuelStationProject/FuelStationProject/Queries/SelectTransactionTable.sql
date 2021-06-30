@@ -1,1 +1,1 @@
-﻿SELECT * FROM [dbo].[Transaction]
+﻿SELECT * FROM [Transaction]

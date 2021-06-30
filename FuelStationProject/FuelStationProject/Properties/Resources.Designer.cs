@@ -189,6 +189,21 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///SELECT SUM([TotalValue]) AS &apos;TotalValue&apos;, SUM([TotalCost]) AS &apos;TotalCost&apos; 
+        ///
+        ///FROM [Transaction] 
+        ///
+        ///WHERE [Date] BETWEEN &apos;{0}&apos; AND &apos;{1}&apos; 
+        ///.
+        /// </summary>
+        internal static string QueryTransactionTable {
+            get {
+                return ResourceManager.GetString("QueryTransactionTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select [ID], [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]=&apos;{0}&apos;.
         /// </summary>
         internal static string SelectCustomerByCardNumber {

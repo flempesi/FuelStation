@@ -1,4 +1,4 @@
 ﻿
-UPDATE [dbo].[Customer]
+UPDATE [Customer]
 SET [Name] = '{0}', [Surname]= '{1}', [CardNumber]= '{2}' 
-WHERE ID = '{3}'
+WHERE [ID] = '{3}'

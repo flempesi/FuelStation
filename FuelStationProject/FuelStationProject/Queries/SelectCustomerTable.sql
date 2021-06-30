@@ -1,2 +1,2 @@
 ﻿
-Select * from [Customer]
+SELECT * FROM [Customer]

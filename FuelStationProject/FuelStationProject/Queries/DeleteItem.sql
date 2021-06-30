@@ -1,1 +1,1 @@
-﻿DELETE FROM [Item] WHERE ID='{0}'
+﻿DELETE FROM [Item] WHERE [ID]='{0}'

@@ -1,1 +1,1 @@
-﻿DELETE FROM TransactionLine WHERE ID='{0}'
+﻿DELETE FROM [TransactionLine] WHERE [ID]='{0}'

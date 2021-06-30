@@ -1,1 +1,1 @@
-﻿DELETE FROM [Customer] WHERE ID='{0}'
+﻿DELETE FROM [Customer] WHERE [ID]='{0}'
