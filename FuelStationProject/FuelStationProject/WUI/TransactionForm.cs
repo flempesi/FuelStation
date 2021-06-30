@@ -105,7 +105,7 @@ namespace FuelStationProject.WUI {
             _ViewData = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
             int response = adapter.Fill(_ViewData);
-
+            ctrlQuantity.EditValue = 0m;
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             gridTransactionLines.DataSource = _ViewData.Tables[0];
 
@@ -156,6 +156,7 @@ namespace FuelStationProject.WUI {
                 decimal valueTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Value"));
                 decimal quantity = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Quantity"));
                 decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
+                string itemType = Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType"));
                 SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                 int rowsAffected = command.ExecuteNonQuery();
@@ -163,6 +164,10 @@ namespace FuelStationProject.WUI {
                 TotalPrice -= valueTransactionLine;
                 ctrlTotalPrice.EditValue = TotalPrice;
                 TotalCost -= costTransactionLine;
+                if (itemType == "Fuel") {
+                    _TransactionHasFuel = false;
+                }
+                    
             }
         }
 

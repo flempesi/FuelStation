@@ -35,7 +35,9 @@ namespace FuelStationProject.WUI
         private void SearchLedger()
         {
             DateTime dateFrom = Convert.ToDateTime(dateEdit1.EditValue);
-            DateTime dateTo = Convert.ToDateTime(dateEdit2.EditValue);
+            DateTime dateToOld = Convert.ToDateTime(dateEdit2.EditValue);
+            
+            DateTime dateTo = new DateTime(dateToOld.Year, dateToOld.Month, dateToOld.Day,23,59,59);
 
             if ((dateTo - dateFrom).TotalDays < 0)
             {
