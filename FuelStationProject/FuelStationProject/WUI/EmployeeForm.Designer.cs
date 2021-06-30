@@ -54,10 +54,10 @@ namespace FuelStationProject.WUI {
             this.ctlrCancel.Appearance.Options.UseBackColor = true;
             this.ctlrCancel.Appearance.Options.UseFont = true;
             this.ctlrCancel.Appearance.Options.UseForeColor = true;
-            this.ctlrCancel.Location = new System.Drawing.Point(593, 444);
+            this.ctlrCancel.Location = new System.Drawing.Point(699, 448);
             this.ctlrCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctlrCancel.Name = "ctlrCancel";
-            this.ctlrCancel.Size = new System.Drawing.Size(93, 32);
+            this.ctlrCancel.Size = new System.Drawing.Size(108, 39);
             this.ctlrCancel.TabIndex = 46;
             this.ctlrCancel.Text = "Cancel";
             this.ctlrCancel.Click += new System.EventHandler(this.ctlrCancel_Click);
@@ -70,10 +70,10 @@ namespace FuelStationProject.WUI {
             this.btnOK.Appearance.Options.UseBackColor = true;
             this.btnOK.Appearance.Options.UseFont = true;
             this.btnOK.Appearance.Options.UseForeColor = true;
-            this.btnOK.Location = new System.Drawing.Point(471, 444);
+            this.btnOK.Location = new System.Drawing.Point(556, 448);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(93, 32);
+            this.btnOK.Size = new System.Drawing.Size(108, 39);
             this.btnOK.TabIndex = 45;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -85,24 +85,24 @@ namespace FuelStationProject.WUI {
             0,
             0,
             0});
-            this.ctrlSalary.Location = new System.Drawing.Point(212, 319);
+            this.ctrlSalary.Location = new System.Drawing.Point(245, 344);
             this.ctrlSalary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlSalary.Name = "ctrlSalary";
             this.ctrlSalary.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlSalary.Properties.Appearance.Options.UseFont = true;
             this.ctrlSalary.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ctrlSalary.Size = new System.Drawing.Size(225, 22);
+            this.ctrlSalary.Size = new System.Drawing.Size(262, 28);
             this.ctrlSalary.TabIndex = 44;
             // 
             // lblSalary
             // 
             this.lblSalary.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblSalary.Appearance.Options.UseFont = true;
-            this.lblSalary.Location = new System.Drawing.Point(54, 322);
+            this.lblSalary.Location = new System.Drawing.Point(61, 347);
             this.lblSalary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(49, 16);
+            this.lblSalary.Size = new System.Drawing.Size(61, 21);
             this.lblSalary.TabIndex = 43;
             this.lblSalary.Text = "Salary : ";
             // 
@@ -110,10 +110,10 @@ namespace FuelStationProject.WUI {
             // 
             this.lblDateTo.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblDateTo.Appearance.Options.UseFont = true;
-            this.lblDateTo.Location = new System.Drawing.Point(54, 271);
+            this.lblDateTo.Location = new System.Drawing.Point(61, 285);
             this.lblDateTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblDateTo.Name = "lblDateTo";
-            this.lblDateTo.Size = new System.Drawing.Size(60, 16);
+            this.lblDateTo.Size = new System.Drawing.Size(80, 21);
             this.lblDateTo.TabIndex = 42;
             this.lblDateTo.Text = "Date End: ";
             // 
@@ -121,10 +121,10 @@ namespace FuelStationProject.WUI {
             // 
             this.lblDatefrom.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblDatefrom.Appearance.Options.UseFont = true;
-            this.lblDatefrom.Location = new System.Drawing.Point(54, 222);
+            this.lblDatefrom.Location = new System.Drawing.Point(61, 224);
             this.lblDatefrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblDatefrom.Name = "lblDatefrom";
-            this.lblDatefrom.Size = new System.Drawing.Size(67, 16);
+            this.lblDatefrom.Size = new System.Drawing.Size(88, 21);
             this.lblDatefrom.TabIndex = 41;
             this.lblDatefrom.Text = "Date Start :";
             // 
@@ -132,10 +132,10 @@ namespace FuelStationProject.WUI {
             // 
             this.Title.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.Title.Appearance.Options.UseFont = true;
-            this.Title.Location = new System.Drawing.Point(54, 62);
+            this.Title.Location = new System.Drawing.Point(61, 27);
             this.Title.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(114, 19);
+            this.Title.Size = new System.Drawing.Size(140, 24);
             this.Title.TabIndex = 38;
             this.Title.Text = "Add Employee :";
             // 
@@ -143,10 +143,10 @@ namespace FuelStationProject.WUI {
             // 
             this.lblSurname.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblSurname.Appearance.Options.UseFont = true;
-            this.lblSurname.Location = new System.Drawing.Point(54, 169);
+            this.lblSurname.Location = new System.Drawing.Point(61, 159);
             this.lblSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(65, 16);
+            this.lblSurname.Size = new System.Drawing.Size(81, 21);
             this.lblSurname.TabIndex = 37;
             this.lblSurname.Text = "Surname : ";
             // 
@@ -154,37 +154,37 @@ namespace FuelStationProject.WUI {
             // 
             this.lblName.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblName.Appearance.Options.UseFont = true;
-            this.lblName.Location = new System.Drawing.Point(54, 121);
+            this.lblName.Location = new System.Drawing.Point(61, 100);
             this.lblName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(46, 16);
+            this.lblName.Size = new System.Drawing.Size(59, 21);
             this.lblName.TabIndex = 36;
             this.lblName.Text = "Name : ";
             // 
             // ctrlSurname
             // 
-            this.ctrlSurname.Location = new System.Drawing.Point(212, 167);
+            this.ctrlSurname.Location = new System.Drawing.Point(245, 157);
             this.ctrlSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlSurname.Name = "ctrlSurname";
             this.ctrlSurname.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlSurname.Properties.Appearance.Options.UseFont = true;
-            this.ctrlSurname.Size = new System.Drawing.Size(225, 22);
+            this.ctrlSurname.Size = new System.Drawing.Size(262, 28);
             this.ctrlSurname.TabIndex = 35;
             // 
             // ctrlName
             // 
-            this.ctrlName.Location = new System.Drawing.Point(212, 119);
+            this.ctrlName.Location = new System.Drawing.Point(245, 97);
             this.ctrlName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlName.Name = "ctrlName";
             this.ctrlName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ctrlName.Properties.Appearance.Options.UseFont = true;
-            this.ctrlName.Size = new System.Drawing.Size(225, 22);
+            this.ctrlName.Size = new System.Drawing.Size(262, 28);
             this.ctrlName.TabIndex = 34;
             // 
             // ctrlDateStart
             // 
             this.ctrlDateStart.EditValue = null;
-            this.ctrlDateStart.Location = new System.Drawing.Point(212, 216);
+            this.ctrlDateStart.Location = new System.Drawing.Point(245, 217);
             this.ctrlDateStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlDateStart.Name = "ctrlDateStart";
             this.ctrlDateStart.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -201,13 +201,13 @@ namespace FuelStationProject.WUI {
             this.ctrlDateStart.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
             this.ctrlDateStart.Properties.MaskSettings.Set("mask", "d");
             this.ctrlDateStart.Properties.UseMaskAsDisplayFormat = true;
-            this.ctrlDateStart.Size = new System.Drawing.Size(225, 22);
+            this.ctrlDateStart.Size = new System.Drawing.Size(262, 28);
             this.ctrlDateStart.TabIndex = 39;
             // 
             // ctrlDateEnd
             // 
             this.ctrlDateEnd.EditValue = null;
-            this.ctrlDateEnd.Location = new System.Drawing.Point(212, 268);
+            this.ctrlDateEnd.Location = new System.Drawing.Point(245, 281);
             this.ctrlDateEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlDateEnd.Name = "ctrlDateEnd";
             this.ctrlDateEnd.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -224,14 +224,14 @@ namespace FuelStationProject.WUI {
             this.ctrlDateEnd.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
             this.ctrlDateEnd.Properties.MaskSettings.Set("mask", "d");
             this.ctrlDateEnd.Properties.UseMaskAsDisplayFormat = true;
-            this.ctrlDateEnd.Size = new System.Drawing.Size(225, 22);
+            this.ctrlDateEnd.Size = new System.Drawing.Size(262, 28);
             this.ctrlDateEnd.TabIndex = 47;
             // 
             // EmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 539);
+            this.ClientSize = new System.Drawing.Size(864, 526);
             this.Controls.Add(this.ctrlDateEnd);
             this.Controls.Add(this.ctlrCancel);
             this.Controls.Add(this.btnOK);
@@ -247,7 +247,7 @@ namespace FuelStationProject.WUI {
             this.Controls.Add(this.ctrlDateStart);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EmployeeForm";
-            this.Text = "EmployeeForm";
+            this.Text = "Add Employee";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSalary.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname.Properties)).EndInit();
