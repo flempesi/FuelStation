@@ -151,7 +151,6 @@ namespace FuelStationProject.WUI {
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            //this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -179,10 +178,9 @@ namespace FuelStationProject.WUI {
             // 
             this.btnSaveAfterEditingCustomerFromGrid.AutoHeight = false;
             this.btnSaveAfterEditingCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK)});
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.SvgImage")));
             this.btnSaveAfterEditingCustomerFromGrid.Name = "btnSaveAfterEditingCustomerFromGrid";
-            this.btnSaveAfterEditingCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveCustomerFromGrid_Click);
             // 
             // gridColumn5
@@ -199,10 +197,9 @@ namespace FuelStationProject.WUI {
             // 
             this.btnDeleteCustomerFromGrid.AutoHeight = false;
             this.btnDeleteCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.btnDeleteCustomerFromGrid.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDeleteCustomerFromGrid.ContextImageOptions.SvgImage")));
             this.btnDeleteCustomerFromGrid.Name = "btnDeleteCustomerFromGrid";
-            this.btnDeleteCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDeleteCustomerFromGrid.Click += new System.EventHandler(this.btnDeleteCustomerFromGrid_Click);
             // 
             // gridColumn1

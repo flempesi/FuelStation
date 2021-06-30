@@ -39,6 +39,7 @@ namespace FuelStationProject.WUI {
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,7 +54,6 @@ namespace FuelStationProject.WUI {
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repDeleteLine = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionsView)).BeginInit();
@@ -195,6 +195,16 @@ namespace FuelStationProject.WUI {
             this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 87;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Surname";
+            this.gridColumn8.FieldName = "Surname";
+            this.gridColumn8.MinWidth = 25;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 2;
+            this.gridColumn8.Width = 94;
+            // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "DiscountValue";
@@ -229,9 +239,10 @@ namespace FuelStationProject.WUI {
             // 
             this.btnDeleteTransaction.AutoHeight = false;
             this.btnDeleteTransaction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.btnDeleteTransaction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDeleteTransaction.ContextImageOptions.SvgImage")));
             this.btnDeleteTransaction.Name = "btnDeleteTransaction";
-            this.btnDeleteTransaction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnDeleteTransaction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.btnDeleteTransaction.Click += new System.EventHandler(this.btnDeleteTransaction_Click);
             // 
             // gridTransactionLines
@@ -334,16 +345,6 @@ namespace FuelStationProject.WUI {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repDeleteLine.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repDeleteLine.ContextImageOptions.SvgImage")));
             this.repDeleteLine.Name = "repDeleteLine";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Surname";
-            this.gridColumn8.FieldName = "Surname";
-            this.gridColumn8.MinWidth = 25;
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 2;
-            this.gridColumn8.Width = 94;
             // 
             // TransactionViewForm
             // 
