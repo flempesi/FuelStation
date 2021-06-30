@@ -96,7 +96,7 @@ namespace FuelStationProject.WUI {
             if (result == DialogResult.OK) {
                 string transactionId = Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"));
                 try {
-                   
+
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, transactionId), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
                 }
@@ -114,6 +114,24 @@ namespace FuelStationProject.WUI {
                 RefreshTransactionsGrid();
 
             }
+        }
+
+        private void repEditTransaction_Click(object sender, EventArgs e) {
+            TransactionForm transactionForm = new TransactionForm();
+            //transactionViewForm.MdiParent = this;
+            transactionForm.DBController = DBController;
+            transactionForm.TransactionID = Guid.Parse(Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("ID")));
+            transactionForm.Show();
+            DataSet CustomerData = new DataSet();
+
+            string cardNumber = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("CardNumber"));
+            //try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
+                int response = adapter.Fill(CustomerData);
+            //}
+            //catch (Exception e) {
+            //    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //}
         }
     }
 }
