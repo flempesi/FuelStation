@@ -36,12 +36,35 @@ namespace FuelStationProject.WUI
         private void MDIMainForm_Load(object sender, EventArgs e)
         {
 
+            ConnectionForm connectionForm = new ConnectionForm();
+
+            connectionForm._DBConnection2 = this._DBConnection;
+            DialogResult result = connectionForm.ShowDialog();
+
+
+            switch (result)
+            {
+
+                case DialogResult.OK:
+
+                    this._DBConnection = connectionForm._DBConnection2;
+
+                    break;
+                case DialogResult.Cancel:
+
+                    Application.Exit();
+
+                    break;
+
+                default:
+                    break;
+            }
+
+
+
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
 
-            _DBConnection = new DatabaseConnectionController();
-
-            _DBConnection.Connection();
 
         }
 
@@ -106,13 +129,15 @@ namespace FuelStationProject.WUI
             itemViewForm.Show();
         }
 
-        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
 
             CustomerCheckForm customerCheckForm = new CustomerCheckForm();
             customerCheckForm.DBController = _DBConnection;
 
             DialogResult result = customerCheckForm.ShowDialog();
-            if (result == DialogResult.OK) {
+            if (result == DialogResult.OK)
+            {
 
                 _CustomerData = customerCheckForm.CustomerData;
                 TransactionForm transactionForm = new TransactionForm();
@@ -121,9 +146,9 @@ namespace FuelStationProject.WUI
                 transactionForm.DBController = _DBConnection;
                 transactionForm.Show();
             }
-         
+
         }
-       
+
         private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TransactionViewForm transactionViewForm = new TransactionViewForm();
