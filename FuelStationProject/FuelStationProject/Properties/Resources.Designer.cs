@@ -88,11 +88,30 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM Transaction WHERE ID=&apos;{0}&apos;.
+        /// </summary>
+        internal static string DeleteTransaction {
+            get {
+                return ResourceManager.GetString("DeleteTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DELETE FROM TransactionLine WHERE ID=&apos;{0}&apos;.
         /// </summary>
         internal static string DeleteTransactionLine {
             get {
                 return ResourceManager.GetString("DeleteTransactionLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM TransactionLine WHERE TransactionID=&apos;{0}&apos;
+        ///.
+        /// </summary>
+        internal static string DeleteTransactionLineByTransactionID {
+            get {
+                return ResourceManager.GetString("DeleteTransactionLineByTransactionID", resourceCulture);
             }
         }
         
@@ -170,7 +189,7 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to Select [ID], [Name], [Surname], [CardNumber] from [Customer] where [CardNumber]=&apos;{0}&apos;.
         /// </summary>
         internal static string SelectCustomerByCardNumber {
             get {
@@ -229,9 +248,8 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT T.[Date], T.[DscountValue],T.[TotalValue], C.[CardNumber],C.[Surname] ,T.[ID]  FROM [Transaction] T
+        ///   Looks up a localized string similar to SELECT T.[Date], T.[DiscountValue],T.[TotalValue], C.[CardNumber],C.[Surname] ,T.[ID]  FROM [Transaction] T
         ///left join  [Customer] C on  T.[CustomerID] = C.[ID] 
-        ///WHERE T.TransactionID=&apos;{0}&apos;
         ///.
         /// </summary>
         internal static string SelectTransactionView {
