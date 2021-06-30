@@ -40,7 +40,7 @@ namespace FuelStationProject.WUI {
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) &&
                   decimal.TryParse(Convert.ToString(ctrlSalary.EditValue), out salary) && salary > 0
                   && DateTime.TryParse(Convert.ToString(ctrlDateStart.EditValue), out dateStart)) {
-                if (dateStart <= dateEnd || dateEnd== (DateTime?)null) {
+                if (dateStart <= dateEnd || dateEnd == (DateTime?)null) {
                     SaveToDB(name, surname, dateStart, dateEnd, salary);
 
                     Close();
@@ -58,8 +58,13 @@ namespace FuelStationProject.WUI {
         }
 
         private void SaveToDB(string name, string surname, DateTime dateStart, DateTime? dateEnd, decimal salary) {
-            SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
-            int rowsAffected = command.ExecuteNonQuery();
+            try {
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
+                int rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e) {

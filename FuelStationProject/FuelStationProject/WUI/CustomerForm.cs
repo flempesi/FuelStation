@@ -55,9 +55,15 @@ namespace FuelStationProject.WUI {
         }
 
         private void SaveToDB(string name, string surname, string cardNumber) {
-            SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
+            try {
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
 
-            int rowsAffected = command.ExecuteNonQuery();
+                int rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

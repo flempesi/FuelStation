@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI {
     public partial class EmployeeViewForm : DevExpress.XtraEditors.XtraForm {
-         DataSet _MasterData { get; set; }
+        DataSet _MasterData { get; set; }
         DataSet _MasterDataOld { get; set; }
         public DatabaseConnectionController DBController { get; set; }
         public EmployeeViewForm() {
@@ -55,23 +55,31 @@ namespace FuelStationProject.WUI {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
             if (result == DialogResult.OK) {
+                try {
+                    SqlCommand command = new SqlCommand(string.Format(Resources.DeleteEmployee, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
-                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteEmployee, Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"))), DBController._SqlConnection);
-
-                int rowsAffected = command.ExecuteNonQuery();
-                RefreshEmployeeGrid();
-
+                    int rowsAffected = command.ExecuteNonQuery();
+                    RefreshEmployeeGrid();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
         private void RefreshEmployeeGrid() {
             _MasterData = new DataSet();
             _MasterDataOld = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectEmployeeTable, DBController._SqlConnection);
-            int response = adapter.Fill(_MasterData);
-            response = adapter.Fill(_MasterDataOld);
-            gridView1.OptionsView.ShowGroupPanel = false;
-            gridEmployee.DataSource = _MasterData.Tables[0];
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectEmployeeTable, DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+                response = adapter.Fill(_MasterDataOld);
+                gridView1.OptionsView.ShowGroupPanel = false;
+                gridEmployee.DataSource = _MasterData.Tables[0];
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
         public void SaveEmployee() {
@@ -100,18 +108,28 @@ namespace FuelStationProject.WUI {
 
         private void SaveToDB(string id, string name, string surname, DateTime dateStart, DateTime? dateEnd, decimal salary) {
             if (!string.IsNullOrWhiteSpace(id)) {
-                
+
                 UpdateController updateController = new UpdateController();
                 string sql = updateController.UpdateEntry(id, "Employee", _MasterData, _MasterDataOld);
-                 
+
                 if (sql != String.Empty) {
+                    try { 
                     SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
                     int rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception e) {
+                        MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
                 }
             }
             else {
+                try { 
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
                 int rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 

@@ -63,8 +63,13 @@ namespace FuelStationProject.WUI {
         }
 
         private void SaveToDB(string code, string description, string itemType, decimal price, decimal cost) {
-            SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
-            int rowsAffected = command.ExecuteNonQuery();
+            try {
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
+                int rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
     }

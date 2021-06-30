@@ -46,9 +46,7 @@ namespace FuelStationProject.WUI
         }
 
 
-        //private void AppendLog(string name, object message) {
-        // txtLog.AppendText(string.Format("{0}={1}{2}", name, message, Environment.NewLine));
-        //}
+
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
 
@@ -58,7 +56,6 @@ namespace FuelStationProject.WUI
         private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EmployeeViewForm employeeViewform = new EmployeeViewForm();
-            //employeeViewform.ViewData = _MasterData;
             employeeViewform.MdiParent = this;
             employeeViewform.DBController = _DBConnection;
             employeeViewform.Show();
@@ -103,7 +100,7 @@ namespace FuelStationProject.WUI
         private void btnViewItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ItemViewForm itemViewForm = new ItemViewForm();
-            //itemViewForm.ViewData = _MasterData;
+
             itemViewForm.MdiParent = this;
             itemViewForm.DBController = _DBConnection;
             itemViewForm.Show();
@@ -130,7 +127,6 @@ namespace FuelStationProject.WUI
         private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TransactionViewForm transactionViewForm = new TransactionViewForm();
-            //transactionForm.ViewData = _MasterData;
             transactionViewForm.MdiParent = this;
             transactionViewForm.DBController = _DBConnection;
             transactionViewForm.Show();
@@ -139,7 +135,6 @@ namespace FuelStationProject.WUI
         private void btnViewLedger_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LedgerForm ledgerForm = new LedgerForm();
-            //transactionForm.ViewData = _MasterData;
             ledgerForm.MdiParent = this;
             ledgerForm.DBController = _DBConnection;
             ledgerForm.Show();

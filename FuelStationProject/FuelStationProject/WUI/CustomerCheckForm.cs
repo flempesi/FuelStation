@@ -37,18 +37,23 @@ namespace FuelStationProject.WUI {
             CustomerData = new DataSet();
 
             string cardNumber = Convert.ToString(ctrlCardNumber.EditValue);
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
+                int response = adapter.Fill(CustomerData);
+                if (response == 1) {
 
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
-            int response = adapter.Fill(CustomerData);
-            if (response == 1) {
+                    DialogResult = DialogResult.OK;
 
-                DialogResult = DialogResult.OK;
+                }
+                else {
 
+                    MessageBox.Show("Customer Not Found!Please try again!");
+                }
             }
-            else {
-
-                MessageBox.Show("Customer Not Found!Please try again!");
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(),"Error", MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1);
             }
+           
         }
     }
 }
