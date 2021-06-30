@@ -27,12 +27,12 @@ namespace FuelStationProject.WUI {
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ctrlTransactions = new DevExpress.XtraGrid.GridControl();
             this.ctrlTransactionsView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -41,6 +41,8 @@ namespace FuelStationProject.WUI {
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnDeleteTransaction = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ctrlTransactionLines = new DevExpress.XtraGrid.GridControl();
             this.ctrlTransactionLinesView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,6 +54,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionLinesView)).BeginInit();
             this.SuspendLayout();
@@ -79,12 +82,6 @@ namespace FuelStationProject.WUI {
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.bar1.Text = "Tools";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Delete";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
@@ -129,6 +126,12 @@ namespace FuelStationProject.WUI {
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 640);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Delete";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // ctrlTransactions
             // 
             this.ctrlTransactions.Dock = System.Windows.Forms.DockStyle.Top;
@@ -138,6 +141,8 @@ namespace FuelStationProject.WUI {
             this.ctrlTransactions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ctrlTransactions.MenuManager = this.barManager1;
             this.ctrlTransactions.Name = "ctrlTransactions";
+            this.ctrlTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.btnDeleteTransaction});
             this.ctrlTransactions.Size = new System.Drawing.Size(880, 288);
             this.ctrlTransactions.TabIndex = 9;
             this.ctrlTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -151,7 +156,8 @@ namespace FuelStationProject.WUI {
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn13});
             this.ctrlTransactionsView.DetailHeight = 431;
             this.ctrlTransactionsView.GridControl = this.ctrlTransactions;
             this.ctrlTransactionsView.Name = "ctrlTransactionsView";
@@ -216,6 +222,25 @@ namespace FuelStationProject.WUI {
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 87;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Delete";
+            this.gridColumn13.ColumnEdit = this.btnDeleteTransaction;
+            this.gridColumn13.MinWidth = 25;
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 6;
+            this.gridColumn13.Width = 94;
+            // 
+            // btnDeleteTransaction
+            // 
+            this.btnDeleteTransaction.AutoHeight = false;
+            this.btnDeleteTransaction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.btnDeleteTransaction.Name = "btnDeleteTransaction";
+            this.btnDeleteTransaction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnDeleteTransaction.Click += new System.EventHandler(this.btnDeleteTransaction_Click);
             // 
             // ctrlTransactionLines
             // 
@@ -319,6 +344,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionLinesView)).EndInit();
             this.ResumeLayout(false);
@@ -352,5 +378,7 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteTransaction;
     }
 }
