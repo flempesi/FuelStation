@@ -151,7 +151,7 @@ namespace FuelStationProject.WUI {
             catch (Exception e) {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-            ctrlQuantity.EditValue = 0m;
+            ctrlQuantity.EditValue = 1m;
             gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             gridTransactionLines.DataSource = _ViewData.Tables[0];
 
