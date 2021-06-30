@@ -85,7 +85,7 @@ namespace FuelStationProject.WUI {
             this.btnEdit.Caption = "Edit";
             this.btnEdit.Id = 0;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
+            //this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
             // 
             // btnDelete
             // 
