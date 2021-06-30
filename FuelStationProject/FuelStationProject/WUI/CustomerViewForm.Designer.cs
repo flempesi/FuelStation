@@ -28,13 +28,13 @@ namespace FuelStationProject.WUI {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerViewForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,19 +80,6 @@ namespace FuelStationProject.WUI {
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Caption = "Edit";
-            this.btnEdit.Id = 0;
-            this.btnEdit.Name = "btnEdit";
-            //this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Caption = "Delete";
-            this.btnDelete.Id = 1;
-            this.btnDelete.Name = "btnDelete";
-            // 
             // btnRefresh
             // 
             this.btnRefresh.Caption = "Refresh";
@@ -136,6 +123,18 @@ namespace FuelStationProject.WUI {
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 425);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Caption = "Edit";
+            this.btnEdit.Id = 0;
+            this.btnEdit.Name = "btnEdit";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Caption = "Delete";
+            this.btnDelete.Id = 1;
+            this.btnDelete.Name = "btnDelete";
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -152,7 +151,6 @@ namespace FuelStationProject.WUI {
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -181,7 +179,7 @@ namespace FuelStationProject.WUI {
             this.btnSaveAfterEditingCustomerFromGrid.AutoHeight = false;
             this.btnSaveAfterEditingCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK)});
-            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.Image")));
+            this.btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSaveAfterEditingCustomerFromGrid.ContextImageOptions.SvgImage")));
             this.btnSaveAfterEditingCustomerFromGrid.Name = "btnSaveAfterEditingCustomerFromGrid";
             this.btnSaveAfterEditingCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnSaveAfterEditingCustomerFromGrid.Click += new System.EventHandler(this.btnSaveCustomerFromGrid_Click);
@@ -201,7 +199,7 @@ namespace FuelStationProject.WUI {
             this.btnDeleteCustomerFromGrid.AutoHeight = false;
             this.btnDeleteCustomerFromGrid.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
-            this.btnDeleteCustomerFromGrid.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCustomerFromGrid.ContextImageOptions.Image")));
+            this.btnDeleteCustomerFromGrid.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDeleteCustomerFromGrid.ContextImageOptions.SvgImage")));
             this.btnDeleteCustomerFromGrid.Name = "btnDeleteCustomerFromGrid";
             this.btnDeleteCustomerFromGrid.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDeleteCustomerFromGrid.Click += new System.EventHandler(this.btnDeleteCustomerFromGrid_Click);

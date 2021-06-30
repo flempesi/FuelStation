@@ -67,8 +67,8 @@ namespace FuelStationProject.Controllers {
 
         public void OpenViewForm() {
 
-            cf = new CustomerViewForm();
-            cf.newcc = this;
+            //cf = new CustomerViewForm();
+            //cf.newcc = this;
             //cf.newdcc=this.
           //  cf.Show();
 
