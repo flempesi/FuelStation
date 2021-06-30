@@ -58,7 +58,7 @@ namespace FuelStationProject.WUI
         private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EmployeeViewForm employeeViewform = new EmployeeViewForm();
-            employeeViewform.ViewData = _MasterData;
+            //employeeViewform.ViewData = _MasterData;
             employeeViewform.MdiParent = this;
             employeeViewform.DBController = _DBConnection;
             employeeViewform.Show();
