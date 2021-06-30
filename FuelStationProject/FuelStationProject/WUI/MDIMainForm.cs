@@ -103,7 +103,7 @@ namespace FuelStationProject.WUI
         private void btnViewItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ItemViewForm itemViewForm = new ItemViewForm();
-            itemViewForm.ViewData = _MasterData;
+            //itemViewForm.ViewData = _MasterData;
             itemViewForm.MdiParent = this;
             itemViewForm.DBController = _DBConnection;
             itemViewForm.Show();

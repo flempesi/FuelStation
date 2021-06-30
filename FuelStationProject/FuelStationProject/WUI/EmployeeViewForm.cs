@@ -100,11 +100,10 @@ namespace FuelStationProject.WUI {
 
         private void SaveToDB(string id, string name, string surname, DateTime dateStart, DateTime? dateEnd, decimal salary) {
             if (!string.IsNullOrWhiteSpace(id)) {
-                //SqlCommand command = new SqlCommand(string.Format(Resources.UpdateEmployee, name, surname, dateStart, dateEnd, salary, id), DBController._SqlConnection);
-                //int rowsAffected = command.ExecuteNonQuery();
+                
                 UpdateController updateController = new UpdateController();
                 string sql = updateController.UpdateEntry(id, "Employee", _MasterData, _MasterDataOld);
-                //SqlCommand command = new SqlCommand(string.Format(Resources.UpdateCustomer, name, surname, cardNumber, id), DBController._SqlConnection);
+                 
                 if (sql != String.Empty) {
                     SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
                     int rowsAffected = command.ExecuteNonQuery();

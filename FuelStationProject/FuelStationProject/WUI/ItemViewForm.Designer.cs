@@ -216,6 +216,7 @@ namespace FuelStationProject.WUI {
             this.cmbItemType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbItemType.Name = "cmbItemType";
+            this.cmbItemType.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // gridColumn4
             // 
