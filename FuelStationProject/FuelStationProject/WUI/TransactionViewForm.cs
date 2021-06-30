@@ -28,106 +28,82 @@ namespace FuelStationProject.WUI
         {
             RefreshTransactionsGrid();
         }
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            RefreshTransactionsGrid();
+
+        }
+        private void btnDeleteTransaction_Click(object sender, EventArgs e) {
+            DeleteTransactionWithTransactionLines();
+
+        }
+        private void ctrlTransactionsView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+            ShowTransactionLines();
+
+        }
 
         private void RefreshTransactionsGrid()
         {
-            ctrlTransactionLines.Refresh();
+            gridTransactionLines.Refresh();
             ctrlTransactionsView.ClearSelection();
-
 
             DataSet _MasterData = new DataSet();
             _MasterData.Clear();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionTable, DBController._SqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectTransactionView, DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
 
             ctrlTransactions.DataSource = _MasterData.Tables[0];
             ctrlTransactions.Refresh();
 
-            
-
         }
 
-        private void RefreshTransactionLinesGrid()
+        private void RefreshTransactionLinesGrid(string TransactionID)
         {
 
-
+            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             DataSet _MasterData = new DataSet();
             _MasterData.Clear();
 
-            SqlDataAdapter adapter = new SqlDataAdapter("select * from [TransactionLine]", DBController._SqlConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
             int response = adapter.Fill(_MasterData);
 
-
-            ctrlTransactionLines.DataSource = _MasterData.Tables[0];
-            ctrlTransactionLines.Refresh();
+            gridTransactionLines.DataSource = _MasterData.Tables[0];
+            gridTransactionLines.Refresh();
         }
+       
+        private void ShowTransactionLines() {
+            if (ctrlTransactionsView.RowCount > 0) {
 
-
-
-        private void ctrlTransactionsView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-
-            if (ctrlTransactionsView.RowCount > 0)
-            {
-
-
-
-                string cellValue = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("ID"));
+                string transactionId = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("ID"));
 
                 DataSet _Data = new DataSet();
 
-                if (!string.IsNullOrEmpty(cellValue))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(string.Format("SELECT * FROM [TransactionLine]  WHERE [TransactionID]='{0}'", cellValue), DBController._SqlConnection);
-                    int response = adapter.Fill(_Data);
+                if (!string.IsNullOrEmpty(transactionId)) {
+                    RefreshTransactionLinesGrid(transactionId);
 
                 }
 
-
-                ctrlTransactionLines.DataSource = _Data.Tables[0];
-                ctrlTransactionLines.Refresh();
-
-
-                //RefreshTransactionsGrid();
             }
-            // RefreshTransactionsGrid();
         }
 
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            RefreshTransactionsGrid();
-            //RefreshTransactionLinesGrid();
-
-        }
-
-        private void btnDeleteTransaction_Click(object sender, EventArgs e)
-        {
-
-            ctrlTransactionLines.Refresh();
+        private void DeleteTransactionWithTransactionLines() {
+            gridTransactionLines.Refresh();
 
 
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
-            if (result == DialogResult.OK)
-            {
+            if (result == DialogResult.OK) {
 
-
-                SqlCommand command = new SqlCommand(string.Format("DELETE FROM [dbo].[TransactionLine] WHERE [TransactionID]='{0}'", Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+                string transactionId = Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"));
+                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, transactionId), DBController._SqlConnection);
                 int rowsAffected = command.ExecuteNonQuery();
 
-
-                command = new SqlCommand(string.Format("DELETE FROM [dbo].[Transaction] WHERE [ID]='{0}'", Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"))), DBController._SqlConnection);
+                command = new SqlCommand(string.Format(Resources.DeleteTransaction, transactionId), DBController._SqlConnection);
                 rowsAffected = command.ExecuteNonQuery();
 
-
-                RefreshTransactionLinesGrid();
+                RefreshTransactionLinesGrid(transactionId);
                 RefreshTransactionsGrid();
-
-            }
-            else
-            {
 
             }
         }
