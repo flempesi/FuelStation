@@ -111,10 +111,18 @@ namespace FuelStationProject.WUI {
                 if (dateEnd < dateStart) {
                     dateEnd = dateTo;
                 }
+                if (dateStart > dateTo) {
+                    continue;
+                }
 
-
-                if (dateFrom <= dateStart && dateEnd <= dateTo) {
-                    totalSalaries += wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
+                else if (dateFrom <= dateStart && dateEnd <= dateTo) {
+                    if (Convert.ToDecimal((dateEnd - dateStart).TotalDays)< 1m) {
+                        totalSalaries += wage * 1;
+                    }
+                    else {
+                        totalSalaries += wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
+                    }
+                    
                 }
 
                 else if (dateStart < dateFrom && dateEnd > dateTo) {

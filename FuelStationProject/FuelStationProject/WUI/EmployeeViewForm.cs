@@ -97,7 +97,17 @@ namespace FuelStationProject.WUI {
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) &&
                   decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Salary")).Replace(',', '.'), out salary) && salary > 0
                   && DateTime.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateStart")), out dateStart)) {
-                SaveToDB(id, name, surname, dateStart, dateEnd, salary);
+                //SaveToDB(id, name, surname, dateStart, dateEnd, salary);
+
+                if (dateStart <= dateEnd || dateEnd == (DateTime?)null) {
+                    SaveToDB(id, name, surname, dateStart, dateEnd, salary);
+
+                    //Close();
+                }
+                else {
+
+                    MessageBox.Show("DateStart must be earlier than DateEnd");
+                }
 
             }
             else {
