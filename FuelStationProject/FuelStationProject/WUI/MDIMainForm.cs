@@ -69,7 +69,7 @@ namespace FuelStationProject.WUI
                     break;
                 case DialogResult.Cancel:
 
-                    Application.Exit();
+                    CloseDBConnectionAndExitApplication();
 
                     break;
 

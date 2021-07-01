@@ -50,6 +50,10 @@ namespace FuelStationProject.WUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+
+                DialogClosing();
+
+
             }
         }
 
@@ -73,6 +77,12 @@ namespace FuelStationProject.WUI
         {
             //DialogClosing();
 
+        }
+
+        private void ctrlConnectionString_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                TryConnectingToDB();
+            }
         }
     }
 }

@@ -43,6 +43,7 @@ namespace FuelStationProject.WUI
             this.ctrlConnectionString.Name = "ctrlConnectionString";
             this.ctrlConnectionString.Size = new System.Drawing.Size(751, 22);
             this.ctrlConnectionString.TabIndex = 0;
+            this.ctrlConnectionString.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctrlConnectionString_KeyDown);
             // 
             // lblConnectionString
             // 
@@ -73,7 +74,7 @@ namespace FuelStationProject.WUI
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(712, 200);
+            this.btnCancel.Location = new System.Drawing.Point(702, 200);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 44);
             this.btnCancel.TabIndex = 3;
