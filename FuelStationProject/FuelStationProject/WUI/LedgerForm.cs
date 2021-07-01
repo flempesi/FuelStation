@@ -32,6 +32,8 @@ namespace FuelStationProject.WUI {
             DateTime dateFrom = Convert.ToDateTime(dateEdit1.EditValue);
             DateTime dateToOld = Convert.ToDateTime(dateEdit2.EditValue);
 
+
+            //modify DateTo so that its time is set to 23:59:59 in order to be calculated as a whole day
             DateTime dateTo = new DateTime(dateToOld.Year, dateToOld.Month, dateToOld.Day, 23, 59, 59);
 
             if ((dateTo - dateFrom).TotalDays < 0) {
@@ -61,25 +63,26 @@ namespace FuelStationProject.WUI {
 
                 //DateTime DBnullDate = new DateTime(1900,1,1,0,0,0,0);
 
+                //this is valid only if employee DateEnd is set to null, which means that the database interprets it as (1900-01-01 00:00:00:000)
                 if (dateEnd < dateStart) {
                     dateEnd = dateTo;
                 }
 
 
                 if (dateFrom <= dateStart && dateEnd <= dateTo) {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
+                    totalSalaries += wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
                 }
 
                 else if (dateStart < dateFrom && dateEnd > dateTo) {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateTo - dateFrom).TotalDays);
+                    totalSalaries += wage * Convert.ToDecimal((dateTo - dateFrom).TotalDays);
                 }
 
                 else if (dateStart < dateFrom && dateFrom < dateEnd) {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateEnd - dateFrom).TotalDays);
+                    totalSalaries += wage * Convert.ToDecimal((dateEnd - dateFrom).TotalDays);
                 }
 
                 else if (dateStart < dateTo && dateTo < dateEnd) {
-                    totalSalaries = totalSalaries + wage * Convert.ToDecimal((dateTo - dateStart).TotalDays);
+                    totalSalaries += wage * Convert.ToDecimal((dateTo - dateStart).TotalDays);
                 }
 
             }
@@ -95,6 +98,8 @@ namespace FuelStationProject.WUI {
             decimal totalValue;
             decimal totalCost;
 
+
+            //if the database has no transactions stored then is going to return null for TotalValue and TotalCost
             if (!DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalValue"]) || !DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalCost"])) {
                 //not null
 
@@ -145,8 +150,8 @@ namespace FuelStationProject.WUI {
 
         private void LedgerForm_Load(object sender, EventArgs e) {
 
-            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
         }
 
     }

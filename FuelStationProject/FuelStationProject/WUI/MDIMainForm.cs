@@ -42,12 +42,15 @@ namespace FuelStationProject.WUI
             Application.Exit();
         }
 
+        //call OpenConnectionToDB() to establish connection with the database
         private void MDIMainForm_Load(object sender, EventArgs e)
         {
             OpenConnectionToDB();
 
         }
 
+
+        //open ConnectionForm so that the user can insert the connection string
         private void OpenConnectionToDB()
         {
             ConnectionForm connectionForm = new ConnectionForm();
@@ -166,6 +169,7 @@ namespace FuelStationProject.WUI
             itemViewForm.Show();
         }
 
+        //before opening TransactionForm, open CustomerCheckForm so that the user can find a customer by their CardNumber
         private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenTransactionForm();
@@ -190,6 +194,7 @@ namespace FuelStationProject.WUI
             }
         }
 
+        //open TransactionForm sending the Dataset containing info about a specific customer
         private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenTransactionViewForm();

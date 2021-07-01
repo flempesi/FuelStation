@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FuelStationProject.WUI
 {
-    public partial class ConnectionForm : Form
+    public partial class ConnectionForm : DevExpress.XtraEditors.XtraForm
     {
         public DatabaseConnectionController _DBConnection2 { get; set; }
 
@@ -23,10 +23,16 @@ namespace FuelStationProject.WUI
             InitializeComponent();
         }
 
+
+        //open connection through an object of DatabaseConnectionController class
         private void btnOK_Click_1(object sender, EventArgs e)
         {
+            TryConnectingToDB();
 
+        }
 
+        private void TryConnectingToDB()
+        {
             string connString = Convert.ToString(ctrlConnectionString.EditValue);
             _DBConnection2 = new DatabaseConnectionController();
 
@@ -45,17 +51,28 @@ namespace FuelStationProject.WUI
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-
-
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogClosing();
+        }
+
+        private void DialogClosing()
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        
+        private void ConnectionForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //DialogClosing();
+
+        }
     }
 }

@@ -22,8 +22,8 @@ namespace FuelStationProject.WUI {
 
 
         private void CustomerForm_Load(object sender, EventArgs e) {
-            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
         }
 
 
