@@ -64,6 +64,26 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionFormLoad() {
+            OnLoadForm();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e) {
+            AddTransactionLineButtonCode();
+
+        }
+        private void btnOK_Click(object sender, EventArgs e) {
+            SaveToDB();
+        }
+
+
+        private void repDeleteLine_Click(object sender, EventArgs e) {
+            DeleteTransactionLine();
+        }
+        private void btnCancel_Click(object sender, EventArgs e) {
+            Close();
+        }
+
+        private void OnLoadForm() {
             if (TransactionID == Guid.Empty) {//for new transaction
                 TransactionID = Guid.NewGuid();
                 TotalPrice = TotalCost = DiscountValue = new decimal();
@@ -88,21 +108,6 @@ namespace FuelStationProject.WUI {
             ctrlCustomer.EditValue = string.Format("Name: {0} , Surname: {1}", CustomerData.Tables[0].Rows[0]["Name"].ToString(), CustomerData.Tables[0].Rows[0]["Surname"].ToString());
         }
 
-        private void btnAdd_Click(object sender, EventArgs e) {
-            AddTransactionLineButtonCode();
-
-        }
-        private void btnOK_Click(object sender, EventArgs e) {
-            SaveToDB();
-        }
-
-
-        private void repDeleteLine_Click(object sender, EventArgs e) {
-            DeleteTransactionLine();
-        }
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
         private void SaveToDB() {
             string customerID = CustomerData.Tables[0].Rows[0]["ID"].ToString();
             if (TotalPrice > 0) {

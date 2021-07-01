@@ -22,7 +22,11 @@ namespace FuelStationProject.WUI {
         public LedgerForm() {
             InitializeComponent();
         }
+        private void LedgerForm_Load(object sender, EventArgs e) {
 
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+        }
         private void btnSearchLedger_Click(object sender, EventArgs e) {
             SearchLedger();
 
@@ -42,6 +46,49 @@ namespace FuelStationProject.WUI {
             }
 
             DataSet _MasterData = new DataSet();
+            SelectEmployees(_MasterData);
+            decimal totalSalaries = 0m;
+
+            decimal totalRent = Convert.ToDecimal((dateTo - dateFrom).TotalDays) * rentPerDay;
+
+            totalSalaries = CalculateSalariesCost(dateFrom, dateTo, _MasterData, totalSalaries);
+
+            _MasterData.Clear();
+            SelectFromTransactionTable(dateFrom, dateTo, _MasterData);
+            decimal totalValue;
+            decimal totalCost;
+
+
+            //if the database has no transactions stored then is going to return null for TotalValue and TotalCost
+            if (!DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalValue"]) || !DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalCost"])) {
+                //not null
+                totalValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
+                totalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
+            }
+            else {
+                //null
+                totalValue = 0m;
+                totalCost = 0m;
+            }
+
+            PrintToForm(totalSalaries, totalRent, totalValue, totalCost);
+        }
+
+        private void PrintToForm(decimal totalSalaries, decimal totalRent, decimal totalValue, decimal totalCost) {
+            ctrlIncome.EditValue = String.Format("{0} €", Convert.ToString(totalValue));
+            ctrlProductCosts.EditValue = String.Format("{0} €", Convert.ToString(totalCost));
+
+            ctrlSalaries.EditValue = String.Format("{0} €", Math.Round(totalSalaries, 2).ToString());
+            ctrlRent.EditValue = String.Format("{0} €", Math.Round(totalRent, 2).ToString());
+
+            ctrlExpences.EditValue = String.Format("{0} €", Math.Round((totalCost + Math.Round(totalSalaries, 2) + totalRent), 2).ToString());
+
+
+            decimal expenses = totalCost + Math.Round(totalSalaries, 2) + totalRent;
+            ProfitOrLoss(totalValue, expenses);
+        }
+
+        private void SelectEmployees(DataSet _MasterData) {
             try {
                 SqlDataAdapter adapter = new SqlDataAdapter(Resources.SelectEmployeeTable, DBController._SqlConnection);
                 int response = adapter.Fill(_MasterData);
@@ -49,12 +96,9 @@ namespace FuelStationProject.WUI {
             catch (Exception e) {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-            decimal totalSalaries = 0m;
+        }
 
-            decimal totalRent = Convert.ToDecimal((dateTo - dateFrom).TotalDays) * rentPerDay;
-
-
-
+        private static decimal CalculateSalariesCost(DateTime dateFrom, DateTime dateTo, DataSet _MasterData, decimal totalSalaries) {
             for (int i = 0; i < _MasterData.Tables[0].Rows.Count; i++) {
                 DateTime dateStart = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateStart"]);
                 DateTime dateEnd = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateEnd"]);
@@ -87,46 +131,10 @@ namespace FuelStationProject.WUI {
 
             }
 
-            _MasterData.Clear();
-            try {
-                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.QueryTransactionTable, dateFrom.ToString(), dateTo.ToString()), DBController._SqlConnection);
-                int response = adapter.Fill(_MasterData);
-            }
-            catch (Exception e) {
-                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            }
-            decimal totalValue;
-            decimal totalCost;
+            return totalSalaries;
+        }
 
-
-            //if the database has no transactions stored then is going to return null for TotalValue and TotalCost
-            if (!DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalValue"]) || !DBNull.Value.Equals(_MasterData.Tables[0].Rows[0]["TotalCost"])) {
-                //not null
-
-                totalValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
-
-                totalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
-
-            }
-            else {
-                //null
-
-                totalValue = 0m;
-                totalCost = 0m;
-
-            }
-
-
-            ctrlIncome.EditValue = String.Format("{0} €", Convert.ToString(totalValue));
-            ctrlProductCosts.EditValue = String.Format("{0} €", Convert.ToString(totalCost));
-
-            ctrlSalaries.EditValue = String.Format("{0} €", Math.Round(totalSalaries, 2).ToString());
-            ctrlRent.EditValue = String.Format("{0} €", Math.Round(totalRent, 2).ToString());
-
-            ctrlExpences.EditValue = String.Format("{0} €", Math.Round((totalCost + Math.Round(totalSalaries, 2) + totalRent), 2).ToString());
-
-
-            decimal expenses = totalCost + Math.Round(totalSalaries, 2) + totalRent;
+        private void ProfitOrLoss(decimal totalValue, decimal expenses) {
             decimal profitOrLoss = totalValue - expenses;
             string result;
 
@@ -148,11 +156,16 @@ namespace FuelStationProject.WUI {
             ctrltotal.EditValue = String.Format("{0} : {1} € ", result, Math.Round(profitOrLoss, 2));
         }
 
-        private void LedgerForm_Load(object sender, EventArgs e) {
-
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+        private void SelectFromTransactionTable(DateTime dateFrom, DateTime dateTo, DataSet _MasterData) {
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.QueryTransactionTable, dateFrom.ToString(), dateTo.ToString()), DBController._SqlConnection);
+                int response = adapter.Fill(_MasterData);
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
+
 
     }
 }

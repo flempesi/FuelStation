@@ -48,8 +48,44 @@ namespace FuelStationProject.WUI
             OpenConnectionToDB();
 
         }
+        private void ribbonControl1_Click(object sender, EventArgs e) {
+
+        }
 
 
+        private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenEmployeeViewForm();
+        }
+        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenTransactionForm();
+
+        }
+        private void MDIMainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            CloseDBConnectionAndExitApplication();
+        }
+        private void btnViewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenCustomerViewForm();
+
+        }
+        private void btnAddCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenCustomerForm();
+
+        }
+        private void btnAddEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenEmployeeForm();
+        }
+        private void btnAddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenItemForm();
+        }
+        private void btnViewItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenItemViewForm();
+        }
+        private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenTransactionViewForm();
+        }
+        private void btnViewLedger_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            OpenLedgerForm();
+        }
         //open ConnectionForm so that the user can insert the connection string
         private void OpenConnectionToDB()
         {
@@ -57,7 +93,6 @@ namespace FuelStationProject.WUI
 
             connectionForm._DBConnection2 = this._DBConnection;
             DialogResult result = connectionForm.ShowDialog();
-
 
             switch (result)
             {
@@ -77,22 +112,11 @@ namespace FuelStationProject.WUI
                     break;
             }
 
-
-
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
         }
 
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-
-        private void btnViewEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenEmployeeViewForm();
-        }
 
         private void OpenEmployeeViewForm()
         {
@@ -102,11 +126,7 @@ namespace FuelStationProject.WUI
             employeeViewform.Show();
         }
 
-        private void btnViewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenCustomerViewForm();
-
-        }
+       
 
         private void OpenCustomerViewForm()
         {
@@ -116,11 +136,7 @@ namespace FuelStationProject.WUI
             customerViewForm.Show();
         }
 
-        private void btnAddCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenCustomerForm();
-
-        }
+       
 
         private void OpenCustomerForm()
         {
@@ -130,10 +146,7 @@ namespace FuelStationProject.WUI
             customerForm.Show();
         }
 
-        private void btnAddEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenEmployeeForm();
-        }
+       
 
         private void OpenEmployeeForm()
         {
@@ -143,10 +156,7 @@ namespace FuelStationProject.WUI
             employeeForm.Show();
         }
 
-        private void btnAddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenItemForm();
-        }
+        
 
         private void OpenItemForm()
         {
@@ -156,10 +166,7 @@ namespace FuelStationProject.WUI
             itemForm.Show();
         }
 
-        private void btnViewItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenItemViewForm();
-        }
+        
 
         private void OpenItemViewForm()
         {
@@ -170,11 +177,7 @@ namespace FuelStationProject.WUI
         }
 
         //before opening TransactionForm, open CustomerCheckForm so that the user can find a customer by their CardNumber
-        private void btnAddTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenTransactionForm();
 
-        }
 
         private void OpenTransactionForm()
         {
@@ -195,10 +198,7 @@ namespace FuelStationProject.WUI
         }
 
         //open TransactionForm sending the Dataset containing info about a specific customer
-        private void btnViewTransaction_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenTransactionViewForm();
-        }
+       
 
         private void OpenTransactionViewForm()
         {
@@ -208,10 +208,7 @@ namespace FuelStationProject.WUI
             transactionViewForm.Show();
         }
 
-        private void btnViewLedger_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenLedgerForm();
-        }
+        
 
         private void OpenLedgerForm()
         {
@@ -221,9 +218,6 @@ namespace FuelStationProject.WUI
             ledgerForm.Show();
         }
 
-        private void MDIMainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseDBConnectionAndExitApplication();
-        }
+
     }
 }

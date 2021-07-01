@@ -123,7 +123,7 @@ namespace FuelStationProject.WUI {
 
         //update only the columns that have been changed, in each row
         private void SaveToDB(string name, string surname, string cardNumber, string id) {
-            if (!string.IsNullOrWhiteSpace(id)) {
+            if (!string.IsNullOrWhiteSpace(id)) {//update
                 UpdateController updateController = new UpdateController();
                 string sql = updateController.UpdateEntry(id, "Customer", _MasterData, _MasterDataOld);
 
@@ -139,7 +139,7 @@ namespace FuelStationProject.WUI {
 
 
             }
-            else {
+            else {//insert
                 try {
                     SqlCommand command = new SqlCommand(string.Format(Resources.InsertCustomer, name, surname, cardNumber), DBController._SqlConnection);
 

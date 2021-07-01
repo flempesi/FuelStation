@@ -26,7 +26,10 @@ namespace FuelStationProject.WUI {
         private void btnOK_Click(object sender, EventArgs e) {
             InsertEmployee();
         }
-
+        private void EmployeeForm_Load(object sender, EventArgs e) {
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+        }
 
         //DateStart must be earlier than DateEnd and cannot be set to null
         //if DateEnd is not set(null) then the database is going to store (1900-01-01 00:00:00:000)
@@ -71,9 +74,6 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void EmployeeForm_Load(object sender, EventArgs e) {
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
-        }
+       
     }
 }

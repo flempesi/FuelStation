@@ -22,7 +22,9 @@ namespace FuelStationProject.WUI
         {
             InitializeComponent();
         }
+        private void ConnectionForm_Load(object sender, EventArgs e) {
 
+        }
 
         //open connection through an object of DatabaseConnectionController class
         private void btnOK_Click_1(object sender, EventArgs e)
@@ -68,10 +70,7 @@ namespace FuelStationProject.WUI
             Close();
         }
 
-        private void ConnectionForm_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -25,18 +25,11 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionViewForm_Load(object sender, EventArgs e) {
-            var itemTypes = new List<ItemType>() {
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
-                };
-            repLookUpEdit.DataSource = itemTypes;
-            repLookUpEdit.ValueMember = "NumberOfValue";
-            repLookUpEdit.DisplayMember = "Description";
-            repLookUpEdit.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
-            repLookUpEdit.ShowHeader = false;
-            RefreshTransactionsGrid();
+            OnLoadForm();
         }
+
+       
+
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             RefreshTransactionsGrid();
 
@@ -52,6 +45,20 @@ namespace FuelStationProject.WUI {
         private void repEditTransaction_Click(object sender, EventArgs e) {
             CallEditTransaction();
 
+        }
+
+        private void OnLoadForm() {
+            var itemTypes = new List<ItemType>() {
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
+                };
+            repLookUpEdit.DataSource = itemTypes;
+            repLookUpEdit.ValueMember = "NumberOfValue";
+            repLookUpEdit.DisplayMember = "Description";
+            repLookUpEdit.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEdit.ShowHeader = false;
+            RefreshTransactionsGrid();
         }
 
         private void RefreshTransactionsGrid() {

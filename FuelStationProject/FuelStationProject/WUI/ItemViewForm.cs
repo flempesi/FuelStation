@@ -141,7 +141,7 @@ namespace FuelStationProject.WUI {
         }
 
         private void SaveToDB(string id, string code, string description, ItemTypeCategoryEnum itemType, decimal price, decimal cost) {
-            if (!string.IsNullOrWhiteSpace(id)) {
+            if (!string.IsNullOrWhiteSpace(id)) {//update
 
                 UpdateController updateController = new UpdateController();
                 string sql = updateController.UpdateEntry(id, "Item", _MasterData, _MasterDataOld);
@@ -157,7 +157,7 @@ namespace FuelStationProject.WUI {
                 }
 
             }
-            else {
+            else {//insert
                 try {
                     SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, Convert.ToInt16(itemType), price, cost), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
