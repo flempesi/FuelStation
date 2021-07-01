@@ -54,6 +54,8 @@ namespace FuelStationProject.WUI {
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ctrlTotalPrice = new DevExpress.XtraEditors.TextEdit();
             this.ctrlCustomer = new DevExpress.XtraEditors.TextEdit();
+            this.repLookUpEditType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repLookUpEditTypeLines = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlQuantity.Properties)).BeginInit();
@@ -62,6 +64,8 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl6
@@ -121,6 +125,8 @@ namespace FuelStationProject.WUI {
             this.gridItems.MainView = this.gridViewItems;
             this.gridItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridItems.Name = "gridItems";
+            this.gridItems.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repLookUpEditType});
             this.gridItems.Size = new System.Drawing.Size(812, 199);
             this.gridItems.TabIndex = 14;
             this.gridItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -151,6 +157,7 @@ namespace FuelStationProject.WUI {
             // gridColumnType
             // 
             this.gridColumnType.Caption = "Type";
+            this.gridColumnType.ColumnEdit = this.repLookUpEditType;
             this.gridColumnType.FieldName = "ItemType";
             this.gridColumnType.MinWidth = 24;
             this.gridColumnType.Name = "gridColumnType";
@@ -246,7 +253,8 @@ namespace FuelStationProject.WUI {
             this.gridTransactionLines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridTransactionLines.Name = "gridTransactionLines";
             this.gridTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repDeleteLine});
+            this.repDeleteLine,
+            this.repLookUpEditTypeLines});
             this.gridTransactionLines.Size = new System.Drawing.Size(821, 199);
             this.gridTransactionLines.TabIndex = 18;
             this.gridTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -279,6 +287,7 @@ namespace FuelStationProject.WUI {
             // gridColumn1
             // 
             this.gridColumn1.Caption = "ItemType";
+            this.gridColumn1.ColumnEdit = this.repLookUpEditTypeLines;
             this.gridColumn1.FieldName = "ItemType";
             this.gridColumn1.MinWidth = 24;
             this.gridColumn1.Name = "gridColumn1";
@@ -394,6 +403,22 @@ namespace FuelStationProject.WUI {
             this.ctrlCustomer.Size = new System.Drawing.Size(544, 28);
             this.ctrlCustomer.TabIndex = 22;
             // 
+            // repLookUpEditType
+            // 
+            this.repLookUpEditType.AutoHeight = false;
+            this.repLookUpEditType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEditType.Name = "repLookUpEditType";
+            this.repLookUpEditType.ReadOnly = true;
+            // 
+            // repLookUpEditTypeLines
+            // 
+            this.repLookUpEditTypeLines.AutoHeight = false;
+            this.repLookUpEditTypeLines.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEditTypeLines.Name = "repLookUpEditTypeLines";
+            this.repLookUpEditTypeLines.ReadOnly = true;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -424,6 +449,8 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,5 +486,7 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repDeleteLine;
         private DevExpress.XtraEditors.TextEdit ctrlCustomer;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditType;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditTypeLines;
     }
 }

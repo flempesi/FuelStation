@@ -56,6 +56,7 @@ namespace FuelStationProject.WUI {
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repDeleteLine = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTransactionsView)).BeginInit();
@@ -64,6 +65,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridTransactionLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -282,7 +284,8 @@ namespace FuelStationProject.WUI {
             this.gridTransactionLines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridTransactionLines.Name = "gridTransactionLines";
             this.gridTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repDeleteLine});
+            this.repDeleteLine,
+            this.repLookUpEdit});
             this.gridTransactionLines.Size = new System.Drawing.Size(831, 212);
             this.gridTransactionLines.TabIndex = 19;
             this.gridTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -315,6 +318,7 @@ namespace FuelStationProject.WUI {
             // gridColumn14
             // 
             this.gridColumn14.Caption = "ItemType";
+            this.gridColumn14.ColumnEdit = this.repLookUpEdit;
             this.gridColumn14.FieldName = "ItemType";
             this.gridColumn14.MinWidth = 24;
             this.gridColumn14.Name = "gridColumn14";
@@ -380,6 +384,14 @@ namespace FuelStationProject.WUI {
             this.repDeleteLine.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repDeleteLine.ContextImageOptions.SvgImage")));
             this.repDeleteLine.Name = "repDeleteLine";
             // 
+            // repLookUpEdit
+            // 
+            this.repLookUpEdit.AutoHeight = false;
+            this.repLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEdit.Name = "repLookUpEdit";
+            this.repLookUpEdit.ReadOnly = true;
+            // 
             // TransactionViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -403,6 +415,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridTransactionLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +453,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repEditTransaction;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEdit;
     }
 }

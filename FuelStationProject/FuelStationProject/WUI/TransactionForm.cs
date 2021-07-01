@@ -38,12 +38,35 @@ namespace FuelStationProject.WUI {
 
         private void TransactionForm_Load(object sender, EventArgs e) {
             TransactionFormLoad();
+            
+
+
+            var itemTypes = new List<ItemType>() {
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
+                };
+            repLookUpEditType.DataSource = itemTypes;
+            repLookUpEditType.ValueMember = "NumberOfValue";
+            repLookUpEditType.DisplayMember = "Description";
+            repLookUpEditType.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEditType.ShowHeader = false;
+
+            repLookUpEditTypeLines.DataSource = itemTypes;
+            repLookUpEditTypeLines.ValueMember = "NumberOfValue";
+            repLookUpEditTypeLines.DisplayMember = "Description";
+            repLookUpEditTypeLines.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEditTypeLines.ShowHeader = false;
+
+
+
 
         }
 
         private void TransactionFormLoad() {
             if (TransactionID == Guid.Empty) {//for new transaction
                 TransactionID = Guid.NewGuid();
+                TotalPrice = TotalCost = DiscountValue = new decimal();
             }
             else {
                 //only for edit an existing transaction
@@ -122,9 +145,9 @@ namespace FuelStationProject.WUI {
                 decimal price = Convert.ToDecimal(row["Price"]);
                 decimal cost = Convert.ToDecimal(row["Cost"]);
                 decimal value = price * quantity;
-                string itemType = Convert.ToString(row["ItemType"]);
+                ItemTypeCategoryEnum itemType = (ItemTypeCategoryEnum)Convert.ToInt16(Convert.ToString(row["ItemType"]));
 
-                if (_TransactionHasFuel && itemType == "Fuel") {
+                if (_TransactionHasFuel && itemType == ItemTypeCategoryEnum.Fuel) {
                     MessageBox.Show("You have already add Fuel.Only one FUEL type per Transaction");
                 }
                 else {
@@ -135,7 +158,7 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void AddTransactionLine(Guid itemId, decimal quantity, decimal price, decimal cost, decimal value, string itemType) {
+        private void AddTransactionLine(Guid itemId, decimal quantity, decimal price, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
             try {
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
                 int rowsAffected = command.ExecuteNonQuery();
@@ -157,19 +180,19 @@ namespace FuelStationProject.WUI {
 
             gridTransactionLines.Refresh();
 
-            if (itemType == "Fuel") {
+            if (itemType == ItemTypeCategoryEnum.Fuel) {
                 _TransactionHasFuel = true;
             }
 
             Calculations(quantity, cost, value, itemType);
         }
 
-        private void Calculations(decimal quantity, decimal cost, decimal value, string itemType) {
-            if (itemType == "Fuel" && value > 50) {
-                Type = ItemTypeCategoryEnum.Fuel;
+        private void Calculations(decimal quantity, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
+            if (itemType == ItemTypeCategoryEnum.Fuel && value > 50) {
+                //Type = ItemTypeCategoryEnum.Fuel;
 
                 TotalPrice = TotalPrice + value;
-                DiscountValue = TotalPrice * (decimal)0.1;
+                DiscountValue = Math.Round(TotalPrice * (decimal)0.1,2);
                 TotalPrice = TotalPrice - DiscountValue;
 
             }
@@ -205,7 +228,7 @@ namespace FuelStationProject.WUI {
                 decimal valueTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Value"));
                 decimal quantity = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Quantity"));
                 decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
-                string itemType = Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType"));
+                ItemTypeCategoryEnum itemType = (ItemTypeCategoryEnum)Convert.ToInt16(Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType")));
                 try {
 
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
@@ -214,7 +237,7 @@ namespace FuelStationProject.WUI {
                     RefreshGridTransactionLines();
 
                     TotalPrice -= valueTransactionLine;
-                    if (itemType == "Fuel") {
+                    if (itemType == ItemTypeCategoryEnum.Fuel) {
                         _TransactionHasFuel = false;
                         TotalPrice += DiscountValue;
                       

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelStationProject.Impl {
-    class Transaction :Entity{
+    class Transaction {
 
-
+        public Guid ID { get; set; }
         public DateTime Date { get; set; }
 
         public Guid CustomerID { get; set; }
