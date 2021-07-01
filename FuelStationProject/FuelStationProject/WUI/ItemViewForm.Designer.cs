@@ -41,7 +41,7 @@ namespace FuelStationProject.WUI {
             this.repTextEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnComboBox = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cmbItemType = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repLookUpEditType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repSpinEdit = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,14 +50,16 @@ namespace FuelStationProject.WUI {
             this.gridColumnDelete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repButtonDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cmbItemType = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -150,12 +152,13 @@ namespace FuelStationProject.WUI {
             this.repSpinEdit,
             this.repTextEdit,
             this.repButtonSave,
-            this.repButtonDelete});
+            this.repButtonDelete,
+            this.repLookUpEditType});
             this.gridItem.Size = new System.Drawing.Size(800, 425);
             this.gridItem.TabIndex = 9;
             this.gridItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            //this.gridItem.Click += new System.EventHandler(this.gridItem_Click);
+            this.gridItem.Click += new System.EventHandler(this.gridItem_Click);
             // 
             // gridView1
             // 
@@ -202,7 +205,7 @@ namespace FuelStationProject.WUI {
             // gridColumnComboBox
             // 
             this.gridColumnComboBox.Caption = "Type";
-            this.gridColumnComboBox.ColumnEdit = this.cmbItemType;
+            this.gridColumnComboBox.ColumnEdit = this.repLookUpEditType;
             this.gridColumnComboBox.FieldName = "ItemType";
             this.gridColumnComboBox.MinWidth = 31;
             this.gridColumnComboBox.Name = "gridColumnComboBox";
@@ -210,13 +213,12 @@ namespace FuelStationProject.WUI {
             this.gridColumnComboBox.VisibleIndex = 2;
             this.gridColumnComboBox.Width = 117;
             // 
-            // cmbItemType
+            // repLookUpEditType
             // 
-            this.cmbItemType.AutoHeight = false;
-            this.cmbItemType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repLookUpEditType.AutoHeight = false;
+            this.repLookUpEditType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbItemType.Name = "cmbItemType";
-            this.cmbItemType.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repLookUpEditType.Name = "repLookUpEditType";
             // 
             // gridColumn4
             // 
@@ -295,6 +297,14 @@ namespace FuelStationProject.WUI {
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Width = 94;
             // 
+            // cmbItemType
+            // 
+            this.cmbItemType.AutoHeight = false;
+            this.cmbItemType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbItemType.Name = "cmbItemType";
+            this.cmbItemType.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
             // ItemViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -312,10 +322,11 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repTextEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repSpinEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repButtonDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbItemType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,5 +358,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repButtonSave;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repButtonDelete;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditType;
     }
 }

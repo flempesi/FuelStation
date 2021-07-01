@@ -23,7 +23,7 @@ namespace FuelStationProject.WUI {
         public Guid TransactionID { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal TotalCost { get; set; }
-        public ItemTypeCategory Type { get; set; }
+        public ItemTypeCategoryEnum Type { get; set; }
         public decimal DiscountValue { get; set; }
         public DataSet CustomerData { get; set; }
 
@@ -166,7 +166,7 @@ namespace FuelStationProject.WUI {
 
         private void Calculations(decimal quantity, decimal cost, decimal value, string itemType) {
             if (itemType == "Fuel" && value > 50) {
-                Type = ItemTypeCategory.Fuel;
+                Type = ItemTypeCategoryEnum.Fuel;
 
                 TotalPrice = TotalPrice + value;
                 DiscountValue = TotalPrice * (decimal)0.1;

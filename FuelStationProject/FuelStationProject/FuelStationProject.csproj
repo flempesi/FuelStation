@@ -81,6 +81,7 @@
     <Content Include="Queries\SelectTransactionView.sql" />
     <Content Include="Queries\SelectTransactionLineViewByID.sql" />
     <Compile Include="Controllers\UpdateController.cs" />
+    <Compile Include="Impl\ItemType.cs" />
     <Compile Include="WUI\ConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>

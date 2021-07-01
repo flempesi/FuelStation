@@ -50,9 +50,19 @@ namespace FuelStationProject.WUI {
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
 
             RefreshItemGrid();
-            foreach (ItemTypeCategory type in Enum.GetValues(typeof(ItemTypeCategory))) {
-                cmbItemType.Items.Add(type);
-            }
+
+            var itemTypes = new List<ItemType>() {
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
+                };
+            repLookUpEditType.DataSource = itemTypes;
+            repLookUpEditType.ValueMember = "NumberOfValue";
+            repLookUpEditType.DisplayMember = "Description";
+            repLookUpEditType.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEditType.ShowHeader = false;
+
+
         }
 
 
@@ -109,14 +119,17 @@ namespace FuelStationProject.WUI {
             string id = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
             string code = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Code"));
             string description = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Description"));
-            string itemType = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ItemType"));
+            string temp = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ItemType"));
+            ItemTypeCategoryEnum itemType ;
 
             decimal price, cost;
 
-            if (!string.IsNullOrWhiteSpace(code) && !string.IsNullOrWhiteSpace(description) && !string.IsNullOrWhiteSpace(itemType)
+            if (!string.IsNullOrWhiteSpace(code) && !string.IsNullOrWhiteSpace(description) && !string.IsNullOrWhiteSpace(temp)
                 &&
                   decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Price")), out price) && price > 0
                   && decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Cost")), out cost) && cost > 0) {
+                     itemType = (ItemTypeCategoryEnum)Convert.ToInt16(temp);
+
                 SaveToDB(id, code, description, itemType, price, cost);
                 RefreshItemGrid();
 
@@ -127,7 +140,7 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void SaveToDB(string id, string code, string description, string itemType, decimal price, decimal cost) {
+        private void SaveToDB(string id, string code, string description, ItemTypeCategoryEnum itemType, decimal price, decimal cost) {
             if (!string.IsNullOrWhiteSpace(id)) {
 
                 UpdateController updateController = new UpdateController();
@@ -146,7 +159,7 @@ namespace FuelStationProject.WUI {
             }
             else {
                 try {
-                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
+                    SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, Convert.ToInt16(itemType), price, cost), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
                 }
                 catch (Exception e) {
@@ -155,6 +168,9 @@ namespace FuelStationProject.WUI {
             }
         }
 
+        private void gridItem_Click(object sender, EventArgs e) {
+
+        }
     }
 }
 

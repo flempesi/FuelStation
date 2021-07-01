@@ -39,21 +39,34 @@ namespace FuelStationProject.WUI {
             CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
 
-            foreach (ItemTypeCategory type in Enum.GetValues(typeof(ItemTypeCategory))) {
-                comboBoxEdit1.Properties.Items.Add(type);
-            }
+
+
+            var itemTypes = new List<ItemType>() {
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
+                };
+            ctrlItemType.Properties.DataSource = itemTypes;
+            ctrlItemType.Properties.ValueMember = "NumberOfValue";
+            ctrlItemType.Properties.DisplayMember = "Description";
+            ctrlItemType.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            ctrlItemType.Properties.ShowHeader = false;
+
+
         }
         public void InsertItem() {
             string code = Convert.ToString(ctrlCode.EditValue);
             string description = Convert.ToString(ctrlDescription.EditValue);
-            string itemType = Convert.ToString(comboBoxEdit1.EditValue);
+            string item = Convert.ToString(ctrlItemType.EditValue); 
+            ItemTypeCategoryEnum itemType;
             decimal price, cost;
 
 
-            if (!string.IsNullOrWhiteSpace(code) && !string.IsNullOrWhiteSpace(description) && !string.IsNullOrWhiteSpace(itemType)
+            if (!string.IsNullOrWhiteSpace(code) && !string.IsNullOrWhiteSpace(description) && !string.IsNullOrWhiteSpace(item)
                 &&
                   decimal.TryParse(Convert.ToString(ctrlPrice.EditValue), out price) && price > 0
                   && decimal.TryParse(Convert.ToString(ctrlPrice.EditValue), out cost) && cost > 0) {
+                itemType = (ItemTypeCategoryEnum)Convert.ToInt16(ctrlItemType.EditValue);
                 SaveToDB(code, description, itemType, price, cost);
                 Close();
             }
@@ -62,9 +75,9 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void SaveToDB(string code, string description, string itemType, decimal price, decimal cost) {
+        private void SaveToDB(string code, string description, ItemTypeCategoryEnum itemType, decimal price, decimal cost) {
             try {
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, itemType, price, cost), DBController._SqlConnection);
+                SqlCommand command = new SqlCommand(string.Format(Resources.InsertItem, code, description, Convert.ToInt16(itemType), price, cost), DBController._SqlConnection);
                 int rowsAffected = command.ExecuteNonQuery();
             }
             catch (Exception e) {

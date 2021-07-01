@@ -35,12 +35,12 @@ namespace FuelStationProject.WUI {
             this.ctrlCost = new DevExpress.XtraEditors.SpinEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.ctrlItemType = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCode
@@ -180,27 +180,24 @@ namespace FuelStationProject.WUI {
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.ctlrCancel_Click);
             // 
-            // comboBoxEdit1
+            // ctrlItemType
             // 
-            this.comboBoxEdit1.AllowDrop = true;
-            this.comboBoxEdit1.Location = new System.Drawing.Point(248, 162);
-            this.comboBoxEdit1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ctrlItemType.Location = new System.Drawing.Point(252, 162);
+            this.ctrlItemType.Name = "ctrlItemType";
+            this.ctrlItemType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlItemType.Properties.Appearance.Options.UseFont = true;
+            this.ctrlItemType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.DropDownRows = 3;
-            this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(318, 28);
-            this.comboBoxEdit1.TabIndex = 12;
+            this.ctrlItemType.Properties.NullText = "";
+            this.ctrlItemType.Size = new System.Drawing.Size(314, 28);
+            this.ctrlItemType.TabIndex = 14;
             // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 466);
-            this.Controls.Add(this.comboBoxEdit1);
+            this.Controls.Add(this.ctrlItemType);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ctrlCost);
@@ -219,7 +216,7 @@ namespace FuelStationProject.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +235,6 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraEditors.SpinEdit ctrlCost;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.LookUpEdit ctrlItemType;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuelStationProject.Impl;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -69,7 +70,16 @@ namespace FuelStationProject.Controllers {
 
                     sqlLine.Add(string.Format("{0}={1}", columnName, decimalPart));
                     break;
+                case "Int16":
+                    sqlLine.Add(string.Format("{0}={1}", columnName, Convert.ToInt16(value)));
+                    break;
+
+                case "TransTypeEnum":
+                    ItemTypeCategoryEnum enumVal = (ItemTypeCategoryEnum)value;
+                    sqlLine.Add(string.Format("{0}={1}", columnName, Convert.ToInt16(enumVal)));
+                    break;
             }
+            
         }
     }
 }

@@ -12,7 +12,7 @@ namespace FuelStationProject.Impl {
 
         public string Description { get; set; }
 
-        public ItemTypeCategory ItemType { get; set; }
+        public ItemTypeCategoryEnum ItemType { get; set; }
 
         public decimal Price { get; set; }
 
@@ -21,6 +21,7 @@ namespace FuelStationProject.Impl {
         public Item() {
 
         }
+
 
     }
 }

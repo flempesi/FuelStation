@@ -6,21 +6,12 @@ using System.Threading.Tasks;
 
 namespace FuelStationProject.Impl {
 
-    public enum ItemTypeCategory {
+    public enum ItemTypeCategoryEnum {
 
-        Fuel,
-        Product,
-        Service
-
-    }
-
-    public enum EntityType {
-
-        Customer,
-        Item,
-        Employee,
-        transaction
+        Fuel = 0,
+        Product = 1,
+        Service = 2 
 
     }
-
+   
 }
