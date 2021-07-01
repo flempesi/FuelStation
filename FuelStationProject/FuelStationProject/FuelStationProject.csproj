@@ -235,6 +235,7 @@
     <Content Include="Queries\SelectTransactonLinetoView.sql" />
     <Content Include="Queries\SelectItemTable.sql" />
     <Content Include="Queries\QueryTransactionTable.sql" />
+    <Content Include="Queries\TablesFuelStation.sql" />
     <Content Include="Queries\UpdateCustomer.sql" />
     <Content Include="Queries\UpdateItem.sql" />
     <Content Include="Queries\UpdateEmployee.sql" />
