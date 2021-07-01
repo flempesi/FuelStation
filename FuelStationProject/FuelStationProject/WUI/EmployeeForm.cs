@@ -38,10 +38,16 @@ namespace FuelStationProject.WUI {
             string surname = Convert.ToString(ctrlSurname.EditValue);
             DateTime dateStart;
             DateTime date;
-            DateTime? dateEnd = null;
+            DateTime? dateEnd= null;
             decimal salary;
             if (ctrlDateEnd.EditValue != null) {
-                dateEnd = DateTime.TryParse(Convert.ToString(ctrlDateEnd.EditValue), out date) ? date : (DateTime?)null;
+                if(DateTime.TryParse(Convert.ToString(ctrlDateEnd.EditValue), out date)) {
+                    dateEnd = date;
+                }
+                else {
+                    dateEnd = (DateTime?)null;
+                }
+               
             }
 
             if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) &&
