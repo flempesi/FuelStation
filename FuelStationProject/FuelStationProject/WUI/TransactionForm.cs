@@ -58,6 +58,14 @@ namespace FuelStationProject.WUI {
             DeleteTransactionLine();
         }
         private void btnCancel_Click(object sender, EventArgs e) {
+            try {
+                SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, TransactionID), DBController._SqlConnection);
+
+                int rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception xe) {
+                MessageBox.Show(xe.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
             Close();
         }
         private void InitializeLookUpEdits() {
@@ -162,7 +170,7 @@ namespace FuelStationProject.WUI {
 
             }
         }
-
+        // add transactionline after select the same line from db and print to grid
         private void AddTransactionLine(Guid itemId, decimal quantity, decimal price, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
             try {//insert transactionLine
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
