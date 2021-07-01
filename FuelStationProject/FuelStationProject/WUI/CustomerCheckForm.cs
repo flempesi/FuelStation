@@ -33,6 +33,8 @@ namespace FuelStationProject.WUI {
             SearchCustomer();
         }
 
+
+        //fill a Dataset with info about a specific customer by querying the database with their CardNumber
         private void SearchCustomer() {
             CustomerData = new DataSet();
 

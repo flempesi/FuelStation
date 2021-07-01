@@ -41,14 +41,20 @@ namespace FuelStationProject.WUI {
             DeleteCustomer();
 
         }
+
+
+
         private void CustomersViewLoad() {
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
             gridView1.OptionsView.ShowGroupPanel = false;
-            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
+            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
             RefreshGridCustomers();
         }
 
+
+
+        //fill two Datasets(old data and new data) with all the info of Customer table
         private void RefreshGridCustomers() {
             _MasterData = new DataSet();
             _MasterDataOld = new DataSet();
@@ -66,6 +72,8 @@ namespace FuelStationProject.WUI {
         }
 
 
+
+        //delete customer by clicking on the specific row delete icon
         private void DeleteCustomer() {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry ?", "Warning", MessageBoxButtons.OKCancel);
 
@@ -112,6 +120,8 @@ namespace FuelStationProject.WUI {
             }
         }
 
+
+        //update only the columns that have been changed, in each row
         private void SaveToDB(string name, string surname, string cardNumber, string id) {
             if (!string.IsNullOrWhiteSpace(id)) {
                 UpdateController updateController = new UpdateController();

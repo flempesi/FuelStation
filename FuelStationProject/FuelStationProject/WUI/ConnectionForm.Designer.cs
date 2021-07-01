@@ -39,16 +39,16 @@ namespace FuelStationProject.WUI
             // ctrlConnectionString
             // 
             this.ctrlConnectionString.EditValue = "Server=localhost\\SQLEXPRESS;Database=FuelStation;Trusted_Connection=True;";
-            this.ctrlConnectionString.Location = new System.Drawing.Point(46, 100);
+            this.ctrlConnectionString.Location = new System.Drawing.Point(40, 100);
             this.ctrlConnectionString.Name = "ctrlConnectionString";
-            this.ctrlConnectionString.Size = new System.Drawing.Size(858, 22);
+            this.ctrlConnectionString.Size = new System.Drawing.Size(751, 22);
             this.ctrlConnectionString.TabIndex = 0;
             // 
             // lblConnectionString
             // 
             this.lblConnectionString.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblConnectionString.Appearance.Options.UseFont = true;
-            this.lblConnectionString.Location = new System.Drawing.Point(46, 49);
+            this.lblConnectionString.Location = new System.Drawing.Point(40, 49);
             this.lblConnectionString.Name = "lblConnectionString";
             this.lblConnectionString.Size = new System.Drawing.Size(262, 28);
             this.lblConnectionString.TabIndex = 1;
@@ -56,27 +56,35 @@ namespace FuelStationProject.WUI
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(644, 201);
+            this.btnOK.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOK.Appearance.Options.UseBackColor = true;
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Location = new System.Drawing.Point(567, 200);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(94, 29);
+            this.btnOK.Size = new System.Drawing.Size(89, 44);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click_1);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(810, 201);
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(712, 200);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(94, 29);
+            this.btnCancel.Size = new System.Drawing.Size(89, 44);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ConnectionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 275);
+            this.ClientSize = new System.Drawing.Size(835, 275);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblConnectionString);
@@ -84,6 +92,8 @@ namespace FuelStationProject.WUI
             this.Name = "ConnectionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConnectionForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConnectionForm_FormClosing);
+            this.Load += new System.EventHandler(this.ConnectionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlConnectionString.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
