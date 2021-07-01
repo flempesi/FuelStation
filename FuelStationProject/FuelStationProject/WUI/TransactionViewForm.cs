@@ -25,7 +25,8 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionViewForm_Load(object sender, EventArgs e) {
-            OnLoadForm();
+            InitializelookUpEdit();
+            RefreshTransactionsGrid();
         }
 
        
@@ -43,11 +44,11 @@ namespace FuelStationProject.WUI {
 
         }
         private void repEditTransaction_Click(object sender, EventArgs e) {
-            CallEditTransaction();
+            CallTransactionFormToEdit();
 
         }
 
-        private void OnLoadForm() {
+        private void InitializelookUpEdit() {
             var itemTypes = new List<ItemType>() {
                     new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
                     new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
@@ -58,7 +59,7 @@ namespace FuelStationProject.WUI {
             repLookUpEdit.DisplayMember = "Description";
             repLookUpEdit.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
             repLookUpEdit.ShowHeader = false;
-            RefreshTransactionsGrid();
+           
         }
 
         private void RefreshTransactionsGrid() {
@@ -96,7 +97,7 @@ namespace FuelStationProject.WUI {
             gridTransactionLines.Refresh();
         }
 
-        private void ShowTransactionLines() {
+        private void ShowTransactionLines() {//on focus of transaction swo the transactionlines
             if (ctrlTransactionsView.RowCount > 0) {
 
                 string transactionId = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("ID"));
@@ -119,7 +120,7 @@ namespace FuelStationProject.WUI {
 
             if (result == DialogResult.OK) {
                 string transactionId = Convert.ToString(ctrlTransactionsView.GetRowCellValue(ctrlTransactionsView.FocusedRowHandle, "ID"));
-                try {
+                try {//delete transactionlines
 
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, transactionId), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
@@ -127,7 +128,7 @@ namespace FuelStationProject.WUI {
                 catch (Exception e) {
                     MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
-                try {
+                try {//delete transaction
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransaction, transactionId), DBController._SqlConnection);
                     int rowsAffected = command.ExecuteNonQuery();
                 }
@@ -142,7 +143,8 @@ namespace FuelStationProject.WUI {
 
 
 
-        private void CallEditTransaction() {
+        private void CallTransactionFormToEdit() {
+            //Get data of transaction to transfer
             DataSet CustomerData = new DataSet();
 
             string cardNumber = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("CardNumber"));
@@ -153,6 +155,7 @@ namespace FuelStationProject.WUI {
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
+            //call the form for edit
             TransactionForm transactionForm = new TransactionForm();
 
             transactionForm.DBController = DBController;
