@@ -53,9 +53,16 @@ namespace FuelStationProject.WUI {
                 }
             }
             catch (Exception e) {
-                MessageBox.Show(e.ToString(),"Error", MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1);
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-           
+
+        }
+
+        private void ctrlCardNumber_KeyDown(object sender, KeyEventArgs e) {
+
+            if (e.KeyCode == Keys.Enter) {
+                SearchCustomer();
+            }
         }
     }
 }

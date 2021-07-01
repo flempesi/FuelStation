@@ -37,7 +37,7 @@ namespace FuelStationProject.WUI {
             this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnOK.Appearance.Options.UseBackColor = true;
             this.btnOK.Appearance.Options.UseFont = true;
-            this.btnOK.Location = new System.Drawing.Point(280, 368);
+            this.btnOK.Location = new System.Drawing.Point(323, 259);
             this.btnOK.Margin = new System.Windows.Forms.Padding(5);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(115, 39);
@@ -54,12 +54,13 @@ namespace FuelStationProject.WUI {
             this.ctrlCardNumber.Properties.Appearance.Options.UseFont = true;
             this.ctrlCardNumber.Size = new System.Drawing.Size(544, 28);
             this.ctrlCardNumber.TabIndex = 14;
+            this.ctrlCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctrlCardNumber_KeyDown);
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(42, 53);
+            this.labelControl2.Location = new System.Drawing.Point(42, 62);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(184, 21);
@@ -74,7 +75,7 @@ namespace FuelStationProject.WUI {
             this.ctlrCancel.Appearance.Options.UseBackColor = true;
             this.ctlrCancel.Appearance.Options.UseFont = true;
             this.ctlrCancel.Appearance.Options.UseForeColor = true;
-            this.ctlrCancel.Location = new System.Drawing.Point(478, 368);
+            this.ctlrCancel.Location = new System.Drawing.Point(478, 259);
             this.ctlrCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctlrCancel.Name = "ctlrCancel";
             this.ctlrCancel.Size = new System.Drawing.Size(108, 39);
@@ -86,12 +87,13 @@ namespace FuelStationProject.WUI {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 450);
+            this.ClientSize = new System.Drawing.Size(633, 345);
             this.Controls.Add(this.ctlrCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ctrlCardNumber);
             this.Controls.Add(this.labelControl2);
             this.Name = "CustomerCheckForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Card Number Checker";
             this.Load += new System.EventHandler(this.CustomerCheck_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber.Properties)).EndInit();
