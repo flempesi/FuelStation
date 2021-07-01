@@ -65,7 +65,7 @@ namespace FuelStationProject.WUI {
             if (!string.IsNullOrWhiteSpace(code) && !string.IsNullOrWhiteSpace(description) && !string.IsNullOrWhiteSpace(item)
                 &&
                   decimal.TryParse(Convert.ToString(ctrlPrice.EditValue), out price) && price > 0
-                  && decimal.TryParse(Convert.ToString(ctrlPrice.EditValue), out cost) && cost > 0) {
+                  && decimal.TryParse(Convert.ToString(ctrlCost.EditValue), out cost) && cost > 0) {
                 itemType = (ItemTypeCategoryEnum)Convert.ToInt16(ctrlItemType.EditValue);
                 SaveToDB(code, description, itemType, price, cost);
                 Close();
