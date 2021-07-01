@@ -37,35 +37,13 @@ namespace FuelStationProject.WUI {
         }
 
         private void TransactionForm_Load(object sender, EventArgs e) {
-            TransactionFormLoad();
-            
+            OnLoadForm(); 
 
-
-            var itemTypes = new List<ItemType>() {
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
-                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
-                };
-            repLookUpEditType.DataSource = itemTypes;
-            repLookUpEditType.ValueMember = "NumberOfValue";
-            repLookUpEditType.DisplayMember = "Description";
-            repLookUpEditType.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
-            repLookUpEditType.ShowHeader = false;
-
-            repLookUpEditTypeLines.DataSource = itemTypes;
-            repLookUpEditTypeLines.ValueMember = "NumberOfValue";
-            repLookUpEditTypeLines.DisplayMember = "Description";
-            repLookUpEditTypeLines.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
-            repLookUpEditTypeLines.ShowHeader = false;
-
-
-
+            InitializeLookUpEdits();
 
         }
 
-        private void TransactionFormLoad() {
-            OnLoadForm();
-        }
+       
 
         private void btnAdd_Click(object sender, EventArgs e) {
             AddTransactionLineButtonCode();
@@ -82,7 +60,24 @@ namespace FuelStationProject.WUI {
         private void btnCancel_Click(object sender, EventArgs e) {
             Close();
         }
+        private void InitializeLookUpEdits() {
+            var itemTypes = new List<ItemType>() {
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
+                    new ItemType() {  Value = ItemTypeCategoryEnum.Service,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Service), Description = "Service" },
+                };
+            repLookUpEditType.DataSource = itemTypes;
+            repLookUpEditType.ValueMember = "NumberOfValue";
+            repLookUpEditType.DisplayMember = "Description";
+            repLookUpEditType.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEditType.ShowHeader = false;
 
+            repLookUpEditTypeLines.DataSource = itemTypes;
+            repLookUpEditTypeLines.ValueMember = "NumberOfValue";
+            repLookUpEditTypeLines.DisplayMember = "Description";
+            repLookUpEditTypeLines.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            repLookUpEditTypeLines.ShowHeader = false;
+        }
         private void OnLoadForm() {
             if (TransactionID == Guid.Empty) {//for new transaction
                 TransactionID = Guid.NewGuid();
@@ -92,8 +87,13 @@ namespace FuelStationProject.WUI {
                 //only for edit an existing transaction
                 RefreshGridTransactionLines();
                 _MasterData = new DataSet();
-                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionByID, TransactionID), DBController._SqlConnection);
-                int response = adapter.Fill(_MasterData);
+                try { //brig data for the editing transaction
+                    SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionByID, TransactionID), DBController._SqlConnection);
+                    int response = adapter.Fill(_MasterData);
+                }
+                catch (Exception e) {
+                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
                 TotalPrice = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
                 TotalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
                 DiscountValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["DiscountValue"]);
@@ -111,9 +111,9 @@ namespace FuelStationProject.WUI {
         private void SaveToDB() {
             string customerID = CustomerData.Tables[0].Rows[0]["ID"].ToString();
             if (TotalPrice > 0) {
-                if (_TransactionOld) {
+                if (_TransactionOld) {//delete if is old
 
-                    
+
                     try {
                         SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransaction, TransactionID), DBController._SqlConnection);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -123,7 +123,7 @@ namespace FuelStationProject.WUI {
                     }
                 }
 
-                try {
+                try {// insert transaction
 
                     SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransaction, TransactionID, DateTime.Now, customerID, DiscountValue, TotalPrice, TotalCost), DBController._SqlConnection); ;
                     int rowsAffected = command.ExecuteNonQuery();
@@ -152,7 +152,7 @@ namespace FuelStationProject.WUI {
                 decimal value = price * quantity;
                 ItemTypeCategoryEnum itemType = (ItemTypeCategoryEnum)Convert.ToInt16(Convert.ToString(row["ItemType"]));
 
-                if (_TransactionHasFuel && itemType == ItemTypeCategoryEnum.Fuel) {
+                if (_TransactionHasFuel && itemType == ItemTypeCategoryEnum.Fuel) {//No second  Fuel
                     MessageBox.Show("You have already add Fuel.Only one FUEL type per Transaction");
                 }
                 else {
@@ -164,7 +164,7 @@ namespace FuelStationProject.WUI {
         }
 
         private void AddTransactionLine(Guid itemId, decimal quantity, decimal price, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
-            try {
+            try {//insert transactionLine
                 SqlCommand command = new SqlCommand(string.Format(Resources.InsertTransactionLine, TransactionID, itemId, quantity, price, value), DBController._SqlConnection);
                 int rowsAffected = command.ExecuteNonQuery();
             }
@@ -172,7 +172,7 @@ namespace FuelStationProject.WUI {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             _ViewData = new DataSet();
-            try {
+            try {//select transactionline
                 SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
                 int response = adapter.Fill(_ViewData);
             }
@@ -193,10 +193,11 @@ namespace FuelStationProject.WUI {
         }
 
         private void Calculations(decimal quantity, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
+            //calculate total cost ,total price and discount
             if (itemType == ItemTypeCategoryEnum.Fuel && value > 50) {
 
                 TotalPrice = TotalPrice + value;
-                DiscountValue = Math.Round(TotalPrice * (decimal)0.1,2);
+                DiscountValue = Math.Round(TotalPrice * (decimal)0.1, 2);
                 TotalPrice = TotalPrice - DiscountValue;
 
             }
@@ -234,20 +235,20 @@ namespace FuelStationProject.WUI {
                 decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
                 ItemTypeCategoryEnum itemType = (ItemTypeCategoryEnum)Convert.ToInt16(Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType")));
                 try {
-
+                    //delete selected transaction line
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                     int rowsAffected = command.ExecuteNonQuery();
                     RefreshGridTransactionLines();
-
+                    // modify values after delete the transactionline
                     TotalPrice -= valueTransactionLine;
                     if (itemType == ItemTypeCategoryEnum.Fuel) {
                         _TransactionHasFuel = false;
                         TotalPrice += DiscountValue;
-                      
+
 
                     }
-                    
+
                     ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
                     TotalCost -= costTransactionLine;
                 }

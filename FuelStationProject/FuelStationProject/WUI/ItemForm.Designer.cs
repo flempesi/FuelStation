@@ -132,6 +132,12 @@ namespace FuelStationProject.WUI {
             this.ctrlPrice.Properties.Appearance.Options.UseFont = true;
             this.ctrlPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlPrice.Properties.MaxLength = 4;
+            this.ctrlPrice.Properties.MaxValue = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.ctrlPrice.Size = new System.Drawing.Size(318, 28);
             this.ctrlPrice.TabIndex = 8;
             // 
@@ -149,6 +155,12 @@ namespace FuelStationProject.WUI {
             this.ctrlCost.Properties.Appearance.Options.UseFont = true;
             this.ctrlCost.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ctrlCost.Properties.MaxLength = 4;
+            this.ctrlCost.Properties.MaxValue = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.ctrlCost.Size = new System.Drawing.Size(318, 28);
             this.ctrlCost.TabIndex = 9;
             // 
