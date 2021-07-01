@@ -207,16 +207,22 @@ namespace FuelStationProject.WUI {
                 decimal costTransactionLine = Convert.ToDecimal(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "Cost")) * quantity;
                 string itemType = Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ItemType"));
                 try {
+
                     SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLine, Convert.ToString(gridViewTransactionLines.GetRowCellValue(gridViewTransactionLines.FocusedRowHandle, "ID"))), DBController._SqlConnection);
 
                     int rowsAffected = command.ExecuteNonQuery();
                     RefreshGridTransactionLines();
+
                     TotalPrice -= valueTransactionLine;
-                    ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
-                    TotalCost -= costTransactionLine;
                     if (itemType == "Fuel") {
                         _TransactionHasFuel = false;
+                        TotalPrice += DiscountValue;
+                      
+
                     }
+                    
+                    ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
+                    TotalCost -= costTransactionLine;
                 }
                 catch (Exception e) {
                     MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
