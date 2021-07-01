@@ -106,7 +106,7 @@ namespace FuelStationProject.WUI {
                 int response = adapter.Fill(_MasterData);
                 response = adapter.Fill(_MasterDataOld);
 
-                gridView1.OptionsView.ShowGroupPanel = false;
+                //gridView1.OptionsView.ShowGroupPanel = false;
                 gridItem.DataSource = _MasterData.Tables[0];
             }
             catch (Exception e) {

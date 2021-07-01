@@ -36,11 +36,11 @@ namespace FuelStationProject.WUI {
         }
 
         private void ItemFormLoad() {
-            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+            InitializeLookUpEdit();
 
+        }
 
-
+        private void InitializeLookUpEdit() {
             var itemTypes = new List<ItemType>() {
                     new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
                     new ItemType() {  Value = ItemTypeCategoryEnum.Product,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Product), Description = "Product" },
@@ -51,9 +51,8 @@ namespace FuelStationProject.WUI {
             ctrlItemType.Properties.DisplayMember = "Description";
             ctrlItemType.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
             ctrlItemType.Properties.ShowHeader = false;
-
-
         }
+
         public void InsertItem() {
             string code = Convert.ToString(ctrlCode.EditValue);
             string description = Convert.ToString(ctrlDescription.EditValue);

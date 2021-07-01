@@ -46,7 +46,7 @@ namespace FuelStationProject.WUI {
 
         private void CustomersViewLoad() {
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
-            gridView1.OptionsView.ShowGroupPanel = false;
+            //gridView1.OptionsView.ShowGroupPanel = false;
             //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
             RefreshGridCustomers();

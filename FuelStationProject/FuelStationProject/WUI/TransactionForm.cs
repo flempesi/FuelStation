@@ -175,7 +175,7 @@ namespace FuelStationProject.WUI {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             ctrlQuantity.EditValue = 1m;
-            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+            //gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             gridTransactionLines.DataSource = _ViewData.Tables[0];
 
             gridTransactionLines.Refresh();
@@ -189,7 +189,6 @@ namespace FuelStationProject.WUI {
 
         private void Calculations(decimal quantity, decimal cost, decimal value, ItemTypeCategoryEnum itemType) {
             if (itemType == ItemTypeCategoryEnum.Fuel && value > 50) {
-                //Type = ItemTypeCategoryEnum.Fuel;
 
                 TotalPrice = TotalPrice + value;
                 DiscountValue = Math.Round(TotalPrice * (decimal)0.1,2);
@@ -210,7 +209,7 @@ namespace FuelStationProject.WUI {
                 SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectTransactionLineViewByID, TransactionID), DBController._SqlConnection);
                 int response = adapter.Fill(_MasterData);
 
-                gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+                //gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
                 gridTransactionLines.DataSource = _MasterData.Tables[0];
                 gridTransactionLines.Refresh();
             }

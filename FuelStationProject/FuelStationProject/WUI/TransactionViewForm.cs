@@ -21,7 +21,7 @@ namespace FuelStationProject.WUI {
         public TransactionViewForm() {
             InitializeComponent();
 
-          
+
         }
 
         private void TransactionViewForm_Load(object sender, EventArgs e) {
@@ -49,6 +49,10 @@ namespace FuelStationProject.WUI {
             ShowTransactionLines();
 
         }
+        private void repEditTransaction_Click(object sender, EventArgs e) {
+            CallEditTransaction();
+
+        }
 
         private void RefreshTransactionsGrid() {
             gridTransactionLines.Refresh();
@@ -71,7 +75,7 @@ namespace FuelStationProject.WUI {
 
         private void RefreshTransactionLinesGrid(string TransactionID) {
 
-            gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
+            //gridViewTransactionLines.OptionsView.ShowGroupPanel = false;
             DataSet _MasterData = new DataSet();
             _MasterData.Clear();
             try {
@@ -129,27 +133,25 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void repEditTransaction_Click(object sender, EventArgs e) {
 
+
+        private void CallEditTransaction() {
             DataSet CustomerData = new DataSet();
 
             string cardNumber = Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("CardNumber"));
-            //try {
-            SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
-            int response = adapter.Fill(CustomerData);
-            //}
-            //catch (Exception e) {
-            //    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            //}
-
-
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter(string.Format(Resources.SelectCustomerByCardNumber, cardNumber), DBController._SqlConnection);
+                int response = adapter.Fill(CustomerData);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
             TransactionForm transactionForm = new TransactionForm();
-            //transactionViewForm.MdiParent = this;
+
             transactionForm.DBController = DBController;
             transactionForm.TransactionID = Guid.Parse(Convert.ToString(ctrlTransactionsView.GetFocusedRowCellValue("ID")));
             transactionForm.CustomerData = CustomerData;
             transactionForm.Show();
-           
         }
     }
 }

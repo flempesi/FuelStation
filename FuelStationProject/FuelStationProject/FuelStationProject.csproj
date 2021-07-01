@@ -68,10 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DatabaseConnectionController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="Controllers\ItemController.cs" />
     <Content Include="Queries\DeleteTransaction.sql" />
     <Content Include="Queries\DeleteTransactionLineByTransactionID.sql" />
     <Content Include="Queries\DeleteTransactionLine.sql" />
