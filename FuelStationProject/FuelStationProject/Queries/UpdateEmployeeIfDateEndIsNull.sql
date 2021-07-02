@@ -1,0 +1,1 @@
+﻿UPDATE [Employee] SET [Name] = '{0}', [Surname] = '{1}', [DateStart] = '{2}', [DateEnd] = null, [Salary] = '{3}' WHERE [ID] = '{4}'

@@ -65,6 +65,13 @@ namespace FuelStationProject.Controllers {
                     sqlLine.Add(string.Format("{0}='{1}'", columnName, datePart));
                     break;
 
+                //case "DBNull":
+
+                //    string nothing = Convert.DBNull.ToString();
+                //    sqlLine.Add(string.Format("{0}='{1}'", columnName, nothing));
+
+
+                //    break;
                 case "Decimal":
                     string decimalPart = Convert.ToDecimal(value).ToString().Replace(',', '.');
 

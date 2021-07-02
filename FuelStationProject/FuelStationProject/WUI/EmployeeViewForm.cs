@@ -18,6 +18,10 @@ namespace FuelStationProject.WUI {
         DataSet _MasterData { get; set; }
         DataSet _MasterDataOld { get; set; }
         public DatabaseConnectionController DBController { get; set; }
+
+        private DateTime _DateEditNullDate = new DateTime(1, 1, 1, 0, 0, 0, 0);
+
+
         public EmployeeViewForm() {
             InitializeComponent();
         }
@@ -25,8 +29,6 @@ namespace FuelStationProject.WUI {
         private void EmployeeViewForm_Load(object sender, EventArgs e) {
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Top;
 
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
 
             RefreshEmployeeGrid();
         }
@@ -83,27 +85,77 @@ namespace FuelStationProject.WUI {
         }
 
         public void SaveEmployee() {
+
+
+
+
+
+
+
             string id = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
             string name = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name"));
             string surname = Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Surname"));
-            DateTime dateStart;
-            DateTime date;
-            DateTime? dateEnd = null;
-            decimal salary;
-            if (gridColumnDateEnd != null) {
-                dateEnd = DateTime.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateEnd")), out date) ? date : (DateTime?)null;
-            }
 
-            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) &&
-                  decimal.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Salary")).Replace(',', '.'), out salary) && salary > 0
-                  && DateTime.TryParse(Convert.ToString(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateStart")), out dateStart)) {
+            DateTime dateStart;
+
+            if (gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateStart") == DBNull.Value) {
+
+                MessageBox.Show("DateStart is required.");
+                return;
+
+            }
+            else {
+
+                dateStart = Convert.ToDateTime(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateStart"));
+
+            }
+            DateTime dateEnd;
+
+            if (gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateEnd") != DBNull.Value) {
+                dateEnd = Convert.ToDateTime(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateEnd"));
+
+            }
+            else {
+
+                dateEnd = _DateEditNullDate;
+
+            }
+            //dateEnd = Convert.ToDateTime(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "DateEnd"));
+
+
+            decimal salary;
+
+            if (gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Salary") != DBNull.Value) {
+
+                salary = Convert.ToDecimal(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Salary"));
+
+
+
+            }
+            else {
+
+                salary = 0m;
+            }
+            //salary = Convert.ToDecimal(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Salary"));
+
+
+            //DateTime dt = new DateTime(1, 1, 1, 0, 0, 0, 0);
+
+
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(surname) && salary > 0m && dateStart != _DateEditNullDate) {
                 //SaveToDB(id, name, surname, dateStart, dateEnd, salary);
 
-                if (dateStart <= dateEnd || dateEnd == (DateTime?)null) {
+                if (dateEnd == _DateEditNullDate) {
                     SaveToDB(id, name, surname, dateStart, dateEnd, salary);
 
-                    //Close();
+                    Close();
                 }
+                else if (dateEnd >= dateStart) {
+                    SaveToDB(id, name, surname, dateStart, dateEnd, salary);
+
+                    Close();
+                }
+
                 else {
 
                     MessageBox.Show("DateStart must be earlier than DateEnd");
@@ -116,26 +168,53 @@ namespace FuelStationProject.WUI {
             }
         }
 
-        private void SaveToDB(string id, string name, string surname, DateTime dateStart, DateTime? dateEnd, decimal salary) {
+        private void SaveToDB(string id, string name, string surname, DateTime dateStart, DateTime dateEnd, decimal salary) {
             if (!string.IsNullOrWhiteSpace(id)) {//update
 
-                UpdateController updateController = new UpdateController();
-                string sql = updateController.UpdateEntry(id, "Employee", _MasterData, _MasterDataOld);
-
-                if (sql != String.Empty) {
-                    try { 
-                    SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
-                    int rowsAffected = command.ExecuteNonQuery();
+                if (dateEnd==_DateEditNullDate) {
+                    try {
+                        SqlCommand command = new SqlCommand(string.Format(Resources.UpdateEmployeeIfDateEndIsNull,name,surname,dateStart,salary, id), DBController._SqlConnection); 
+                        int rowsAffected = command.ExecuteNonQuery();
                     }
                     catch (Exception e) {
                         MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                     }
+
                 }
+                else {
+
+
+                    UpdateController updateController = new UpdateController();
+                    string sql = updateController.UpdateEntry(id, "Employee", _MasterData, _MasterDataOld);
+
+                    if (sql != String.Empty) {
+                        try {
+                            SqlCommand command = new SqlCommand(sql, DBController._SqlConnection); ;
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
+                        catch (Exception e) {
+                            MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        }
+                    }
+
+                }
+
+
             }
             else {//insert
-                try { 
-                SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
-                int rowsAffected = command.ExecuteNonQuery();
+                try {
+                    if (dateEnd == _DateEditNullDate) {//DateEnd null
+
+                        SqlCommand command2 = new SqlCommand(string.Format(Resources.InsertEmployeeIfDateEndIsNull, name, surname, dateStart, salary), DBController._SqlConnection);
+                        int rowsAffected2 = command2.ExecuteNonQuery();
+                    }
+                    else {//when DateEnd not null 
+
+                        SqlCommand command = new SqlCommand(string.Format(Resources.InsertEmployee, name, surname, dateStart, dateEnd, salary), DBController._SqlConnection);
+                        int rowsAffected = command.ExecuteNonQuery();
+
+
+                    }
                 }
                 catch (Exception e) {
                     MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);

@@ -147,6 +147,20 @@ namespace FuelStationProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [Employee]	
+        ///([ID],[Name], [Surname], [DateStart],[DateEnd],[Salary]) 
+        ///VALUES	
+        ///(NEWID(), &apos;{0}&apos;, &apos; {1}&apos; , &apos;{2}&apos; ,null ,&apos;{3}&apos;)
+        ///
+        ///.
+        /// </summary>
+        internal static string InsertEmployeeIfDateEndIsNull {
+            get {
+                return ResourceManager.GetString("InsertEmployeeIfDateEndIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO [Item]
         ///           ([ID],[Code],[Description],[ItemType],[Price],[Cost])
         ///     VALUES
@@ -308,6 +322,15 @@ namespace FuelStationProject.Properties {
         internal static string UpdateEmployee {
             get {
                 return ResourceManager.GetString("UpdateEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE [Employee] SET [Name] = &apos;{0}&apos;, [Surname] = &apos;{1}&apos;, [DateStart] = &apos;{2}&apos;, [DateEnd] = null, [Salary] = &apos;{3}&apos; WHERE [ID] = &apos;{4}&apos;.
+        /// </summary>
+        internal static string UpdateEmployeeIfDateEndIsNull {
+            get {
+                return ResourceManager.GetString("UpdateEmployeeIfDateEndIsNull", resourceCulture);
             }
         }
         

@@ -72,6 +72,7 @@
     <Content Include="Queries\DeleteTransaction.sql" />
     <Content Include="Queries\DeleteTransactionLineByTransactionID.sql" />
     <Content Include="Queries\DeleteTransactionLine.sql" />
+    <Content Include="Queries\InsertEmployeeIfDateEndIsNull.sql" />
     <Content Include="Queries\InsertTransaction.sql" />
     <Content Include="Queries\SelectCustomerByCardNumber.sql" />
     <Content Include="Queries\SelectTransactionByID.sql" />
@@ -237,6 +238,7 @@
     <Content Include="Queries\QueryTransactionTable.sql" />
     <Content Include="Queries\TablesFuelStation.sql" />
     <Content Include="Queries\UpdateCustomer.sql" />
+    <Content Include="Queries\UpdateEmployeeIfDateEndIsNull.sql" />
     <Content Include="Queries\UpdateItem.sql" />
     <Content Include="Queries\UpdateEmployee.sql" />
     <Content Include="Queries\InsertEmployee.sql" />

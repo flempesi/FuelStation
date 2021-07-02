@@ -24,7 +24,7 @@ namespace FuelStationProject.WUI {
         }
         private void LedgerForm_Load(object sender, EventArgs e) {
 
-         
+
         }
         private void btnSearchLedger_Click(object sender, EventArgs e) {
             SearchLedger();
@@ -100,28 +100,43 @@ namespace FuelStationProject.WUI {
         private static decimal CalculateSalariesCost(DateTime dateFrom, DateTime dateTo, DataSet _MasterData, decimal totalSalaries) {
             for (int i = 0; i < _MasterData.Tables[0].Rows.Count; i++) {
                 DateTime dateStart = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateStart"]);
-                DateTime dateEnd = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateEnd"]);
+
+                DateTime dateEnd;
+
+                if (DBNull.Value.Equals(_MasterData.Tables[0].Rows[i]["DateEnd"])) {
+
+
+                    dateEnd = dateTo;
+
+                }
+                else {
+                    dateEnd = Convert.ToDateTime(_MasterData.Tables[0].Rows[i]["DateEnd"]);
+
+                }
+
 
                 decimal wage = (decimal)_MasterData.Tables[0].Rows[i]["Salary"] / 30;
 
                 //DateTime DBnullDate = new DateTime(1900,1,1,0,0,0,0);
 
                 //this is valid only if employee DateEnd is set to null, which means that the database interprets it as (1900-01-01 00:00:00:000)
-                if (dateEnd < dateStart) {
-                    dateEnd = dateTo;
-                }
+                //if (dateEnd < dateStart) {
+                //    dateEnd = dateTo;
+                //}
+
+
                 if (dateStart > dateTo) {
                     continue;
                 }
-
                 else if (dateFrom <= dateStart && dateEnd <= dateTo) {
-                    if (Convert.ToDecimal((dateEnd - dateStart).TotalDays)< 1m) {
+
+                    if (Convert.ToDecimal((dateEnd - dateStart).TotalDays) < 1m) {
                         totalSalaries += wage * 1;
                     }
                     else {
                         totalSalaries += wage * Convert.ToDecimal((dateEnd - dateStart).TotalDays);
                     }
-                    
+
                 }
 
                 else if (dateStart < dateFrom && dateEnd > dateTo) {

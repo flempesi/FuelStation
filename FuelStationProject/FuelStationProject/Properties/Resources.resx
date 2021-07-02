@@ -142,6 +142,9 @@
   <data name="InsertEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\insertemployee.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="InsertEmployeeIfDateEndIsNull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\insertemployeeifdateendisnull.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="InsertItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\insertitem.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -183,6 +186,9 @@
   </data>
   <data name="UpdateEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\updateemployee.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="UpdateEmployeeIfDateEndIsNull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\queries\updateemployeeifdateendisnull.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="UpdateItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\queries\updateitem.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

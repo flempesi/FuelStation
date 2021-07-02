@@ -251,6 +251,7 @@ namespace FuelStationProject.WUI {
             // 
             // repSpinEdit
             // 
+            this.repSpinEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.repSpinEdit.AutoHeight = false;
             this.repSpinEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
