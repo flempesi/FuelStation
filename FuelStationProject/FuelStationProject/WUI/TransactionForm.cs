@@ -58,6 +58,11 @@ namespace FuelStationProject.WUI {
             DeleteTransactionLine();
         }
         private void btnCancel_Click(object sender, EventArgs e) {
+            DeleteOnClose();
+            Close();
+        }
+
+        private void DeleteOnClose() {
             try {
                 SqlCommand command = new SqlCommand(string.Format(Resources.DeleteTransactionLineByTransactionID, TransactionID), DBController._SqlConnection);
 
@@ -66,8 +71,8 @@ namespace FuelStationProject.WUI {
             catch (Exception xe) {
                 MessageBox.Show(xe.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
-            Close();
         }
+
         private void InitializeLookUpEdits() {
             var itemTypes = new List<ItemType>() {
                     new ItemType() {  Value = ItemTypeCategoryEnum.Fuel,NumberOfValue= Convert.ToInt16(ItemTypeCategoryEnum.Fuel), Description = "Fuel" },
@@ -105,6 +110,8 @@ namespace FuelStationProject.WUI {
                 TotalPrice = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalValue"]);
                 TotalCost = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["TotalCost"]);
                 DiscountValue = Convert.ToDecimal(_MasterData.Tables[0].Rows[0]["DiscountValue"]);
+                ctrlDiscount.EditValue = String.Format("{0}  € ", DiscountValue);
+                ctrlInitialTotalprice.EditValue = String.Format("{0}  € ", TotalPrice- DiscountValue);
                 ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
                 _TransactionOld = true;
             }
@@ -205,16 +212,21 @@ namespace FuelStationProject.WUI {
             if (itemType == ItemTypeCategoryEnum.Fuel && value > 50) {
 
                 TotalPrice = TotalPrice + value;
+                ctrlInitialTotalprice.EditValue = String.Format("{0}  € ", TotalPrice);
                 DiscountValue = Math.Round(TotalPrice * (decimal)0.1, 2);
                 TotalPrice = TotalPrice - DiscountValue;
-
+                //ctrlDiscount.EditValue = String.Format("{0}  € ", DiscountValue);
+                
             }
             else {
                 TotalPrice += value;
+                ctrlInitialTotalprice.EditValue = String.Format("{0}  € ", TotalPrice);
             }
-
+            ctrlDiscount.EditValue = String.Format("{0}  € ", DiscountValue);
             TotalCost += quantity * cost;
             ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
+            
+            
         }
 
         public void RefreshGridTransactionLines() {
@@ -250,13 +262,16 @@ namespace FuelStationProject.WUI {
                     RefreshGridTransactionLines();
                     // modify values after delete the transactionline
                     TotalPrice -= valueTransactionLine;
+
                     if (itemType == ItemTypeCategoryEnum.Fuel) {
                         _TransactionHasFuel = false;
                         TotalPrice += DiscountValue;
+                        DiscountValue = 0m;
+                        ctrlDiscount.EditValue = String.Format("{0}  € ", DiscountValue);
 
 
                     }
-
+                    ctrlInitialTotalprice.EditValue = String.Format("{0}  € ",TotalPrice-DiscountValue);
                     ctrlTotalPrice.EditValue = String.Format("{0}  € ", TotalPrice);
                     TotalCost -= costTransactionLine;
                 }
@@ -282,6 +297,10 @@ namespace FuelStationProject.WUI {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
+        }
+
+        private void TransactionForm_FormClosing(object sender, FormClosingEventArgs e) {
+            DeleteOnClose();
         }
     }
 }

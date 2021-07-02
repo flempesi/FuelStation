@@ -33,6 +33,7 @@ namespace FuelStationProject.WUI {
             this.gridViewItems = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repLookUpEditType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,6 +44,7 @@ namespace FuelStationProject.WUI {
             this.gridViewTransactionLines = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repLookUpEditTypeLines = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,18 +56,22 @@ namespace FuelStationProject.WUI {
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ctrlTotalPrice = new DevExpress.XtraEditors.TextEdit();
             this.ctrlCustomer = new DevExpress.XtraEditors.TextEdit();
-            this.repLookUpEditType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repLookUpEditTypeLines = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlDiscount = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlInitialTotalprice = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTransactionLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDiscount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlInitialTotalprice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl6
@@ -85,7 +91,7 @@ namespace FuelStationProject.WUI {
             this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnOK.Appearance.Options.UseBackColor = true;
             this.btnOK.Appearance.Options.UseFont = true;
-            this.btnOK.Location = new System.Drawing.Point(686, 623);
+            this.btnOK.Location = new System.Drawing.Point(686, 647);
             this.btnOK.Margin = new System.Windows.Forms.Padding(5);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(128, 46);
@@ -99,7 +105,7 @@ namespace FuelStationProject.WUI {
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(825, 623);
+            this.btnCancel.Location = new System.Drawing.Point(841, 647);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(148, 46);
@@ -165,6 +171,14 @@ namespace FuelStationProject.WUI {
             this.gridColumnType.Visible = true;
             this.gridColumnType.VisibleIndex = 1;
             this.gridColumnType.Width = 94;
+            // 
+            // repLookUpEditType
+            // 
+            this.repLookUpEditType.AutoHeight = false;
+            this.repLookUpEditType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEditType.Name = "repLookUpEditType";
+            this.repLookUpEditType.ReadOnly = true;
             // 
             // gridColumnPrice
             // 
@@ -276,7 +290,7 @@ namespace FuelStationProject.WUI {
             // 
             // gridColumnName
             // 
-            this.gridColumnName.Caption = "ItemDescription";
+            this.gridColumnName.Caption = "Item Description";
             this.gridColumnName.FieldName = "Description";
             this.gridColumnName.MinWidth = 24;
             this.gridColumnName.Name = "gridColumnName";
@@ -286,7 +300,7 @@ namespace FuelStationProject.WUI {
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "ItemType";
+            this.gridColumn1.Caption = "Item Type";
             this.gridColumn1.ColumnEdit = this.repLookUpEditTypeLines;
             this.gridColumn1.FieldName = "ItemType";
             this.gridColumn1.MinWidth = 24;
@@ -294,6 +308,14 @@ namespace FuelStationProject.WUI {
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 94;
+            // 
+            // repLookUpEditTypeLines
+            // 
+            this.repLookUpEditTypeLines.AutoHeight = false;
+            this.repLookUpEditTypeLines.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEditTypeLines.Name = "repLookUpEditTypeLines";
+            this.repLookUpEditTypeLines.ReadOnly = true;
             // 
             // gridColumn2
             // 
@@ -375,7 +397,7 @@ namespace FuelStationProject.WUI {
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(12, 636);
+            this.labelControl5.Location = new System.Drawing.Point(12, 672);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(95, 21);
@@ -384,7 +406,7 @@ namespace FuelStationProject.WUI {
             // 
             // ctrlTotalPrice
             // 
-            this.ctrlTotalPrice.Location = new System.Drawing.Point(152, 633);
+            this.ctrlTotalPrice.Location = new System.Drawing.Point(166, 669);
             this.ctrlTotalPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ctrlTotalPrice.Name = "ctrlTotalPrice";
             this.ctrlTotalPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -403,27 +425,59 @@ namespace FuelStationProject.WUI {
             this.ctrlCustomer.Size = new System.Drawing.Size(544, 28);
             this.ctrlCustomer.TabIndex = 22;
             // 
-            // repLookUpEditType
+            // labelControl2
             // 
-            this.repLookUpEditType.AutoHeight = false;
-            this.repLookUpEditType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repLookUpEditType.Name = "repLookUpEditType";
-            this.repLookUpEditType.ReadOnly = true;
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(12, 627);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(81, 21);
+            this.labelControl2.TabIndex = 23;
+            this.labelControl2.Text = "Discount : ";
             // 
-            // repLookUpEditTypeLines
+            // ctrlDiscount
             // 
-            this.repLookUpEditTypeLines.AutoHeight = false;
-            this.repLookUpEditTypeLines.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repLookUpEditTypeLines.Name = "repLookUpEditTypeLines";
-            this.repLookUpEditTypeLines.ReadOnly = true;
+            this.ctrlDiscount.Location = new System.Drawing.Point(166, 624);
+            this.ctrlDiscount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ctrlDiscount.Name = "ctrlDiscount";
+            this.ctrlDiscount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlDiscount.Properties.Appearance.Options.UseFont = true;
+            this.ctrlDiscount.Properties.ReadOnly = true;
+            this.ctrlDiscount.Size = new System.Drawing.Size(159, 28);
+            this.ctrlDiscount.TabIndex = 24;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(12, 590);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(148, 21);
+            this.labelControl3.TabIndex = 25;
+            this.labelControl3.Text = "Intitial Total Price : ";
+            // 
+            // ctrlInitialTotalprice
+            // 
+            this.ctrlInitialTotalprice.Location = new System.Drawing.Point(166, 583);
+            this.ctrlInitialTotalprice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ctrlInitialTotalprice.Name = "ctrlInitialTotalprice";
+            this.ctrlInitialTotalprice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ctrlInitialTotalprice.Properties.Appearance.Options.UseFont = true;
+            this.ctrlInitialTotalprice.Properties.ReadOnly = true;
+            this.ctrlInitialTotalprice.Size = new System.Drawing.Size(159, 28);
+            this.ctrlInitialTotalprice.TabIndex = 26;
             // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 685);
+            this.ClientSize = new System.Drawing.Size(1004, 719);
+            this.Controls.Add(this.ctrlInitialTotalprice);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.ctrlDiscount);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.ctrlCustomer);
             this.Controls.Add(this.ctrlTotalPrice);
             this.Controls.Add(this.labelControl5);
@@ -440,17 +494,20 @@ namespace FuelStationProject.WUI {
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TransactionForm";
             this.Text = "Make Transaction";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TransactionForm_FormClosing);
             this.Load += new System.EventHandler(this.TransactionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlQuantity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTransactionLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repDeleteLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlTotalPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCustomer.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditTypeLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDiscount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlInitialTotalprice.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +545,9 @@ namespace FuelStationProject.WUI {
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditType;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditTypeLines;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit ctrlDiscount;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit ctrlInitialTotalprice;
     }
 }
