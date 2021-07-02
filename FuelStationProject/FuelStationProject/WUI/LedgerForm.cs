@@ -24,8 +24,7 @@ namespace FuelStationProject.WUI {
         }
         private void LedgerForm_Load(object sender, EventArgs e) {
 
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
-            //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+         
         }
         private void btnSearchLedger_Click(object sender, EventArgs e) {
             SearchLedger();
